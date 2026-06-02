@@ -3,1517 +3,268 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="PMCS Holdings is a Singapore-led food-security, sustainability, governance, and structured finance platform designed for Thailand-to-GCC strategic corridor architecture."
-  />
-  <title>PMCS Holdings | Singapore-Led Food Security Platform</title>
-  <style>
-    :root {
-      --maroon: #8A1538;
-      --maroon-dark: #641027;
-      --green: #2EA37A;
-      --green-dark: #1d7658;
-      --gold: #D6AD60;
-      --charcoal: #2B2B2B;
-      --muted: #67717a;
-      --light: #F7F8FA;
-      --panel: #ffffff;
-      --line: #E4E8EA;
-      --ink-soft: #3f474f;
-      --shadow: 0 24px 70px rgba(43, 43, 43, 0.10);
-      --shadow-soft: 0 16px 42px rgba(43, 43, 43, 0.08);
-      --header-offset: 164px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-offset);
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(46, 163, 122, 0.10), transparent 30rem),
-        linear-gradient(180deg, #ffffff 0%, var(--light) 48%, #ffffff 100%);
-      color: var(--charcoal);
-      overflow-x: hidden;
-    }
-
-    body.nav-open {
-      overflow: hidden;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 10px 30px rgba(43, 43, 43, 0.08);
-    }
-
-    .compliance-bar {
-      background: linear-gradient(90deg, var(--maroon-dark), var(--maroon));
-      color: #ffffff;
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .status-bar {
-      background: rgba(247, 248, 250, 0.96);
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-    }
-
-    .bar-inner,
-    .nav-inner,
-    .section-inner {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .bar-inner {
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .status-items {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 4px rgba(46, 163, 122, 0.12);
-    }
-
-    .main-nav {
-      position: relative;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid rgba(228, 232, 234, 0.86);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-inner {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-    }
-
-    .logo {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 3px;
-      text-decoration: none;
-      min-width: max-content;
-    }
-
-    .logo strong {
-      color: var(--maroon);
-      font-size: 1.28rem;
-      letter-spacing: 0.04em;
-    }
-
-    .logo span {
-      color: var(--muted);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .nav-toggle {
-      display: none;
-      width: 46px;
-      height: 46px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: #ffffff;
-      color: var(--maroon);
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .nav-toggle span {
-      width: 19px;
-      height: 2px;
-      border-radius: 2px;
-      background: currentColor;
-      transition: transform 220ms ease, opacity 220ms ease;
-    }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 2px;
-      width: 100%;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .nav-links a,
-    .language-selector {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      padding: 0 10px;
-      border-radius: 999px;
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: color 180ms ease, background 180ms ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible,
-    .language-selector:hover,
-    .language-selector:focus-visible {
-      background: rgba(138, 21, 56, 0.07);
-      color: var(--maroon);
-      outline: none;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-left: 8px;
-    }
-
-    .language-selector {
-      border: 1px solid var(--line);
-      background: #ffffff;
-      cursor: pointer;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border: 0;
-      border-radius: 999px;
-      background: var(--green);
-      color: #ffffff;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 12px 28px rgba(46, 163, 122, 0.24);
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      background: var(--green-dark);
-      box-shadow: 0 16px 34px rgba(46, 163, 122, 0.30);
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .button.secondary {
-      background: #ffffff;
-      color: var(--maroon);
-      border: 1px solid rgba(138, 21, 56, 0.18);
-      box-shadow: none;
-    }
-
-    .hero {
-      position: relative;
-      padding: 96px 0 82px;
-      isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 28px min(4vw, 60px) auto auto;
-      width: min(42vw, 520px);
-      height: min(42vw, 520px);
-      border: 1px solid rgba(214, 173, 96, 0.25);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(214, 173, 96, 0.10), transparent 64%);
-      z-index: -1;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.72fr);
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      color: var(--green);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 38px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      overflow-wrap: anywhere;
-    }
-
-    h1 {
-      max-width: 920px;
-      margin: 0;
-      color: var(--maroon);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2.8rem, 7vw, 5.9rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-    }
-
-    .hero-copy {
-      max-width: 760px;
-      margin: 30px 0 0;
-      color: var(--ink-soft);
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
-      line-height: 1.72;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 34px;
-    }
-
-    .hero-note {
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-
-    .hero-card {
-      position: relative;
-      padding: 28px;
-      border: 1px solid rgba(228, 232, 234, 0.9);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.88);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--maroon), var(--gold), var(--green));
-    }
-
-    .corridor-map {
-      position: relative;
-      min-height: 380px;
-      display: grid;
-      align-content: space-between;
-      gap: 22px;
-    }
-
-    .corridor-line {
-      position: absolute;
-      left: 30px;
-      top: 48px;
-      bottom: 48px;
-      width: 1px;
-      background: linear-gradient(180deg, var(--maroon), var(--gold), var(--green));
-      opacity: 0.5;
-    }
-
-    .map-node {
-      position: relative;
-      display: grid;
-      grid-template-columns: 62px 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .node-marker {
-      position: relative;
-      z-index: 1;
-      width: 62px;
-      height: 62px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 1px solid rgba(138, 21, 56, 0.16);
-      color: var(--maroon);
-      font-weight: 900;
-      box-shadow: 0 10px 22px rgba(43, 43, 43, 0.08);
-    }
-
-    .map-node h3 {
-      margin: 4px 0 8px;
-      color: var(--maroon);
-      font-size: 1rem;
-    }
-
-    .map-node p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.58;
-    }
-
-    section {
-      padding: 78px 0;
-    }
-
-    .section-kicker {
-      margin: 0 0 14px;
-      color: var(--green);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .section-heading {
-      display: grid;
-      grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.52fr);
-      gap: 40px;
-      align-items: end;
-      margin-bottom: 34px;
-    }
-
-    .section-heading h2,
-    .section-heading-title {
-      margin: 0;
-      color: var(--maroon);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2rem, 4.8vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p,
-    .section-intro {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.72;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.88);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      position: relative;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: #ffffff;
-      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--maroon), var(--green));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 220ms ease;
-    }
-
-    .card:hover {
-      border-color: rgba(46, 163, 122, 0.28);
-      box-shadow: var(--shadow-soft);
-      transform: translateY(-5px);
-    }
-
-    .card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      color: var(--maroon);
-      font-size: 1.16rem;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.65;
-    }
-
-    .card p:last-child,
-    .card ul:last-child {
-      margin-bottom: 0;
-    }
-
-    .number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      margin-bottom: 20px;
-      border-radius: 50%;
-      background: rgba(138, 21, 56, 0.08);
-      color: var(--maroon);
-      font-weight: 900;
-    }
-
-    .alignment-panel {
-      display: grid;
-      grid-template-columns: 0.7fr 1fr;
-      gap: 28px;
-      padding: 34px;
-    }
-
-    .alignment-stat {
-      display: flex;
-      min-height: 100%;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 42px;
-      padding: 34px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, var(--maroon), var(--maroon-dark));
-      color: #ffffff;
-      overflow: hidden;
-    }
-
-    .alignment-stat strong {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2.6rem, 6vw, 5.2rem);
-      line-height: 0.9;
-    }
-
-    .alignment-stat span {
-      color: rgba(255, 255, 255, 0.74);
-      line-height: 1.6;
-    }
-
-    .connector-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      padding-top: 24px;
-    }
-
-    .connector-grid::before {
-      content: "";
-      position: absolute;
-      top: 54px;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(138, 21, 56, 0.28), rgba(46, 163, 122, 0.35), transparent);
-    }
-
-    .ecosystem-card {
-      position: relative;
-      text-align: center;
-      z-index: 1;
-    }
-
-    .ecosystem-icon {
-      width: 62px;
-      height: 62px;
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: var(--light);
-      color: var(--green);
-      font-weight: 900;
-      border: 1px solid var(--line);
-    }
-
-    .iccr-panel {
-      padding: 34px;
-      background:
-        linear-gradient(135deg, rgba(138, 21, 56, 0.05), transparent 38%),
-        #ffffff;
-    }
-
-    .pillar-list {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .pillar {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(247, 248, 250, 0.72);
-    }
-
-    .pillar h3 {
-      margin: 0 0 10px;
-      color: var(--maroon);
-      font-size: 1rem;
-    }
-
-    .pillar p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.58;
-    }
-
-    .supply-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .supply-visual {
-      position: relative;
-      min-height: 420px;
-      border-radius: 28px;
-      background:
-        linear-gradient(145deg, rgba(138, 21, 56, 0.9), rgba(43, 43, 43, 0.86)),
-        radial-gradient(circle at 28% 30%, rgba(214, 173, 96, 0.55), transparent 15rem);
-      overflow: hidden;
-      color: #ffffff;
-      padding: 34px;
-    }
-
-    .supply-visual::after {
-      content: "";
-      position: absolute;
-      inset: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 24px;
-    }
-
-    .route-line {
-      position: absolute;
-      left: 26%;
-      right: 18%;
-      top: 52%;
-      height: 1px;
-      background: linear-gradient(90deg, var(--gold), var(--green));
-      transform: rotate(-13deg);
-    }
-
-    .route-point {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 8px rgba(46, 163, 122, 0.18);
-    }
-
-    .route-point.thailand {
-      left: 24%;
-      top: 56%;
-      background: var(--gold);
-    }
-
-    .route-point.gcc {
-      right: 17%;
-      top: 43%;
-    }
-
-    .supply-visual h3 {
-      position: relative;
-      z-index: 1;
-      max-width: 390px;
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1;
-    }
-
-    .supply-labels {
-      position: absolute;
-      z-index: 1;
-      inset: auto 34px 34px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      font-weight: 800;
-    }
-
-    .supply-labels span {
-      display: block;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 0.78rem;
-      font-weight: 500;
-      margin-top: 5px;
-    }
-
-    .governance-band {
-      padding: 34px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, #ffffff, rgba(247, 248, 250, 0.92));
-    }
-
-    .check-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .check-list li {
-      position: relative;
-      padding: 14px 0 14px 34px;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-soft);
-      line-height: 1.55;
-    }
-
-    .check-list li:last-child {
-      border-bottom: 0;
-    }
-
-    .check-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 18px;
-      width: 16px;
-      height: 16px;
-      border: 1px solid var(--green);
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--green) 35%, transparent 39%);
-    }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.55fr);
-      gap: 28px;
-      padding: 38px;
-      background: linear-gradient(135deg, #ffffff 0%, rgba(247, 248, 250, 0.96) 100%);
-    }
-
-    .contact-panel h2 {
-      margin: 0 0 18px;
-      color: var(--maroon);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2rem, 4vw, 3.6rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .contact-panel p {
-      color: var(--muted);
-      line-height: 1.72;
-    }
-
-    .contact-card {
-      padding: 26px;
-      border-radius: 22px;
-      background: var(--maroon);
-      color: #ffffff;
-    }
-
-    .contact-card h3 {
-      margin-top: 0;
-    }
-
-    .contact-card p {
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 0.96rem;
-    }
-
-    .site-footer {
-      padding: 56px 0 34px;
-      background: #201f22;
-      color: #ffffff;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-      gap: 34px;
-      align-items: start;
-    }
-
-    .footer-brand strong {
-      display: block;
-      color: #ffffff;
-      font-size: 1.4rem;
-      letter-spacing: 0.04em;
-    }
-
-    .footer-brand p,
-    .footer-note,
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.66);
-      line-height: 1.7;
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 22px;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      transition: color 180ms ease;
-    }
-
-    .footer-links a:hover,
-    .footer-links a:focus-visible {
-      color: var(--gold);
-      outline: none;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.54);
-      font-size: 0.9rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 620ms ease, transform 620ms ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    @media (max-width: 1120px) {
-      :root {
-        --header-offset: 150px;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-
-      .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        display: none;
-        max-height: calc(100vh - var(--header-offset));
-        overflow-y: auto;
-        align-items: stretch;
-        flex-direction: column;
-        gap: 16px;
-        padding: 20px;
-        background: #ffffff;
-        border-bottom: 1px solid var(--line);
-        box-shadow: 0 20px 40px rgba(43, 43, 43, 0.10);
-      }
-
-      .nav-menu.open {
-        display: flex;
-      }
-
-      .nav-links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .nav-links a {
-        min-height: 50px;
-        justify-content: center;
-        background: var(--light);
-        white-space: normal;
-        text-align: center;
-      }
-
-      .nav-actions {
-        width: 100%;
-        margin-left: 0;
-        justify-content: stretch;
-      }
-
-      .language-selector,
-      .nav-actions .button {
-        flex: 1;
-      }
-
-      .hero-grid,
-      .section-heading,
-      .alignment-panel,
-      .supply-layout,
-      .contact-panel,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .connector-grid,
-      .pillar-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 720px) {
-      :root {
-        --header-offset: 178px;
-      }
-
-      .bar-inner,
-      .nav-inner,
-      .section-inner {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .compliance-bar .bar-inner,
-      .status-bar .bar-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: center;
-        gap: 6px;
-        padding: 8px 0;
-      }
-
-      .status-items {
-        gap: 8px 14px;
-      }
-
-      .status-pill {
-        white-space: normal;
-      }
-
-      .nav-inner {
-        min-height: 72px;
-      }
-
-      .logo strong {
-        font-size: 1.08rem;
-      }
-
-      .logo span {
-        font-size: 0.64rem;
-      }
-
-      .hero {
-        padding: 58px 0 54px;
-      }
-
-      section {
-        padding: 54px 0;
-      }
-
-      .hero-card,
-      .alignment-panel,
-      .iccr-panel,
-      .governance-band,
-      .contact-panel {
-        padding: 22px;
-        border-radius: 22px;
-      }
-
-      .corridor-map {
-        min-height: auto;
-      }
-
-      .grid-3,
-      .grid-2,
-      .connector-grid,
-      .pillar-list,
-      .footer-links {
-        grid-template-columns: 1fr;
-      }
-
-      .connector-grid::before {
-        display: none;
-      }
-
-      .supply-visual {
-        min-height: 360px;
-        padding: 26px;
-      }
-
-      .supply-labels {
-        inset: auto 26px 26px;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-actions {
-        flex-direction: column;
-      }
-
-      .language-selector,
-      .nav-actions .button {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 420px) {
-      h1 {
-        font-size: 2.55rem;
-      }
-
-      .map-node {
-        grid-template-columns: 48px 1fr;
-        gap: 14px;
-      }
-
-      .node-marker {
-        width: 48px;
-        height: 48px;
-      }
-
-      .corridor-line {
-        left: 24px;
-      }
-    }
-  </style>
+  <meta name="description" content="PMCS Holdings is a Singapore-led food-security, sustainability, governance, and structured finance platform connecting Thailand-based production readiness with GCC strategic food-security demand." data-i18n-attr="content:meta.description" />
+  <title data-i18n="meta.title">PMCS Holdings | Singapore-Led Food Security Platform</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="compliance-bar">
-      <div class="bar-inner">
-        <span>Institutional platform under development</span>
-        <span>Subject to verification, regulatory approval, and final commercial documentation</span>
+      <div class="shell bar-content">
+        <span data-i18n="topbar.left">Institutional platform under development</span>
+        <span data-i18n="topbar.right">Subject to verification, regulatory approval, and final documentation</span>
       </div>
     </div>
-    <div class="status-bar">
-      <div class="bar-inner">
-        <div class="status-items" aria-label="Platform status">
-          <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>Singapore-led governance architecture</span>
-          <span class="status-pill">Thailand-to-GCC food-security corridor</span>
-        </div>
-        <span>Private institutional engagement only</span>
-      </div>
-    </div>
-    <nav class="main-nav" aria-label="Primary navigation">
-      <div class="nav-inner">
-        <a class="logo" href="#overview" aria-label="PMCS Holdings home">
-          <strong>PMCS Holdings</strong>
-          <span>Food Security · Sustainability · Finance</span>
+
+    <nav class="main-nav" aria-label="Primary navigation" data-i18n-attr="aria-label:nav.aria">
+      <div class="shell nav-content">
+        <a class="brand" href="#overview" aria-label="PMCS Holdings home" data-i18n-attr="aria-label:nav.homeAria">
+          <!-- Upload the official logo here: assets/logo/pmcs-logo-maroon.svg. If missing, the text fallback remains visible. -->
+          <img class="brand-logo" src="assets/logo/pmcs-logo-maroon.svg" alt="PMCS Holdings logo" data-i18n-attr="alt:nav.logoAlt" />
+          <span class="brand-fallback">PMCS Holdings</span>
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu" data-i18n-attr="aria-label:nav.openMenu">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <div class="nav-menu" id="nav-menu">
-          <ul class="nav-links">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#strategic-alignment">Strategic Alignment</a></li>
-            <li><a href="#platform-ecosystem">Platform Ecosystem</a></li>
-            <li><a href="#iccr-framework">ICCR Framework</a></li>
-            <li><a href="#thailand-supply-base">Thailand Supply Base</a></li>
-            <li><a href="#capital-partnerships">Capital &amp; Partnerships</a></li>
-            <li><a href="#governance">Governance</a></li>
-            <li><a href="#inquire">Inquire</a></li>
-          </ul>
-          <div class="nav-actions">
-            <button class="language-selector" type="button" aria-label="Language selector placeholder">EN / العربية</button>
-            <a class="button" href="#inquire">Inquire</a>
-          </div>
+
+        <div class="site-menu" id="site-menu">
+          <a href="#overview" data-i18n="nav.overview">Overview</a>
+          <a href="#alignment" data-i18n="nav.alignment">Strategic Alignment</a>
+          <a href="#ecosystem" data-i18n="nav.ecosystem">Platform Ecosystem</a>
+          <a href="#iccr" data-i18n="nav.iccr">ICCR Framework</a>
+          <a href="#supply" data-i18n="nav.supply">Thailand Supply Base</a>
+          <a href="#capital" data-i18n="nav.capital">Capital &amp; Partnerships</a>
+          <a href="#governance" data-i18n="nav.governance">Governance</a>
+          <a href="#contact" class="nav-inquire" data-i18n="nav.inquire">Inquire</a>
+
+          <select id="languageSelect" class="language-select" aria-label="Language" data-i18n-attr="aria-label:nav.language">
+            <option value="en">EN</option>
+            <option value="th">TH</option>
+            <option value="ar">AR</option>
+          </select>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="overview">
-      <div class="section-inner hero-grid">
+    <section class="hero section" id="overview">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Singapore-led Platform</p>
+          <h1 data-i18n="hero.title">Building a Singapore-Led Food Security, Sustainability &amp; Finance Platform for the GCC</h1>
+          <p class="lead" data-i18n="hero.lead">
+            PMCS Holdings is designed as a Singapore-led platform coordinating governance, structured finance readiness, Thailand-based production readiness, and GCC food-security market access through a controlled, sustainability-linked corridor architecture.
+          </p>
+
+          <div class="button-row">
+            <a class="button" href="#ecosystem" data-i18n="hero.primaryCta">Explore Platform</a>
+            <a class="button secondary" href="#contact" data-i18n="hero.secondaryCta">Institutional Inquiry</a>
+          </div>
+
+          <p class="compliance-note" data-i18n="hero.note">
+            PMCS Holdings is not presented as a generic agriculture seller, crop-products company, commodity exporter, or retail farm-to-table brand.
+          </p>
+        </div>
+
+        <figure class="visual-card image-frame reveal">
+          <!-- Upload approved hero image here: assets/images/hero-singapore.jpg -->
+          <img class="managed-image" src="assets/images/hero-singapore.jpg" alt="Singapore-led institutional food security platform" data-i18n-attr="alt:images.heroAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.heroPlaceholder">Singapore-led platform image placeholder</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="alignment">
+      <div class="shell section-heading reveal">
+        <p class="eyebrow" data-i18n="alignment.eyebrow">Strategic Alignment</p>
+        <h2 data-i18n="alignment.title">Connecting Singapore governance with Thailand readiness and GCC food-security demand.</h2>
+        <p data-i18n="alignment.body">
+          The platform is intended to coordinate corridor governance, sustainability controls, institutional documentation, and partner readiness through cautious, verification-led implementation.
+        </p>
+      </div>
+
+      <div class="shell cards three-cols">
+        <article class="card reveal">
+          <span>01</span>
+          <h3 data-i18n="alignment.cards.governanceTitle">Singapore Governance</h3>
+          <p data-i18n="alignment.cards.governanceBody">
+            A planned governance layer for platform oversight, documentation discipline, and institutional controls.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span>02</span>
+          <h3 data-i18n="alignment.cards.thailandTitle">Thailand Readiness</h3>
+          <p data-i18n="alignment.cards.thailandBody">
+            Thailand-based production readiness remains subject to verification, partner validation, and operating controls.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span>03</span>
+          <h3 data-i18n="alignment.cards.gccTitle">GCC Demand</h3>
+          <p data-i18n="alignment.cards.gccBody">
+            Market-access pathways are planned around strategic food-security priorities and final commercial documentation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section soft" id="ecosystem">
+      <div class="shell split-grid">
         <div class="reveal">
-          <span class="eyebrow">Singapore-led Platform</span>
-          <h1>Building a Singapore-Led Food Security, Sustainability &amp; Finance Platform for the GCC</h1>
-          <p class="hero-copy">
-            PMCS Holdings is designed as a Singapore-led platform coordinating governance, capital structuring,
-            Thailand-based production readiness, and GCC food-security market access through a controlled,
-            sustainability-linked corridor architecture.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#platform-ecosystem">Explore the Platform</a>
-            <a class="button secondary" href="#governance">Governance Approach</a>
-          </div>
-          <p class="hero-note">
-            PMCS Holdings is not positioned as a general agricultural products company, crop cultivation company,
-            commodity exporter, or farm-to-table product seller. The platform is planned as an institutional
-            architecture for corridor coordination, sustainability controls, and structured partnership readiness.
+          <p class="eyebrow" data-i18n="ecosystem.eyebrow">Platform Ecosystem</p>
+          <h2 data-i18n="ecosystem.title">A structured corridor platform, not a generic products website.</h2>
+          <p data-i18n="ecosystem.body">
+            PMCS Holdings is positioned as an institutional partnership platform coordinating food-security architecture, sustainability-linked supply corridors, governance, and structured finance readiness.
           </p>
         </div>
 
-        <aside class="hero-card reveal" aria-label="PMCS corridor architecture summary">
-          <div class="corridor-map">
-            <div class="corridor-line" aria-hidden="true"></div>
-            <div class="map-node">
-              <div class="node-marker">SG</div>
-              <div>
-                <h3>Singapore Governance</h3>
-                <p>Platform oversight, institutional controls, capital structuring, and partner documentation are intended to be coordinated from Singapore.</p>
-              </div>
-            </div>
-            <div class="map-node">
-              <div class="node-marker">TH</div>
-              <div>
-                <h3>Thailand Supply Readiness</h3>
-                <p>Production-readiness pathways are planned around verified supply bases and sustainability-linked operating parameters.</p>
-              </div>
-            </div>
-            <div class="map-node">
-              <div class="node-marker">GCC</div>
-              <div>
-                <h3>GCC Market Access</h3>
-                <p>Food-security access is intended to support institutional counterparties subject to regulatory approval and final commercial documentation.</p>
-              </div>
-            </div>
-          </div>
-        </aside>
+        <figure class="image-frame reveal">
+          <!-- Upload approved logistics image here: assets/images/logistics-corridor.jpg -->
+          <img class="managed-image" src="assets/images/logistics-corridor.jpg" alt="Thailand to GCC logistics corridor" data-i18n-attr="alt:images.logisticsAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.logisticsPlaceholder">Logistics corridor image placeholder</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section id="strategic-alignment">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <p class="section-kicker">Strategic Alignment</p>
-            <h2>Designed for regional food security, sustainability discipline, and institutional coordination.</h2>
-          </div>
-          <p>
-            PMCS Holdings is intended to connect Singapore governance discipline with Thailand-based supply
-            readiness and GCC food-security priorities through cautious, verification-led corridor planning.
+    <section class="section" id="iccr">
+      <div class="shell section-heading reveal">
+        <p class="eyebrow" data-i18n="iccr.eyebrow">ICCR Framework</p>
+        <h2 data-i18n="iccr.title">Four pillars for sustainability-linked corridor planning.</h2>
+      </div>
+
+      <div class="shell split-grid reverse">
+        <figure class="image-frame reveal">
+          <!-- Upload approved ICCR image here: assets/images/iccr-framework.jpg -->
+          <img class="managed-image" src="assets/images/iccr-framework.jpg" alt="ICCR sustainability framework" data-i18n-attr="alt:images.iccrAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.iccrPlaceholder">ICCR framework image placeholder</figcaption>
+        </figure>
+
+        <div class="pillar-grid reveal">
+          <article>
+            <h3 data-i18n="iccr.p1">Carbon Input Control</h3>
+          </article>
+          <article>
+            <h3 data-i18n="iccr.p2">Carbon Transformation</h3>
+          </article>
+          <article>
+            <h3 data-i18n="iccr.p3">Carbon Output Neutralisation</h3>
+          </article>
+          <article>
+            <h3 data-i18n="iccr.p4">Carbon Finance Integration</h3>
+          </article>
+          <p class="pillar-note" data-i18n="iccr.note">
+            The ICCR framework is under development and remains subject to verification, regulatory approval, and final implementation documentation.
           </p>
-        </div>
-        <div class="alignment-panel panel reveal">
-          <div class="alignment-stat">
-            <strong>3</strong>
-            <span>Jurisdictional focus areas: Singapore platform governance, Thailand supply-base readiness, and GCC market-access coordination.</span>
-          </div>
-          <div class="grid-2">
-            <article class="card">
-              <span class="number">01</span>
-              <h3>Food-Security Architecture</h3>
-              <p>Planned corridor structures are designed to support long-term food-security access rather than transactional commodity sales.</p>
-            </article>
-            <article class="card">
-              <span class="number">02</span>
-              <h3>Sustainability-Linked Controls</h3>
-              <p>Operating parameters are intended to be subject to independent verification, regulatory review, and disciplined reporting.</p>
-            </article>
-            <article class="card">
-              <span class="number">03</span>
-              <h3>Structured Finance Readiness</h3>
-              <p>Capital pathways remain under development and subject to partner validation, documentation, and applicable approvals.</p>
-            </article>
-            <article class="card">
-              <span class="number">04</span>
-              <h3>Institutional Partnerships</h3>
-              <p>Engagement is planned for strategic partners, governance counterparties, supply participants, and qualified institutional stakeholders.</p>
-            </article>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="platform-ecosystem">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <p class="section-kicker">Platform Ecosystem</p>
-            <h2>A connected platform model, not a farm-to-table product seller.</h2>
-          </div>
-          <p>
-            The PMCS ecosystem is designed to coordinate corridor governance, supply readiness, sustainability
-            controls, market access, and partnership documentation through carefully staged implementation.
-          </p>
-        </div>
-        <div class="connector-grid">
-          <article class="card ecosystem-card reveal">
-            <div class="ecosystem-icon">GOV</div>
-            <h3>Governance Layer</h3>
-            <p>Singapore-led platform controls, compliance protocols, counterparty review, and documentation discipline.</p>
-          </article>
-          <article class="card ecosystem-card reveal">
-            <div class="ecosystem-icon">SUP</div>
-            <h3>Supply Readiness</h3>
-            <p>Thailand-based production-readiness planning subject to validation, operating controls, and partner readiness.</p>
-          </article>
-          <article class="card ecosystem-card reveal">
-            <div class="ecosystem-icon">ICCR</div>
-            <h3>Sustainability Framework</h3>
-            <p>ICCR pillars intended to support input control, transformation discipline, neutralisation planning, and finance integration.</p>
-          </article>
-          <article class="card ecosystem-card reveal">
-            <div class="ecosystem-icon">GCC</div>
-            <h3>Market Access</h3>
-            <p>GCC engagement pathways planned around food-security alignment and final commercial documentation.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section soft" id="supply">
+      <div class="shell split-grid">
+        <figure class="image-frame tall reveal">
+          <!-- Upload approved Thailand supply image here: assets/images/thailand-supply-base.jpg -->
+          <img class="managed-image" src="assets/images/thailand-supply-base.jpg" alt="Thailand supply-base readiness" data-i18n-attr="alt:images.supplyAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.supplyPlaceholder">Thailand supply-base image placeholder</figcaption>
+        </figure>
 
-    <section id="iccr-framework">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <p class="section-kicker">ICCR Framework</p>
-            <h2>Four cautious pillars for sustainability-linked corridor planning.</h2>
-          </div>
-          <p>
-            The PMCS ICCR framework remains under development and is intended to be subject to verification,
-            regulatory approval, partner validation, and final implementation documentation.
-          </p>
-        </div>
-        <div class="iccr-panel panel reveal">
-          <p class="section-intro">
-            ICCR is planned as a control-oriented sustainability framework for corridor architecture. It does not
-            claim issued carbon credits, completed offset outcomes, return assurances, or completed full-scale operations.
-          </p>
-          <div class="pillar-list">
-            <article class="pillar">
-              <span class="number">1</span>
-              <h3>Carbon Input Control</h3>
-              <p>Designed to define disciplined input parameters and measurement readiness before operational scale-up.</p>
-            </article>
-            <article class="pillar">
-              <span class="number">2</span>
-              <h3>Carbon Transformation</h3>
-              <p>Intended to guide production and process improvements subject to technical validation and partner readiness.</p>
-            </article>
-            <article class="pillar">
-              <span class="number">3</span>
-              <h3>Carbon Output Neutralisation</h3>
-              <p>Planned to assess neutralisation pathways subject to verification, approvals, and final commercial documentation.</p>
-            </article>
-            <article class="pillar">
-              <span class="number">4</span>
-              <h3>Carbon Finance Integration</h3>
-              <p>Designed to align sustainability data with structured finance readiness without representing any public fundraising instrument.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="thailand-supply-base">
-      <div class="section-inner supply-layout">
-        <div class="supply-visual reveal" aria-label="Thailand to GCC corridor visual">
-          <h3>Thailand-to-GCC strategic food-security architecture.</h3>
-          <div class="route-line" aria-hidden="true"></div>
-          <div class="route-point thailand" aria-hidden="true"></div>
-          <div class="route-point gcc" aria-hidden="true"></div>
-          <div class="supply-labels">
-            <div>Thailand <span>Supply-base readiness</span></div>
-            <div>GCC <span>Institutional market access</span></div>
-          </div>
-        </div>
         <div class="reveal">
-          <p class="section-kicker">Thailand Supply Base</p>
-          <h2 class="section-heading-title">Production readiness coordinated through verification-led planning.</h2>
-          <p class="section-intro">
-            Thailand supply-base planning is intended to support controlled readiness, traceability, and partner validation.
-            The platform should not be interpreted as claiming completed infrastructure, full-scale operations, or binding
-            offtake agreements.
-          </p>
-          <div class="grid-2" style="margin-top: 24px;">
-            <article class="card">
-              <h3>Controlled Readiness</h3>
-              <p>Operating pathways are planned around staged preparation, technical checks, and commercial documentation.</p>
-            </article>
-            <article class="card">
-              <h3>Corridor Discipline</h3>
-              <p>Supply movement is intended to be aligned with governance controls, sustainability parameters, and market requirements.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="capital-partnerships">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <p class="section-kicker">Capital &amp; Partnerships</p>
-            <h2>Structured partnership readiness without investment solicitation language.</h2>
-          </div>
-          <p>
-            PMCS Holdings is intended to coordinate institutional partner discussions, governance readiness, and capital
-            structuring pathways, all subject to approvals, verification, and final documentation.
+          <p class="eyebrow" data-i18n="supply.eyebrow">Thailand Supply Base</p>
+          <h2 data-i18n="supply.title">Production readiness coordinated through controlled, verification-led planning.</h2>
+          <p data-i18n="supply.body">
+            Thailand supply-base planning is intended to support traceability, sustainability parameters, and partner readiness. It should not be interpreted as completed infrastructure, full-scale operation, or binding offtake.
           </p>
         </div>
-        <div class="grid-3">
-          <article class="card reveal">
-            <span class="number">A</span>
-            <h3>Strategic Counterparties</h3>
-            <p>Potential engagement with food-security stakeholders, infrastructure partners, technical validators, and institutional counterparties.</p>
-          </article>
-          <article class="card reveal">
-            <span class="number">B</span>
-            <h3>Documentation Discipline</h3>
-            <p>Commercial pathways remain planned and subject to review, regulatory requirements, and final executed documentation.</p>
-          </article>
-          <article class="card reveal">
-            <span class="number">C</span>
-            <h3>Finance Integration</h3>
-            <p>Capital structuring is under development and should not be interpreted as public fundraising or a return-promise program.</p>
-          </article>
+      </div>
+    </section>
+
+    <section class="section" id="capital">
+      <div class="shell cards three-cols">
+        <article class="card highlight reveal">
+          <p class="eyebrow" data-i18n="capital.eyebrow">Capital &amp; Partnerships</p>
+          <h2 data-i18n="capital.title">Structured finance readiness without investment solicitation.</h2>
+          <p data-i18n="capital.body">
+            Capital pathways remain planned, cautious, and subject to approval, verification, partner validation, and final documentation.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <h3 data-i18n="capital.partnerTitle">Institutional Partners</h3>
+          <p data-i18n="capital.partnerBody">
+            Engagement may include food-security stakeholders, infrastructure partners, validators, and governance counterparties.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <h3 data-i18n="capital.documentationTitle">Documentation Discipline</h3>
+          <p data-i18n="capital.documentationBody">
+            No secured financing, guaranteed returns, or binding offtake agreements are claimed.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section soft" id="governance">
+      <div class="shell split-grid reverse">
+        <figure class="image-frame reveal">
+          <!-- Upload approved governance image here: assets/images/governance-dashboard.jpg -->
+          <img class="managed-image" src="assets/images/governance-dashboard.jpg" alt="Governance dashboard and controls" data-i18n-attr="alt:images.governanceAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.governancePlaceholder">Governance dashboard image placeholder</figcaption>
+        </figure>
+
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="governance.eyebrow">Governance</p>
+          <h2 data-i18n="governance.title">Compliance-first positioning for an institutional platform under development.</h2>
+          <ul class="check-list">
+            <li data-i18n="governance.li1">Designed as a Singapore-led food-security platform.</li>
+            <li data-i18n="governance.li2">Intended as a sustainability-linked Thailand-to-GCC supply corridor.</li>
+            <li data-i18n="governance.li3">Subject to verification, regulatory approval, partner validation, and final commercial documentation.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="governance">
-      <div class="section-inner">
-        <div class="governance-band panel reveal">
-          <div class="section-heading" style="margin-bottom: 20px;">
-            <div>
-              <p class="section-kicker">Governance</p>
-              <h2>Compliance-first language for an institutional platform under development.</h2>
-            </div>
-            <p>
-              PMCS Holdings uses cautious positioning to distinguish planned architecture from completed infrastructure,
-              issued instruments, secured financing, or binding commercial outcomes.
-            </p>
-          </div>
-          <div class="grid-2">
-            <div class="card">
-              <h3>What PMCS is designed to be</h3>
-              <ul class="check-list">
-                <li>A Singapore-led food-security platform.</li>
-                <li>A sustainability-linked supply corridor.</li>
-                <li>A governance and structured finance platform.</li>
-                <li>A Thailand-to-GCC strategic food-security architecture.</li>
-                <li>An institutional partnership platform.</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Compliance boundaries</h3>
-              <ul class="check-list">
-                <li>No claim of completed infrastructure or completed full-scale operation.</li>
-                <li>No claim of issued carbon credits or guaranteed neutralisation outcomes.</li>
-                <li>No claim of secured financing or signed binding offtake agreements.</li>
-                <li>No return promises, public fundraising, or retail investment solicitation.</li>
-                <li>All implementation remains subject to verification, approval, and final documentation.</li>
-              </ul>
-            </div>
-          </div>
+    <section class="section contact" id="contact">
+      <div class="shell split-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Institutional Engagement</p>
+          <h2 data-i18n="contact.title">Discuss platform alignment and partner readiness.</h2>
+          <p data-i18n="contact.body">
+            This website is informational and does not constitute an offer, solicitation, or recommendation to enter any financial product or investment arrangement.
+          </p>
+          <a class="button" href="mailto:institutional@pmcsholdings.com?subject=PMCS%20Holdings%20Institutional%20Engagement" data-i18n="contact.cta">Request Institutional Discussion</a>
         </div>
-      </div>
-    </section>
 
-    <section id="inquire">
-      <div class="section-inner">
-        <div class="contact-panel panel reveal">
-          <div>
-            <p class="section-kicker">Contact / Institutional Engagement</p>
-            <h2>Institutional discussions for platform alignment and partner readiness.</h2>
-            <p>
-              PMCS Holdings welcomes carefully scoped institutional engagement related to governance, supply-base
-              readiness, sustainability verification, corridor strategy, and structured partnership planning.
-            </p>
-            <p>
-              Any engagement remains preliminary and subject to regulatory approval, independent verification,
-              partner validation, and final commercial documentation.
-            </p>
-            <a class="button" href="mailto:institutional@pmcsholdings.com?subject=PMCS%20Holdings%20Institutional%20Engagement">Request Institutional Discussion</a>
-          </div>
-          <aside class="contact-card">
-            <h3>Engagement Scope</h3>
-            <p>Governance counterparties, food-security stakeholders, sustainability validators, infrastructure partners, and qualified institutional participants.</p>
-            <p>This website is informational and does not constitute an offer, solicitation, or recommendation to enter into any financial product or investment arrangement.</p>
-          </aside>
-        </div>
+        <figure class="image-frame reveal">
+          <!-- Upload approved contact image here: assets/images/contact-office.jpg -->
+          <img class="managed-image" src="assets/images/contact-office.jpg" alt="Institutional engagement office" data-i18n-attr="alt:images.contactAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.contactPlaceholder">Institutional engagement image placeholder</figcaption>
+        </figure>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="section-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <strong>PMCS Holdings</strong>
-          <p>
-            A Singapore-led food-security, sustainability, governance, and structured finance platform under development
-            for Thailand-to-GCC corridor architecture.
-          </p>
-          <p class="footer-note">
-            Platform components are planned and remain subject to verification, regulatory approval, partner validation,
-            and final commercial documentation.
-          </p>
-        </div>
-        <div class="footer-links" aria-label="Footer navigation">
-          <a href="#overview">Overview</a>
-          <a href="#strategic-alignment">Strategic Alignment</a>
-          <a href="#platform-ecosystem">Platform Ecosystem</a>
-          <a href="#iccr-framework">ICCR Framework</a>
-          <a href="#thailand-supply-base">Thailand Supply Base</a>
-          <a href="#capital-partnerships">Capital &amp; Partnerships</a>
-          <a href="#governance">Governance</a>
-          <a href="#inquire">Inquire</a>
-        </div>
+    <div class="shell footer-grid">
+      <div>
+        <strong>PMCS Holdings</strong>
+        <p data-i18n="footer.body">
+          A Singapore-led food-security, sustainability, governance, and structured finance platform for Thailand-to-GCC corridor architecture.
+        </p>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; <span id="year"></span> PMCS Holdings. All rights reserved.</span>
-        <span>Informational website · GitHub Pages compatible static HTML</span>
+
+      <div>
+        <p>&copy; <span id="year"></span> PMCS Holdings. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <p data-i18n="footer.static">Static GitHub Pages website.</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    const year = document.querySelector('#year');
-
-    if (year) {
-      year.textContent = new Date().getFullYear();
-    }
-
-    if (navToggle && navMenu) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!isOpen));
-        navMenu.classList.toggle('open', !isOpen);
-        document.body.classList.toggle('nav-open', !isOpen);
-      });
-
-      navLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          navToggle.setAttribute('aria-expanded', 'false');
-          navMenu.classList.remove('open');
-          document.body.classList.remove('nav-open');
-        });
-      });
-    }
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.14 });
-
-      revealElements.forEach((element) => revealObserver.observe(element));
-    } else {
-      revealElements.forEach((element) => element.classList.add('visible'));
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
