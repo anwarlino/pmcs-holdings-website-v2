@@ -3,95 +3,424 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PMCS Holdings</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #F7F8FA;
-      color: #2B2B2B;
-    }
-
-    header {
-      background: #8A1538;
-      color: white;
-      padding: 20px 40px;
-      font-weight: bold;
-    }
-
-    main {
-      padding: 80px 40px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .badge {
-      color: #2EA37A;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 56px;
-      line-height: 1.05;
-      margin: 0 0 24px;
-      color: #8A1538;
-    }
-
-    p {
-      font-size: 20px;
-      line-height: 1.6;
-      max-width: 760px;
-    }
-
-    .card {
-      margin-top: 40px;
-      background: white;
-      border: 1px solid #E4E8EA;
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 24px;
-      background: #2EA37A;
-      color: white;
-      padding: 14px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  <meta
+    name="description"
+    content="PMCS Holdings is a Singapore-led food-security, sustainability, governance, and structured finance platform designed for Thailand-to-GCC strategic corridor architecture."
+    data-i18n-attr="content:meta.description"
+  />
+  <title data-i18n="meta.title">PMCS Holdings | Singapore-Led Food Security Platform</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    PMCS Holdings
+  <header class="site-header" id="top">
+    <div class="compliance-bar">
+      <div class="bar-inner">
+        <span data-i18n="header.complianceLeft">Institutional platform under development</span>
+        <span data-i18n="header.complianceRight">Subject to verification, regulatory approval, and final commercial documentation</span>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <div class="bar-inner">
+        <div class="status-items" aria-label="Platform status" data-i18n-attr="aria-label:header.statusAria">
+          <span class="status-pill"><span class="status-dot" aria-hidden="true"></span><span data-i18n="header.statusOne">Singapore-led governance architecture</span></span>
+          <span class="status-pill" data-i18n="header.statusTwo">Thailand-to-GCC food-security corridor</span>
+        </div>
+        <span data-i18n="header.statusThree">Private institutional engagement only</span>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Primary navigation" data-i18n-attr="aria-label:nav.primaryAria">
+      <div class="nav-inner">
+        <a class="brand" href="#overview" aria-label="PMCS Holdings home" data-i18n-attr="aria-label:nav.homeAria">
+          <!-- Logo placeholder path: upload the official maroon PMCS logo to assets/logo/pmcs-logo-maroon.svg.
+               If the logo is missing, JavaScript keeps the text fallback visible. -->
+          <img
+            class="brand-logo"
+            src="assets/logo/pmcs-logo-maroon.svg"
+            alt="PMCS Holdings logo"
+            data-i18n-attr="alt:nav.logoAlt"
+          />
+          <span class="brand-fallback" aria-hidden="true">
+            <strong>PMCS Holdings</strong>
+            <small data-i18n="nav.logoTagline">Food Security · Sustainability · Finance</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu" data-i18n-attr="aria-label:nav.openMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="#overview" data-i18n="nav.overview">Overview</a></li>
+            <li><a href="#strategic-alignment" data-i18n="nav.strategicAlignment">Strategic Alignment</a></li>
+            <li><a href="#platform-ecosystem" data-i18n="nav.platformEcosystem">Platform Ecosystem</a></li>
+            <li><a href="#iccr-framework" data-i18n="nav.iccrFramework">ICCR Framework</a></li>
+            <li><a href="#thailand-supply-base" data-i18n="nav.thailandSupplyBase">Thailand Supply Base</a></li>
+            <li><a href="#capital-partnerships" data-i18n="nav.capitalPartnerships">Capital &amp; Partnerships</a></li>
+            <li><a href="#governance" data-i18n="nav.governance">Governance</a></li>
+            <li><a href="#inquire" data-i18n="nav.inquire">Inquire</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <label class="sr-only" for="language-select" data-i18n="nav.languageLabel">Language</label>
+            <select class="language-selector" id="language-select" aria-label="Language" data-i18n-attr="aria-label:nav.languageLabel">
+              <option value="en">EN</option>
+              <option value="th">TH</option>
+              <option value="ar">AR</option>
+            </select>
+            <a class="button" href="#inquire" data-i18n="nav.inquire">Inquire</a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main>
-    <div class="badge">Singapore-led Platform</div>
+    <section class="hero" id="overview">
+      <div class="section-inner hero-grid">
+        <div class="hero-copy-block reveal">
+          <span class="eyebrow" data-i18n="hero.eyebrow">Singapore-led Platform</span>
+          <h1 data-i18n="hero.title">Building a Singapore-Led Food Security, Sustainability &amp; Finance Platform for the GCC</h1>
+          <p class="hero-copy" data-i18n="hero.subtitle">
+            PMCS Holdings is designed as a Singapore-led platform coordinating governance, capital structuring, Thailand-based production readiness, and GCC food-security market access through a controlled, sustainability-linked corridor architecture.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#platform-ecosystem" data-i18n="hero.primaryCta">Explore the Platform</a>
+            <a class="button secondary" href="#governance" data-i18n="hero.secondaryCta">Governance Approach</a>
+          </div>
+          <p class="hero-note" data-i18n="hero.note">
+            PMCS Holdings is not positioned as a general agricultural products company, crop cultivation company, commodity exporter, or farm-to-table product seller. The platform is planned as an institutional architecture for corridor coordination, sustainability controls, and structured partnership readiness.
+          </p>
+        </div>
 
-    <h1>Building a Food Security, Sustainability & Finance Platform for the GCC</h1>
+        <aside class="hero-card reveal" aria-label="PMCS corridor architecture summary" data-i18n-attr="aria-label:hero.cardAria">
+          <figure class="image-block hero-image-block">
+            <!-- Image placeholder path: upload a Singapore-led platform image to assets/images/hero-singapore.jpg.
+                 If the image is missing, an elegant labelled placeholder is shown. -->
+            <img
+              class="asset-image"
+              src="assets/images/hero-singapore.jpg"
+              alt="Abstract Singapore Thailand GCC sustainability corridor"
+              data-i18n-attr="alt:images.heroAlt"
+            />
+            <figcaption class="image-placeholder" data-i18n="images.heroPlaceholder">Singapore-led platform image placeholder</figcaption>
+          </figure>
 
-    <p>
-      PMCS Holdings is designed as a Singapore-led platform coordinating governance,
-      capital structuring, Thailand-based production readiness, and GCC food-security
-      market access through a controlled, sustainability-linked corridor architecture.
-    </p>
+          <div class="corridor-map">
+            <div class="corridor-line" aria-hidden="true"></div>
+            <div class="map-node">
+              <div class="node-marker">SG</div>
+              <div>
+                <h3 data-i18n="hero.nodes.sgTitle">Singapore Governance</h3>
+                <p data-i18n="hero.nodes.sgText">Platform oversight, institutional controls, capital structuring, and partner documentation are intended to be coordinated from Singapore.</p>
+              </div>
+            </div>
+            <div class="map-node">
+              <div class="node-marker">TH</div>
+              <div>
+                <h3 data-i18n="hero.nodes.thTitle">Thailand Supply Readiness</h3>
+                <p data-i18n="hero.nodes.thText">Production-readiness pathways are planned around verified supply bases and sustainability-linked operating parameters.</p>
+              </div>
+            </div>
+            <div class="map-node">
+              <div class="node-marker">GCC</div>
+              <div>
+                <h3 data-i18n="hero.nodes.gccTitle">GCC Market Access</h3>
+                <p data-i18n="hero.nodes.gccText">Food-security access is intended to support institutional counterparties subject to regulatory approval and final commercial documentation.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <div class="card">
-      <h2>Development Status</h2>
-      <p>
-        All platform components, supply corridors, infrastructure plans, and sustainability
-        parameters are under development and subject to regulatory approvals, independent
-        verification, partner validation, and final commercial documentation.
-      </p>
-      <a class="button" href="#">Request Institutional Discussion</a>
-    </div>
+    <section id="strategic-alignment">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker" data-i18n="strategic.kicker">Strategic Alignment</p>
+            <h2 data-i18n="strategic.title">Designed for regional food security, sustainability discipline, and institutional coordination.</h2>
+          </div>
+          <p data-i18n="strategic.intro">PMCS Holdings is intended to connect Singapore governance discipline with Thailand-based supply readiness and GCC food-security priorities through cautious, verification-led corridor planning.</p>
+        </div>
+
+        <div class="alignment-panel panel reveal">
+          <div class="alignment-stat">
+            <strong>3</strong>
+            <span data-i18n="strategic.stat">Jurisdictional focus areas: Singapore platform governance, Thailand supply-base readiness, and GCC market-access coordination.</span>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <span class="number">01</span>
+              <h3 data-i18n="strategic.cards.foodTitle">Food-Security Architecture</h3>
+              <p data-i18n="strategic.cards.foodText">Planned corridor structures are designed to support long-term food-security access rather than transactional commodity sales.</p>
+            </article>
+            <article class="card">
+              <span class="number">02</span>
+              <h3 data-i18n="strategic.cards.sustainTitle">Sustainability-Linked Controls</h3>
+              <p data-i18n="strategic.cards.sustainText">Operating parameters are intended to be subject to independent verification, regulatory review, and disciplined reporting.</p>
+            </article>
+            <article class="card">
+              <span class="number">03</span>
+              <h3 data-i18n="strategic.cards.financeTitle">Structured Finance Readiness</h3>
+              <p data-i18n="strategic.cards.financeText">Capital pathways remain under development and subject to partner validation, documentation, and applicable approvals.</p>
+            </article>
+            <article class="card">
+              <span class="number">04</span>
+              <h3 data-i18n="strategic.cards.partnerTitle">Institutional Partnerships</h3>
+              <p data-i18n="strategic.cards.partnerText">Engagement is planned for strategic partners, governance counterparties, supply participants, and qualified institutional stakeholders.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform-ecosystem">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker" data-i18n="ecosystem.kicker">Platform Ecosystem</p>
+            <h2 data-i18n="ecosystem.title">A connected platform model, not a farm-to-table product seller.</h2>
+          </div>
+          <p data-i18n="ecosystem.intro">The PMCS ecosystem is designed to coordinate corridor governance, supply readiness, sustainability controls, market access, and partnership documentation through carefully staged implementation.</p>
+        </div>
+
+        <figure class="image-block wide-image-block reveal">
+          <!-- Image placeholder path: upload a logistics/corridor image to assets/images/logistics-corridor.jpg. -->
+          <img class="asset-image" src="assets/images/logistics-corridor.jpg" alt="Thailand to GCC logistics corridor" data-i18n-attr="alt:images.logisticsAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.logisticsPlaceholder">Logistics corridor image placeholder</figcaption>
+        </figure>
+
+        <div class="connector-grid">
+          <article class="card ecosystem-card reveal">
+            <div class="ecosystem-icon">GOV</div>
+            <h3 data-i18n="ecosystem.cards.govTitle">Governance Layer</h3>
+            <p data-i18n="ecosystem.cards.govText">Singapore-led platform controls, compliance protocols, counterparty review, and documentation discipline.</p>
+          </article>
+          <article class="card ecosystem-card reveal">
+            <div class="ecosystem-icon">SUP</div>
+            <h3 data-i18n="ecosystem.cards.supplyTitle">Supply Readiness</h3>
+            <p data-i18n="ecosystem.cards.supplyText">Thailand-based production-readiness planning subject to validation, operating controls, and partner readiness.</p>
+          </article>
+          <article class="card ecosystem-card reveal image-feature-card">
+            <figure class="image-block small-image-block">
+              <!-- Image placeholder path: upload an ICCR framework image to assets/images/iccr-framework.jpg. -->
+              <img class="asset-image" src="assets/images/iccr-framework.jpg" alt="ICCR framework visual" data-i18n-attr="alt:images.iccrAlt" />
+              <figcaption class="image-placeholder" data-i18n="images.iccrPlaceholder">ICCR framework image placeholder</figcaption>
+            </figure>
+            <div class="ecosystem-icon">ICCR</div>
+            <h3 data-i18n="ecosystem.cards.iccrTitle">Sustainability Framework</h3>
+            <p data-i18n="ecosystem.cards.iccrText">ICCR pillars intended to support input control, transformation discipline, neutralisation planning, and finance integration.</p>
+          </article>
+          <article class="card ecosystem-card reveal">
+            <div class="ecosystem-icon">GCC</div>
+            <h3 data-i18n="ecosystem.cards.gccTitle">Market Access</h3>
+            <p data-i18n="ecosystem.cards.gccText">GCC engagement pathways planned around food-security alignment and final commercial documentation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="iccr-framework">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker" data-i18n="iccr.kicker">ICCR Framework</p>
+            <h2 data-i18n="iccr.title">Four cautious pillars for sustainability-linked corridor planning.</h2>
+          </div>
+          <p data-i18n="iccr.intro">The PMCS ICCR framework remains under development and is intended to be subject to verification, regulatory approval, partner validation, and final implementation documentation.</p>
+        </div>
+
+        <div class="iccr-panel panel reveal">
+          <p class="section-intro" data-i18n="iccr.body">ICCR is planned as a control-oriented sustainability framework for corridor architecture. It does not claim issued carbon credits, completed offset outcomes, return assurances, or completed full-scale operations.</p>
+          <div class="pillar-list">
+            <article class="pillar">
+              <span class="number">1</span>
+              <h3 data-i18n="iccr.pillars.inputTitle">Carbon Input Control</h3>
+              <p data-i18n="iccr.pillars.inputText">Designed to define disciplined input parameters and measurement readiness before operational scale-up.</p>
+            </article>
+            <article class="pillar">
+              <span class="number">2</span>
+              <h3 data-i18n="iccr.pillars.transformTitle">Carbon Transformation</h3>
+              <p data-i18n="iccr.pillars.transformText">Intended to guide production and process improvements subject to technical validation and partner readiness.</p>
+            </article>
+            <article class="pillar">
+              <span class="number">3</span>
+              <h3 data-i18n="iccr.pillars.outputTitle">Carbon Output Neutralisation</h3>
+              <p data-i18n="iccr.pillars.outputText">Planned to assess neutralisation pathways subject to verification, approvals, and final commercial documentation.</p>
+            </article>
+            <article class="pillar">
+              <span class="number">4</span>
+              <h3 data-i18n="iccr.pillars.financeTitle">Carbon Finance Integration</h3>
+              <p data-i18n="iccr.pillars.financeText">Designed to align sustainability data with structured finance readiness without representing any public fundraising instrument.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="thailand-supply-base">
+      <div class="section-inner supply-layout">
+        <figure class="supply-visual reveal image-block" aria-label="Thailand to GCC corridor visual" data-i18n-attr="aria-label:supply.visualAria">
+          <!-- Image placeholder path: upload a Thailand supply-base image to assets/images/thailand-supply-base.jpg. -->
+          <img class="asset-image supply-photo" src="assets/images/thailand-supply-base.jpg" alt="Thailand to GCC food security corridor" data-i18n-attr="alt:images.supplyAlt" />
+          <figcaption class="image-placeholder" data-i18n="images.supplyPlaceholder">Thailand supply-base image placeholder</figcaption>
+          <div class="supply-overlay">
+            <h3 data-i18n="supply.visualTitle">Thailand-to-GCC strategic food-security architecture.</h3>
+            <div class="route-line" aria-hidden="true"></div>
+            <div class="route-point thailand" aria-hidden="true"></div>
+            <div class="route-point gcc" aria-hidden="true"></div>
+            <div class="supply-labels">
+              <div><span data-i18n="supply.thailand">Thailand</span> <small data-i18n="supply.thailandCaption">Supply-base readiness</small></div>
+              <div><span data-i18n="supply.gcc">GCC</span> <small data-i18n="supply.gccCaption">Institutional market access</small></div>
+            </div>
+          </div>
+        </figure>
+
+        <div class="reveal">
+          <p class="section-kicker" data-i18n="supply.kicker">Thailand Supply Base</p>
+          <h2 class="section-heading-title" data-i18n="supply.title">Production readiness coordinated through verification-led planning.</h2>
+          <p class="section-intro" data-i18n="supply.intro">Thailand supply-base planning is intended to support controlled readiness, traceability, and partner validation. The platform should not be interpreted as claiming completed infrastructure, full-scale operations, or binding offtake agreements.</p>
+          <div class="grid-2 inline-card-grid">
+            <article class="card">
+              <h3 data-i18n="supply.cards.readinessTitle">Controlled Readiness</h3>
+              <p data-i18n="supply.cards.readinessText">Operating pathways are planned around staged preparation, technical checks, and commercial documentation.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="supply.cards.disciplineTitle">Corridor Discipline</h3>
+              <p data-i18n="supply.cards.disciplineText">Supply movement is intended to be aligned with governance controls, sustainability parameters, and market requirements.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capital-partnerships">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker" data-i18n="capital.kicker">Capital &amp; Partnerships</p>
+            <h2 data-i18n="capital.title">Structured partnership readiness without investment solicitation language.</h2>
+          </div>
+          <p data-i18n="capital.intro">PMCS Holdings is intended to coordinate institutional partner discussions, governance readiness, and capital structuring pathways, all subject to approvals, verification, and final documentation.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <span class="number">A</span>
+            <h3 data-i18n="capital.cards.counterpartyTitle">Strategic Counterparties</h3>
+            <p data-i18n="capital.cards.counterpartyText">Potential engagement with food-security stakeholders, infrastructure partners, technical validators, and institutional counterparties.</p>
+          </article>
+          <article class="card reveal">
+            <span class="number">B</span>
+            <h3 data-i18n="capital.cards.documentationTitle">Documentation Discipline</h3>
+            <p data-i18n="capital.cards.documentationText">Commercial pathways remain planned and subject to review, regulatory requirements, and final executed documentation.</p>
+          </article>
+          <article class="card reveal">
+            <span class="number">C</span>
+            <h3 data-i18n="capital.cards.financeTitle">Finance Integration</h3>
+            <p data-i18n="capital.cards.financeText">Capital structuring is under development and should not be interpreted as public fundraising or a return-promise program.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance">
+      <div class="section-inner">
+        <div class="governance-band panel reveal">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker" data-i18n="governance.kicker">Governance</p>
+              <h2 data-i18n="governance.title">Compliance-first language for an institutional platform under development.</h2>
+            </div>
+            <p data-i18n="governance.intro">PMCS Holdings uses cautious positioning to distinguish planned architecture from completed infrastructure, issued instruments, secured financing, or binding commercial outcomes.</p>
+          </div>
+          <figure class="image-block wide-image-block governance-image-block">
+            <!-- Image placeholder path: upload a governance dashboard image to assets/images/governance-dashboard.jpg. -->
+            <img class="asset-image" src="assets/images/governance-dashboard.jpg" alt="Governance dashboard and institutional controls" data-i18n-attr="alt:images.governanceAlt" />
+            <figcaption class="image-placeholder" data-i18n="images.governancePlaceholder">Governance dashboard image placeholder</figcaption>
+          </figure>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3 data-i18n="governance.designedTitle">What PMCS is designed to be</h3>
+              <ul class="check-list">
+                <li data-i18n="governance.designed.0">A Singapore-led food-security platform.</li>
+                <li data-i18n="governance.designed.1">A sustainability-linked supply corridor.</li>
+                <li data-i18n="governance.designed.2">A governance and structured finance platform.</li>
+                <li data-i18n="governance.designed.3">A Thailand-to-GCC strategic food-security architecture.</li>
+                <li data-i18n="governance.designed.4">An institutional partnership platform.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3 data-i18n="governance.boundaryTitle">Compliance boundaries</h3>
+              <ul class="check-list">
+                <li data-i18n="governance.boundaries.0">No claim of completed infrastructure or completed full-scale operation.</li>
+                <li data-i18n="governance.boundaries.1">No claim of issued carbon credits or guaranteed neutralisation outcomes.</li>
+                <li data-i18n="governance.boundaries.2">No claim of secured financing or signed binding offtake agreements.</li>
+                <li data-i18n="governance.boundaries.3">No return promises, public fundraising, or retail investment solicitation.</li>
+                <li data-i18n="governance.boundaries.4">All implementation remains subject to verification, approval, and final documentation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inquire">
+      <div class="section-inner">
+        <div class="contact-panel panel reveal">
+          <div>
+            <p class="section-kicker" data-i18n="contact.kicker">Contact / Institutional Engagement</p>
+            <h2 data-i18n="contact.title">Institutional discussions for platform alignment and partner readiness.</h2>
+            <p data-i18n="contact.bodyOne">PMCS Holdings welcomes carefully scoped institutional engagement related to governance, supply-base readiness, sustainability verification, corridor strategy, and structured partnership planning.</p>
+            <p data-i18n="contact.bodyTwo">Any engagement remains preliminary and subject to regulatory approval, independent verification, partner validation, and final commercial documentation.</p>
+            <a class="button" href="mailto:institutional@pmcsholdings.com?subject=PMCS%20Holdings%20Institutional%20Engagement" data-i18n="contact.cta">Request Institutional Discussion</a>
+          </div>
+          <aside class="contact-card">
+            <figure class="image-block contact-image-block">
+              <!-- Image placeholder path: upload an institutional office image to assets/images/contact-office.jpg. -->
+              <img class="asset-image" src="assets/images/contact-office.jpg" alt="Institutional engagement office" data-i18n-attr="alt:images.contactAlt" />
+              <figcaption class="image-placeholder" data-i18n="images.contactPlaceholder">Institutional engagement image placeholder</figcaption>
+            </figure>
+            <h3 data-i18n="contact.scopeTitle">Engagement Scope</h3>
+            <p data-i18n="contact.scopeBody">Governance counterparties, food-security stakeholders, sustainability validators, infrastructure partners, and qualified institutional participants.</p>
+            <p data-i18n="contact.disclaimer">This website is informational and does not constitute an offer, solicitation, or recommendation to enter into any financial product or investment arrangement.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="section-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>PMCS Holdings</strong>
+          <p data-i18n="footer.body">A Singapore-led food-security, sustainability, governance, and structured finance platform under development for Thailand-to-GCC corridor architecture.</p>
+          <p class="footer-note" data-i18n="footer.note">Platform components are planned and remain subject to verification, regulatory approval, partner validation, and final commercial documentation.</p>
+        </div>
+        <div class="footer-links" aria-label="Footer navigation" data-i18n-attr="aria-label:footer.navAria">
+          <a href="#overview" data-i18n="nav.overview">Overview</a>
+          <a href="#strategic-alignment" data-i18n="nav.strategicAlignment">Strategic Alignment</a>
+          <a href="#platform-ecosystem" data-i18n="nav.platformEcosystem">Platform Ecosystem</a>
+          <a href="#iccr-framework" data-i18n="nav.iccrFramework">ICCR Framework</a>
+          <a href="#thailand-supply-base" data-i18n="nav.thailandSupplyBase">Thailand Supply Base</a>
+          <a href="#capital-partnerships" data-i18n="nav.capitalPartnerships">Capital &amp; Partnerships</a>
+          <a href="#governance" data-i18n="nav.governance">Governance</a>
+          <a href="#inquire" data-i18n="nav.inquire">Inquire</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> PMCS Holdings. <span data-i18n="footer.rights">All rights reserved.</span></span>
+        <span data-i18n="footer.compatibility">Informational website · GitHub Pages compatible static HTML</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
