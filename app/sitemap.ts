@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next';
 import { locales } from '@/lib/i18n';
 import { siteConfig } from '@/lib/site';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['/', ...locales.map((locale) => `/${locale}/`)];
 
