@@ -9,7 +9,7 @@ export const ar: LocaleContent = {
   language: {
     label: 'اللغة',
     linksHeading: 'خيارات اللغة',
-    options: { en: 'الإنجليزية', th: 'التايلاندية', ar: 'العربية' },
+    options: { en: 'English', th: 'ไทย', ar: 'العربية' },
     switchTo: 'تغيير اللغة',
   },
   nav: {
@@ -17,8 +17,9 @@ export const ar: LocaleContent = {
     brandName: 'PMCS Holdings',
     logoMark: 'PM',
     homeAria: 'الصفحة الرئيسية لـ PMCS Holdings',
+    claimRibbon: 'منصة بقيادة سنغافورية قيد التطوير · خاضعة للتحقق وتأكيد الشركاء والوثائق النهائية.',
     logoAlt: 'شعار بديل لـ PMCS Holdings',
-    menuOpen: 'فتح القائمة',
+    menuOpen: 'القائمة',
     menuClose: 'إغلاق القائمة',
     items: [
       { label: 'نظرة عامة', href: 'overview' },
@@ -30,6 +31,57 @@ export const ar: LocaleContent = {
       { label: 'الحوكمة', href: 'governance' },
     ],
     contact: 'تواصل',
+    mega: {
+      trigger: 'استكشاف',
+      overlayLabel: 'إغلاق طبقة قائمة المنصة',
+      groups: [
+        {
+          eyebrow: 'عرض المنصة',
+          heading: 'نظرة عامة على المفهوم',
+          description: 'التنقل في سرد المنصة القائم على التحقق وتموضعها المؤسسي المخطط له.',
+          links: [
+            { label: 'نظرة عامة', href: 'overview', description: 'مفهوم منصة بقيادة سنغافورية قيد التطوير.' },
+            { label: 'المواءمة الاستراتيجية', href: 'alignment', description: 'تخطيط الحوكمة وجاهزية تايلاند وأولويات دول الخليج.' },
+            { label: 'منظومة المنصة', href: 'ecosystem', description: 'مفهوم ممر منظم بحدود حذرة.' },
+          ],
+        },
+        {
+          eyebrow: 'طبقات الجاهزية',
+          heading: 'الاستدامة والإمداد',
+          description: 'مراجعة طبقات التخطيط التي تظل خاضعة للتحقق والموافقات والوثائق النهائية.',
+          links: [
+            { label: 'إطار ICCR', href: 'iccr', description: 'ركائز تخطيط لتطوير ممر مرتبط بالاستدامة.' },
+            { label: 'قاعدة الإمداد في تايلاند', href: 'supply', description: 'تخطيط جاهزية الإنتاج الخاضع لتحقق الشركاء.' },
+          ],
+        },
+        {
+          eyebrow: 'ضوابط مؤسسية',
+          heading: 'رأس المال والحوكمة',
+          description: 'الوصول إلى معلومات منضبطة الادعاءات حول جاهزية التمويل والأطراف المقابلة والامتثال.',
+          links: [
+            { label: 'رأس المال والشراكات', href: 'capital', description: 'مفاهيم تخطيطية فقط دون دعوة استثمارية.' },
+            { label: 'الحوكمة', href: 'governance', description: 'تموضع يضع الامتثال أولاً لمنصة قيد التطوير.' },
+            { label: 'تواصل', href: 'contact', description: 'قسم تواصل معلوماتي لمناقشات المواءمة.' },
+          ],
+        },
+      ],
+      cards: [
+        {
+          eyebrow: 'معاينة المرحلة 1.2',
+          title: 'تخطيط ممر مؤسسي',
+          description: 'تشير بطاقات العناصر البديلة إلى وحدات مرئية مستقبلية لحوكمة سنغافورة وجاهزية تايلاند والتواصل مع الخليج.',
+          placeholderAria: 'وحدات معاينة بديلة',
+          placeholderLabels: ['الحوكمة', 'الجاهزية', 'التواصل'],
+        },
+        {
+          eyebrow: 'ضبط الادعاءات',
+          title: 'خاضع للتحقق',
+          description: 'يبقى نص القائمة معلوماتياً ولا يدعي وجود تمويل مضمون أو أرصدة صادرة أو ترتيبات شراء ملزمة.',
+          placeholderAria: 'وحدات تحقق بديلة',
+          placeholderLabels: ['مراجعة', 'موافقة', 'وثائق'],
+        },
+      ],
+    },
   },
   hero: {
     eyebrow: 'منصة بقيادة سنغافورية قيد التطوير',
