@@ -3,6 +3,25 @@ export type NavItem = {
   href: string;
 };
 
+export type MegaMenuLink = NavItem & {
+  description: string;
+};
+
+export type MegaMenuGroup = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  links: MegaMenuLink[];
+};
+
+export type MegaMenuCard = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  placeholderAria: string;
+  placeholderLabels: string[];
+};
+
 export type LocaleContent = {
   meta: {
     title: string;
@@ -25,6 +44,12 @@ export type LocaleContent = {
     menuClose: string;
     items: NavItem[];
     contact: string;
+    mega: {
+      trigger: string;
+      overlayLabel: string;
+      groups: MegaMenuGroup[];
+      cards: MegaMenuCard[];
+    };
   };
   hero: {
     eyebrow: string;

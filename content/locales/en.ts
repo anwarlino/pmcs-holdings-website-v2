@@ -30,6 +30,57 @@ export const en: LocaleContent = {
       { label: 'Governance', href: 'governance' },
     ],
     contact: 'Contact',
+    mega: {
+      trigger: 'Platform menu',
+      overlayLabel: 'Close platform menu overlay',
+      groups: [
+        {
+          eyebrow: 'Platform view',
+          heading: 'Concept overview',
+          description: 'Navigate the verification-led platform narrative and its planned institutional positioning.',
+          links: [
+            { label: 'Overview', href: 'overview', description: 'Singapore-led platform concept under development.' },
+            { label: 'Strategic Alignment', href: 'alignment', description: 'Governance planning, Thailand readiness and GCC priorities.' },
+            { label: 'Platform Ecosystem', href: 'ecosystem', description: 'Structured corridor concept with cautious boundaries.' },
+          ],
+        },
+        {
+          eyebrow: 'Readiness layers',
+          heading: 'Sustainability and supply',
+          description: 'Review planning layers that remain subject to validation, approvals and final documentation.',
+          links: [
+            { label: 'ICCR Framework', href: 'iccr', description: 'Planning pillars for sustainability-linked corridor development.' },
+            { label: 'Thailand Supply Base', href: 'supply', description: 'Production readiness planning subject to partner verification.' },
+          ],
+        },
+        {
+          eyebrow: 'Institutional controls',
+          heading: 'Capital and governance',
+          description: 'Access claim-controlled information on finance readiness, counterparties and compliance positioning.',
+          links: [
+            { label: 'Capital & Partnerships', href: 'capital', description: 'Planning concepts only, without investment solicitation.' },
+            { label: 'Governance', href: 'governance', description: 'Compliance-first positioning for a platform under development.' },
+            { label: 'Contact', href: 'contact', description: 'Informational contact section for alignment discussions.' },
+          ],
+        },
+      ],
+      cards: [
+        {
+          eyebrow: 'Phase 1.2 preview',
+          title: 'Institutional corridor planning',
+          description: 'Placeholder cards indicate future visual modules for Singapore governance, Thailand readiness and GCC engagement.',
+          placeholderAria: 'Placeholder preview modules',
+          placeholderLabels: ['Governance', 'Readiness', 'Engagement'],
+        },
+        {
+          eyebrow: 'Claim control',
+          title: 'Subject to verification',
+          description: 'Menu copy remains informational and does not claim secured financing, issued credits or binding offtake arrangements.',
+          placeholderAria: 'Verification placeholder modules',
+          placeholderLabels: ['Review', 'Approval', 'Documentation'],
+        },
+      ],
+    },
   },
   hero: {
     eyebrow: 'Singapore-led platform under development',

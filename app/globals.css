@@ -25,3 +25,11 @@ body[dir="rtl"] {
 summary::-webkit-details-marker {
   display: none;
 }
+
+
+@layer utilities {
+  .pmcs-focus-ring {
+    outline: 3px solid rgba(122, 31, 43, 0.35);
+    outline-offset: 4px;
+  }
+}
