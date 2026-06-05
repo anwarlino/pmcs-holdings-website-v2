@@ -56,7 +56,7 @@ export function LanguageSwitcher({ activeLocale, label, dictionary, className, a
         aria-expanded={isOpen}
         aria-controls={menuId}
         onClick={() => setIsOpen((current) => !current)}
-        className="pmcs-motion inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-pmcs-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-pmcs-charcoal shadow-sm transition duration-200 ease-out hover:border-pmcs-gold hover:text-pmcs-maroon focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:px-4"
+        className="pmcs-header-control pmcs-header-control-subtle max-w-full min-w-[7.5rem] px-3 text-xs uppercase tracking-[0.12em] text-pmcs-charcoal hover:text-pmcs-maroon sm:px-4"
       >
         <span aria-hidden="true" className="text-pmcs-gold">◎</span>
         <span className="truncate">{activeLabel}</span>
