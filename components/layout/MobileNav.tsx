@@ -20,9 +20,12 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
+  const [activeGroupIndex, setActiveGroupIndex] = useState(0);
+  const [visibleGroupIndex, setVisibleGroupIndex] = useState(0);
   const [panelOffset, setPanelOffset] = useState(112);
   const navRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const groupTransitionRef = useRef<number | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -74,13 +77,20 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
       return;
     }
 
+    setVisibleGroupIndex(activeGroupIndex);
     setIsContentVisible(false);
     const frame = window.requestAnimationFrame(() => {
-      window.setTimeout(() => setIsContentVisible(true), 80);
+      groupTransitionRef.current = window.setTimeout(() => setIsContentVisible(true), 80);
     });
 
-    return () => window.cancelAnimationFrame(frame);
-  }, [activeSection, isOpen]);
+    return () => {
+      window.cancelAnimationFrame(frame);
+
+      if (groupTransitionRef.current) {
+        window.clearTimeout(groupTransitionRef.current);
+      }
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -115,14 +125,36 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     };
   }, [isOpen]);
 
+  const menuButtonLabel = isOpen ? dictionary.nav.menuClose : dictionary.nav.menuOpen;
+  const panelStyle = {
+    '--pmcs-mobile-menu-top': `${panelOffset}px`,
+    top: `var(--pmcs-mobile-menu-top)`,
+  } as CSSProperties & { '--pmcs-mobile-menu-top': string };
+
+  const visibleGroup = dictionary.nav.mega.groups[visibleGroupIndex] ?? dictionary.nav.mega.groups[0];
+
+  function handleGroupSelect(index: number) {
+    if (index === activeGroupIndex) {
+      return;
+    }
+
+    if (groupTransitionRef.current) {
+      window.clearTimeout(groupTransitionRef.current);
+    }
+
+    setActiveGroupIndex(index);
+    setIsContentVisible(false);
+    groupTransitionRef.current = window.setTimeout(() => {
+      setVisibleGroupIndex(index);
+      window.requestAnimationFrame(() => setIsContentVisible(true));
+    }, 140);
+  }
+
   const mobileMenuLayer = (
     <>
-      <button
-        type="button"
-        aria-label={dictionary.nav.menuClose}
-        aria-hidden={!isOpen}
-        tabIndex={isOpen ? 0 : -1}
-        className={`pmcs-motion fixed inset-0 z-30 cursor-default bg-[rgba(12,12,14,0.58)] backdrop-blur-xl transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+      <div
+        aria-hidden="true"
+        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-200 ease-out motion-reduce:transition-none ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -131,31 +163,18 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         id="mobile-navigation"
         ref={panelRef}
         inert={!isOpen}
-        style={{ top: `${panelOffset}px` }}
-        className={`pmcs-motion fixed left-4 right-4 z-50 overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.28)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[260ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+        style={panelStyle}
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[260ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
           isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
         }`}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4">
-          <div className="min-w-0">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
-            <p className="mt-1 truncate text-sm font-bold text-pmcs-charcoal">{dictionary.nav.brandName}</p>
-          </div>
-          <button
-            type="button"
-            aria-label={dictionary.nav.menuClose}
-            onClick={() => setIsOpen(false)}
-            className="pmcs-motion flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-line bg-white text-xl leading-none text-pmcs-maroon transition duration-200 ease-out hover:border-pmcs-gold hover:bg-white focus-visible:pmcs-focus-ring motion-reduce:transition-none"
-          >
-            ×
-          </button>
+        <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
+          <p className="mt-1 truncate text-sm font-bold text-pmcs-charcoal">{dictionary.nav.brandName}</p>
         </div>
 
         <nav
-          className={`pmcs-motion grid gap-4 overflow-y-auto px-5 py-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
-            isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
-          }`}
-          style={{ maxHeight: `calc(100dvh - ${panelOffset}px - 1rem)` } as CSSProperties}
+          className="pmcs-mobile-menu-scroll min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6"
           aria-label={dictionary.nav.aria}
         >
           <div className="grid gap-3">
@@ -173,31 +192,54 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
             <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} align="start" className="md:hidden" onNavigate={() => setIsOpen(false)} />
           </div>
 
-          {dictionary.nav.mega.groups.map((group) => (
-            <section key={group.heading} className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{group.eyebrow}</p>
-              <h2 className="mt-2 text-base font-black text-pmcs-charcoal">{group.heading}</h2>
-              <div className="mt-3 grid gap-2">
-                {group.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={getSectionHref(locale, link.href)}
-                    aria-current={activeSection === link.href ? 'location' : undefined}
-                    onClick={() => {
-                      onSectionSelect(link.href);
-                      setIsOpen(false);
-                    }}
-                    className={`pmcs-motion rounded-2xl px-4 py-3 text-sm font-bold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
-                      activeSection === link.href ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon' : 'bg-pmcs-light text-pmcs-charcoal hover:bg-white hover:text-pmcs-maroon'
-                    }`}
-                  >
-                    <span className="break-words">{link.label}</span>
-                    <span className="mt-1 block text-xs font-medium leading-5 text-pmcs-muted">{link.description}</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-1" aria-label={dictionary.nav.mega.trigger}>
+            {dictionary.nav.mega.groups.map((group, index) => (
+              <button
+                key={group.heading}
+                type="button"
+                aria-pressed={activeGroupIndex === index}
+                onClick={() => handleGroupSelect(index)}
+                className={`pmcs-motion shrink-0 rounded-full border px-3 py-2 text-xs font-black transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                  activeGroupIndex === index ? 'border-pmcs-gold/60 bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-muted hover:border-pmcs-gold/50 hover:text-pmcs-maroon'
+                }`}
+              >
+                {group.heading}
+              </button>
+            ))}
+          </div>
+
+          {visibleGroup ? (
+            <div
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
+                isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
+              }`}
+            >
+              <section className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{visibleGroup.eyebrow}</p>
+                <h2 className="mt-2 text-base font-black text-pmcs-charcoal">{visibleGroup.heading}</h2>
+                <p className="mt-2 text-xs leading-5 text-pmcs-muted">{visibleGroup.description}</p>
+                <div className="mt-3 grid gap-2">
+                  {visibleGroup.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={getSectionHref(locale, link.href)}
+                      aria-current={activeSection === link.href ? 'location' : undefined}
+                      onClick={() => {
+                        onSectionSelect(link.href);
+                        setIsOpen(false);
+                      }}
+                      className={`pmcs-motion rounded-2xl px-4 py-3 text-sm font-bold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                        activeSection === link.href ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon' : 'bg-pmcs-light text-pmcs-charcoal hover:bg-white hover:text-pmcs-maroon'
+                      }`}
+                    >
+                      <span className="break-words">{link.label}</span>
+                      <span className="mt-1 block text-xs font-medium leading-5 text-pmcs-muted">{link.description}</span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            </div>
+          ) : null}
         </nav>
       </div>
     </>
@@ -207,6 +249,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     <div ref={navRef} className="xl:hidden">
       <button
         type="button"
+        aria-label={menuButtonLabel}
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
@@ -219,7 +262,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
           <span className={`pmcs-motion absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition-opacity duration-150 ease-out motion-reduce:transition-none ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
           <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 -rotate-45' : 'top-4 rotate-0'}`} />
         </span>
-        <span className="whitespace-nowrap">{dictionary.nav.menuOpen}</span>
+        <span className="whitespace-nowrap">{menuButtonLabel}</span>
       </button>
       {isMounted ? createPortal(mobileMenuLayer, document.body) : null}
     </div>
