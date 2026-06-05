@@ -172,16 +172,16 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
           <div className="flex min-w-0 items-center gap-3">
             {isLogoUnavailable ? (
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-pmcs-maroon/15 bg-white text-sm font-black text-pmcs-maroon shadow-sm sm:h-12 sm:w-12" aria-hidden="true">{dictionary.nav.logoMark}</span>
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-pmcs-maroon/15 bg-white text-base font-black text-pmcs-maroon shadow-sm sm:h-16 sm:w-16" aria-hidden="true">{dictionary.nav.logoMark}</span>
             ) : (
               <img
                 src="/assets/logo/pmcs-logo.png"
                 alt={dictionary.nav.brandName}
                 onError={() => setIsLogoUnavailable(true)}
-                className="h-11 w-auto max-w-[3rem] shrink-0 object-contain [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(67%)_saturate(3240%)_hue-rotate(323deg)_brightness(92%)_contrast(96%)] sm:h-12 sm:max-w-[3.25rem]"
+                className="h-14 w-auto max-w-[4rem] shrink-0 object-contain [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(67%)_saturate(3240%)_hue-rotate(323deg)_brightness(92%)_contrast(96%)] sm:h-16 sm:max-w-[4.5rem]"
               />
             )}
-            <p className="truncate text-base font-black tracking-[-0.03em] text-pmcs-charcoal sm:text-lg">{dictionary.nav.brandName}</p>
+            <p className="truncate text-base font-black tracking-[-0.03em] text-pmcs-maroon sm:text-lg">{dictionary.nav.brandName}</p>
           </div>
           <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
         </div>
