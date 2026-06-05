@@ -9,7 +9,7 @@ export const en: LocaleContent = {
   language: {
     label: 'Language',
     linksHeading: 'Language options',
-    options: { en: 'English', th: 'Thai', ar: 'Arabic' },
+    options: { en: 'English', th: 'ไทย', ar: 'العربية' },
     switchTo: 'Switch language',
   },
   nav: {
