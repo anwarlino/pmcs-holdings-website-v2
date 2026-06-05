@@ -21,14 +21,14 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
       inert={!isOpen}
     >
       <div
-        className={`border-b border-pmcs-line bg-white/96 shadow-[0_34px_100px_rgba(43,43,43,0.18)] backdrop-blur-2xl transition-all duration-300 ease-out ${
+        className={`pmcs-motion border-b border-pmcs-line bg-white/96 shadow-[0_34px_100px_rgba(43,43,43,0.18)] backdrop-blur-2xl transition-all duration-300 ease-out motion-reduce:transition-none ${
           isOpen ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'
         }`}
       >
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)]">
           <div className="grid gap-4 md:grid-cols-3">
             {dictionary.nav.mega.groups.map((group) => (
-              <section key={group.heading} className="rounded-[1.75rem] border border-pmcs-line bg-gradient-to-b from-white to-pmcs-light/55 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-pmcs">
+              <section key={group.heading} className="pmcs-motion rounded-[1.75rem] border border-pmcs-line bg-gradient-to-b from-white to-pmcs-light/55 p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-pmcs motion-reduce:transition-none">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-pmcs-maroon">{group.eyebrow}</p>
                 <h2 className="mt-2 text-lg font-black tracking-[-0.02em] text-pmcs-charcoal">{group.heading}</h2>
                 <p className="mt-2 text-sm leading-6 text-pmcs-muted">{group.description}</p>
@@ -42,7 +42,7 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
                         onSectionSelect(link.href);
                         onClose();
                       }}
-                      className={`group rounded-2xl border px-4 py-3 transition focus-visible:pmcs-focus-ring ${
+                      className={`pmcs-motion group rounded-2xl border px-4 py-3 transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                         activeSection === link.href ? 'border-pmcs-gold/60 bg-pmcs-gold/15 shadow-sm' : 'border-transparent bg-white/80 hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm'
                       }`}
                     >
@@ -67,10 +67,10 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
                 <p className={index === 0 ? 'text-xs font-black uppercase tracking-[0.18em] text-white/70' : 'text-xs font-black uppercase tracking-[0.18em] text-pmcs-maroon'}>{card.eyebrow}</p>
                 <h2 className="mt-2 text-xl font-black tracking-[-0.03em]">{card.title}</h2>
                 <p className={index === 0 ? 'mt-3 text-sm leading-6 text-white/80' : 'mt-3 text-sm leading-6 text-pmcs-muted'}>{card.description}</p>
-                <div className="mt-5 grid grid-cols-3 gap-2" aria-label={card.placeholderAria}>
+                <div className="mt-5 flex flex-wrap gap-2" aria-label={card.placeholderAria}>
                   {card.placeholderLabels.map((label) => (
-                    <div key={label} className={index === 0 ? 'min-w-0 rounded-2xl border border-white/15 bg-white/10 p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/75' : 'min-w-0 rounded-2xl border border-pmcs-line bg-pmcs-light p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-pmcs-muted'}>
-                      <span className="block truncate">{label}</span>
+                    <div key={label} className={index === 0 ? 'rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-center text-[0.66rem] font-bold leading-snug tracking-[0.04em] text-white/80' : 'rounded-full border border-pmcs-gold/25 bg-pmcs-gold/10 px-3 py-1.5 text-center text-[0.66rem] font-bold leading-snug tracking-[0.04em] text-pmcs-charcoal'}>
+                      {label}
                     </div>
                   ))}
                 </div>

@@ -56,7 +56,7 @@ export function LanguageSwitcher({ activeLocale, label, dictionary, className, a
         aria-expanded={isOpen}
         aria-controls={menuId}
         onClick={() => setIsOpen((current) => !current)}
-        className="inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-pmcs-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-pmcs-charcoal shadow-sm transition hover:border-pmcs-gold hover:text-pmcs-maroon focus-visible:pmcs-focus-ring sm:px-4"
+        className="pmcs-motion inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-pmcs-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-pmcs-charcoal shadow-sm transition duration-200 ease-out hover:border-pmcs-gold hover:text-pmcs-maroon focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:px-4"
       >
         <span aria-hidden="true" className="text-pmcs-gold">◎</span>
         <span className="truncate">{activeLabel}</span>
@@ -66,7 +66,7 @@ export function LanguageSwitcher({ activeLocale, label, dictionary, className, a
         id={menuId}
         inert={!isOpen}
         className={cn(
-          'absolute top-full z-[70] mt-3 w-48 max-w-[calc(100vw-2rem)] overflow-hidden rounded-3xl border border-pmcs-line bg-white p-2 shadow-pmcs transition-all duration-200 ease-out',
+          'pmcs-motion absolute top-full z-[70] mt-3 w-48 max-w-[calc(100vw-2rem)] overflow-hidden rounded-3xl border border-pmcs-line bg-white p-2 shadow-pmcs transition-all duration-200 ease-out motion-reduce:transition-none',
           align === 'end' ? 'right-0 rtl:left-0 rtl:right-auto' : 'left-0 rtl:left-auto rtl:right-0',
           isOpen ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2 opacity-0',
         )}
@@ -86,7 +86,7 @@ export function LanguageSwitcher({ activeLocale, label, dictionary, className, a
                 onNavigate?.();
               }}
               className={cn(
-                'flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-sm font-bold transition focus-visible:pmcs-focus-ring',
+                'pmcs-motion flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-sm font-bold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none',
                 isActive
                   ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon'
                   : 'text-pmcs-charcoal hover:bg-pmcs-light hover:text-pmcs-maroon',

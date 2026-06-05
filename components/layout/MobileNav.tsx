@@ -46,27 +46,27 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
   return (
     <div ref={navRef} className="xl:hidden">
-      {isOpen ? <button type="button" aria-label={dictionary.nav.menuClose} className="fixed inset-0 z-30 cursor-default bg-pmcs-charcoal/35 backdrop-blur-sm md:bg-transparent md:backdrop-blur-0" onClick={() => setIsOpen(false)} /> : null}
+      {isOpen ? <button type="button" aria-label={dictionary.nav.menuClose} className="pmcs-motion fixed inset-0 z-30 cursor-default bg-[rgba(20,20,20,0.45)] backdrop-blur-md transition-opacity duration-200 ease-out motion-reduce:transition-none" onClick={() => setIsOpen(false)} /> : null}
       <button
         type="button"
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
-        className={`relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition focus-visible:pmcs-focus-ring sm:text-sm ${
+        className={`pmcs-motion relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
           isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
         }`}
       >
         <span className="relative h-4 w-5" aria-hidden="true">
-          <span className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'top-2 rotate-45' : ''}`} />
-          <span className={`absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
-          <span className={`absolute left-0 top-4 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'top-2 -rotate-45' : ''}`} />
+          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 rotate-45' : 'top-0 rotate-0'}`} />
+          <span className={`pmcs-motion absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition-opacity duration-150 ease-out motion-reduce:transition-none ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 -rotate-45' : 'top-4 rotate-0'}`} />
         </span>
         <span className="whitespace-nowrap">{dictionary.nav.menuOpen}</span>
       </button>
       <div
         id="mobile-navigation"
         inert={!isOpen}
-        className={`absolute left-4 right-4 top-full z-50 mt-3 overflow-hidden rounded-[2rem] border bg-white shadow-pmcs transition-all duration-300 ease-out sm:left-auto sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+        className={`pmcs-motion absolute left-4 right-4 top-full z-50 mt-3 overflow-hidden rounded-[2rem] border bg-white shadow-pmcs transition-all duration-300 ease-out motion-reduce:transition-none sm:left-auto sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
           isOpen ? 'pointer-events-auto max-h-[calc(100dvh-7rem)] translate-y-0 border-pmcs-line opacity-100' : 'pointer-events-none max-h-0 -translate-y-3 border-transparent opacity-0'
         }`}
       >
@@ -79,7 +79,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
             type="button"
             aria-label={dictionary.nav.menuClose}
             onClick={() => setIsOpen(false)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-line bg-white text-xl leading-none text-pmcs-maroon transition hover:border-pmcs-gold hover:bg-white focus-visible:pmcs-focus-ring"
+            className="pmcs-motion flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-line bg-white text-xl leading-none text-pmcs-maroon transition duration-200 ease-out hover:border-pmcs-gold hover:bg-white focus-visible:pmcs-focus-ring motion-reduce:transition-none"
           >
             ×
           </button>
@@ -94,7 +94,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
                 onSectionSelect('contact');
                 setIsOpen(false);
               }}
-              className="rounded-2xl bg-pmcs-maroon px-4 py-3 text-center text-sm font-black text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring"
+              className="pmcs-motion rounded-2xl bg-pmcs-maroon px-4 py-3 text-center text-sm font-black text-white shadow-sm transition duration-200 ease-out hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
             >
               {dictionary.nav.contact}
             </Link>
@@ -115,7 +115,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
                       onSectionSelect(link.href);
                       setIsOpen(false);
                     }}
-                    className={`rounded-2xl px-4 py-3 text-sm font-bold transition focus-visible:pmcs-focus-ring ${
+                    className={`pmcs-motion rounded-2xl px-4 py-3 text-sm font-bold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                       activeSection === link.href ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon' : 'bg-pmcs-light text-pmcs-charcoal hover:bg-white hover:text-pmcs-maroon'
                     }`}
                   >

@@ -17,6 +17,7 @@ export const en: LocaleContent = {
     brandName: 'PMCS Holdings',
     logoMark: 'PM',
     homeAria: 'PMCS Holdings home',
+    claimRibbon: 'Singapore-led platform under development · Subject to verification, partner validation and final documentation.',
     logoAlt: 'PMCS Holdings placeholder logo',
     menuOpen: 'Menu',
     menuClose: 'Close menu',

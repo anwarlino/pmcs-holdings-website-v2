@@ -33,3 +33,16 @@ summary::-webkit-details-marker {
     outline-offset: 4px;
   }
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pmcs-motion,
+  .pmcs-motion * {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}

@@ -40,6 +40,7 @@ export type LocaleContent = {
     brandName: string;
     logoMark: string;
     logoAlt: string;
+    claimRibbon: string;
     menuOpen: string;
     menuClose: string;
     items: NavItem[];

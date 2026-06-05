@@ -17,6 +17,7 @@ export const ar: LocaleContent = {
     brandName: 'PMCS Holdings',
     logoMark: 'PM',
     homeAria: 'الصفحة الرئيسية لـ PMCS Holdings',
+    claimRibbon: 'منصة بقيادة سنغافورية قيد التطوير · خاضعة للتحقق وتأكيد الشركاء والوثائق النهائية.',
     logoAlt: 'شعار بديل لـ PMCS Holdings',
     menuOpen: 'القائمة',
     menuClose: 'إغلاق القائمة',

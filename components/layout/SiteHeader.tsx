@@ -63,12 +63,13 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   return (
     <>
-      {isMegaOpen ? <button type="button" aria-label={dictionary.nav.mega.overlayLabel} className="fixed inset-0 z-30 hidden cursor-default bg-pmcs-charcoal/45 backdrop-blur-md transition-opacity xl:block" onClick={() => setIsMegaOpen(false)} /> : null}
+      {isMegaOpen ? <button type="button" aria-label={dictionary.nav.mega.overlayLabel} className="pmcs-motion fixed inset-0 z-30 hidden cursor-default bg-[rgba(20,20,20,0.45)] backdrop-blur-md transition-opacity duration-200 ease-out motion-reduce:transition-none xl:block" onClick={() => setIsMegaOpen(false)} /> : null}
       <header ref={headerRef} className="sticky top-0 z-40 border-b border-pmcs-line bg-white/95 shadow-sm backdrop-blur">
         <div className="bg-gradient-to-r from-pmcs-maroonDark to-pmcs-maroon text-white">
-          <div className="mx-auto flex min-h-9 max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] sm:px-5 sm:text-xs">
-            <span>{dictionary.hero.eyebrow}</span>
-            <span className="hidden max-w-3xl text-right opacity-90 md:block rtl:text-left">{dictionary.governance.items[2]}</span>
+          <div className="mx-auto max-w-7xl px-4 py-1.5 sm:px-5">
+            <p className="text-[0.72rem] font-medium leading-5 tracking-normal text-white/90 sm:text-xs">
+              {dictionary.nav.claimRibbon}
+            </p>
           </div>
         </div>
         <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-5 lg:gap-5">
@@ -88,7 +89,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                     setActiveSection(item.href);
                     setIsMegaOpen(false);
                   }}
-                  className={`rounded-full px-3 py-2 text-sm font-semibold transition focus-visible:pmcs-focus-ring ${
+                  className={`pmcs-motion rounded-full px-3 py-2 text-sm font-semibold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                     activeSection === item.href ? 'bg-pmcs-maroon/10 text-pmcs-maroon shadow-sm ring-1 ring-pmcs-maroon/10' : 'text-pmcs-charcoal hover:bg-pmcs-light hover:text-pmcs-maroon'
                   }`}
                 >
@@ -100,7 +101,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 aria-expanded={isMegaOpen}
                 aria-controls="site-mega-menu"
                 onClick={() => setIsMegaOpen((current) => !current)}
-                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition focus-visible:pmcs-focus-ring ${
+                className={`pmcs-motion rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                   isMegaOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
                 }`}
               >
@@ -113,7 +114,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                   setActiveSection('contact');
                   setIsMegaOpen(false);
                 }}
-                className="rounded-full bg-pmcs-maroon px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring"
+                className="pmcs-motion rounded-full bg-pmcs-maroon px-5 py-3 text-sm font-bold text-white shadow-sm transition duration-200 ease-out hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
               >
                 <span className="whitespace-nowrap">{dictionary.nav.contact}</span>
               </Link>
