@@ -9,6 +9,8 @@ import type { Locale } from '@/lib/i18n';
 import { getSectionHref } from '@/lib/routes';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
+const MENU_PANEL_GAP_PX = 8;
+
 type MobileNavProps = {
   locale: Locale;
   dictionary: LocaleContent;
@@ -53,7 +55,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
   useEffect(() => {
     function updatePanelOffset() {
       const triggerRect = navRef.current?.getBoundingClientRect();
-      setPanelOffset(Math.max(84, Math.round((triggerRect?.bottom ?? 100) + 12)));
+      setPanelOffset(Math.max(84, Math.round((triggerRect?.bottom ?? 100) + MENU_PANEL_GAP_PX)));
     }
 
     updatePanelOffset();
@@ -170,7 +172,6 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
       >
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
-          <p className="mt-1 truncate text-sm font-bold text-pmcs-charcoal">{dictionary.nav.brandName}</p>
         </div>
 
         <nav
