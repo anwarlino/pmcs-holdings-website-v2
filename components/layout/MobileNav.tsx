@@ -253,8 +253,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
-        className={`pmcs-motion relative ${isOpen ? 'z-[70]' : 'z-40'} inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
-          isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+        className={`pmcs-header-control relative ${isOpen ? 'z-[70]' : 'z-40'} min-w-[7.25rem] px-4 text-xs uppercase tracking-[0.14em] sm:text-sm ${
+          isOpen ? 'pmcs-header-control-active' : 'pmcs-header-control-subtle'
         }`}
       >
         <span className="relative h-4 w-5" aria-hidden="true">

@@ -88,7 +88,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           </Link>
 
           <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">
-            <nav className="hidden items-center gap-1 xl:flex" aria-label={dictionary.nav.aria}>
+            <nav className="hidden items-center gap-2 xl:flex" aria-label={dictionary.nav.aria}>
               {dictionary.nav.items.slice(0, 3).map((item) => (
                 <Link
                   key={item.href}
@@ -98,8 +98,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                     setActiveSection(item.href);
                     setIsMegaOpen(false);
                   }}
-                  className={`pmcs-motion rounded-full px-3 py-2 text-sm font-semibold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
-                    activeSection === item.href ? 'bg-pmcs-maroon/10 text-pmcs-maroon shadow-sm ring-1 ring-pmcs-maroon/10' : 'text-pmcs-charcoal hover:bg-pmcs-light hover:text-pmcs-maroon'
+                  className={`pmcs-header-nav-link ${
+                    activeSection === item.href
+                      ? 'pmcs-header-nav-pill border border-pmcs-maroon/10 bg-pmcs-maroon/10 text-pmcs-maroon shadow-sm'
+                      : 'text-pmcs-charcoal hover:bg-pmcs-light hover:text-pmcs-maroon'
                   }`}
                 >
                   <span className="whitespace-nowrap">{item.label}</span>
@@ -110,8 +112,8 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 aria-expanded={isMegaOpen}
                 aria-controls="site-mega-menu"
                 onClick={() => setIsMegaOpen((current) => !current)}
-                className={`pmcs-motion rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
-                  isMegaOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+                className={`pmcs-header-control min-w-[7.25rem] ${
+                  isMegaOpen ? 'pmcs-header-control-active' : 'pmcs-header-control-subtle'
                 }`}
               >
                 <span className="whitespace-nowrap">{dictionary.nav.mega.trigger}</span>
@@ -123,12 +125,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                   setActiveSection('contact');
                   setIsMegaOpen(false);
                 }}
-                className="pmcs-motion rounded-full bg-pmcs-maroon px-5 py-3 text-sm font-bold text-white shadow-sm transition duration-200 ease-out hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
+                className="pmcs-header-control min-w-[7.25rem] border-pmcs-maroon bg-pmcs-maroon px-5 font-bold text-white hover:border-pmcs-maroonDark hover:bg-pmcs-maroonDark"
               >
                 <span className="whitespace-nowrap">{dictionary.nav.contact}</span>
               </Link>
             </nav>
-            <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} className="hidden max-w-[9.5rem] md:block" />
+            <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} className="hidden max-w-[10rem] md:block" />
             <MobileNav locale={locale} dictionary={dictionary} activeSection={activeSection} onSectionSelect={setActiveSection} />
           </div>
         </div>

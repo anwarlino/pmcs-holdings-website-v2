@@ -72,6 +72,28 @@ body.pmcs-nav-locked {
 }
 
 
+@layer components {
+  .pmcs-header-control {
+    @apply pmcs-motion inline-flex h-12 items-center justify-center gap-2 rounded-full border border-pmcs-line px-4 text-sm font-black leading-none shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none;
+  }
+
+  .pmcs-header-control-subtle {
+    @apply bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light;
+  }
+
+  .pmcs-header-control-active {
+    @apply border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon;
+  }
+
+  .pmcs-header-nav-link {
+    @apply pmcs-motion inline-flex items-center justify-center rounded-full px-3 py-2 text-sm font-semibold leading-none transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none;
+  }
+
+  .pmcs-header-nav-pill {
+    @apply h-12 min-w-[7.25rem] px-4;
+  }
+}
+
 @layer utilities {
   .pmcs-focus-ring {
     outline: 3px solid rgba(122, 31, 43, 0.35);
