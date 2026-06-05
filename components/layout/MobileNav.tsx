@@ -80,7 +80,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     setVisibleGroupIndex(activeGroupIndex);
     setIsContentVisible(false);
     const frame = window.requestAnimationFrame(() => {
-      groupTransitionRef.current = window.setTimeout(() => setIsContentVisible(true), 80);
+      groupTransitionRef.current = window.setTimeout(() => setIsContentVisible(true), 100);
     });
 
     return () => {
@@ -147,14 +147,14 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     groupTransitionRef.current = window.setTimeout(() => {
       setVisibleGroupIndex(index);
       window.requestAnimationFrame(() => setIsContentVisible(true));
-    }, 140);
+    }, 170);
   }
 
   const mobileMenuLayer = (
     <>
       <div
         aria-hidden="true"
-        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-[220ms] ease-out motion-reduce:transition-none ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -164,7 +164,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         ref={panelRef}
         inert={!isOpen}
         style={panelStyle}
-        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[260ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[280ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
           isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
         }`}
       >
@@ -192,14 +192,14 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
             <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} align="start" className="md:hidden" onNavigate={() => setIsOpen(false)} />
           </div>
 
-          <div className="mt-4 flex gap-2 overflow-x-auto pb-1" aria-label={dictionary.nav.mega.trigger}>
+          <div className="pmcs-mobile-menu-groups mt-4 grid gap-2" aria-label={dictionary.nav.mega.trigger}>
             {dictionary.nav.mega.groups.map((group, index) => (
               <button
                 key={group.heading}
                 type="button"
                 aria-pressed={activeGroupIndex === index}
                 onClick={() => handleGroupSelect(index)}
-                className={`pmcs-motion shrink-0 rounded-full border px-3 py-2 text-xs font-black transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                className={`pmcs-motion w-full rounded-2xl border px-3 py-2.5 text-start text-xs font-black transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                   activeGroupIndex === index ? 'border-pmcs-gold/60 bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-muted hover:border-pmcs-gold/50 hover:text-pmcs-maroon'
                 }`}
               >
@@ -210,7 +210,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
           {visibleGroup ? (
             <div
-              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-[220ms] ease-out motion-reduce:transition-none ${
                 isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
               }`}
             >
@@ -253,7 +253,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
-        className={`pmcs-motion relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
+        className={`pmcs-motion relative ${isOpen ? 'z-[70]' : 'z-40'} inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
           isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
         }`}
       >

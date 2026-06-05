@@ -73,7 +73,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
         }`}
         onClick={() => setIsMegaOpen(false)}
       />
-      <header ref={headerRef} className="sticky top-0 z-40 border-b border-pmcs-line bg-white/95 shadow-sm backdrop-blur">
+      <header ref={headerRef} className="sticky top-0 z-[60] border-b border-pmcs-line bg-white/95 shadow-sm backdrop-blur">
         <div className="bg-gradient-to-r from-pmcs-maroonDark to-pmcs-maroon text-white">
           <div className="mx-auto max-w-7xl px-4 py-1.5 sm:px-5">
             <p className="text-[0.72rem] font-medium leading-5 tracking-normal text-white/90 sm:text-xs">
