@@ -26,6 +26,12 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+html.pmcs-nav-locked,
+body.pmcs-nav-locked {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 
 @layer utilities {
   .pmcs-focus-ring {

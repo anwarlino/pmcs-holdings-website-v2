@@ -63,7 +63,16 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   return (
     <>
-      {isMegaOpen ? <button type="button" aria-label={dictionary.nav.mega.overlayLabel} className="pmcs-motion fixed inset-0 z-30 hidden cursor-default bg-[rgba(20,20,20,0.45)] backdrop-blur-md transition-opacity duration-200 ease-out motion-reduce:transition-none xl:block" onClick={() => setIsMegaOpen(false)} /> : null}
+      <button
+        type="button"
+        aria-label={dictionary.nav.mega.overlayLabel}
+        aria-hidden={!isMegaOpen}
+        tabIndex={isMegaOpen ? 0 : -1}
+        className={`pmcs-motion fixed inset-0 z-30 hidden cursor-default bg-[rgba(12,12,14,0.48)] backdrop-blur-xl transition-opacity duration-200 ease-out motion-reduce:transition-none xl:block ${
+          isMegaOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setIsMegaOpen(false)}
+      />
       <header ref={headerRef} className="sticky top-0 z-40 border-b border-pmcs-line bg-white/95 shadow-sm backdrop-blur">
         <div className="bg-gradient-to-r from-pmcs-maroonDark to-pmcs-maroon text-white">
           <div className="mx-auto max-w-7xl px-4 py-1.5 sm:px-5">

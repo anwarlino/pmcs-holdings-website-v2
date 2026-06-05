@@ -1,6 +1,8 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import type { LocaleContent } from '@/content/locales/types';
 import type { Locale } from '@/lib/i18n';
@@ -16,7 +18,69 @@ type MobileNavProps = {
 
 export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false);
+  const [panelOffset, setPanelOffset] = useState(112);
   const navRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+
+    if (!isOpen) {
+      root.classList.remove('pmcs-nav-locked');
+      body.classList.remove('pmcs-nav-locked');
+      return;
+    }
+
+    root.classList.add('pmcs-nav-locked');
+    body.classList.add('pmcs-nav-locked');
+
+    return () => {
+      root.classList.remove('pmcs-nav-locked');
+      body.classList.remove('pmcs-nav-locked');
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    function updatePanelOffset() {
+      const triggerRect = navRef.current?.getBoundingClientRect();
+      setPanelOffset(Math.max(84, Math.round((triggerRect?.bottom ?? 100) + 12)));
+    }
+
+    updatePanelOffset();
+
+    if (!isOpen) {
+      return;
+    }
+
+    window.addEventListener('resize', updatePanelOffset);
+    window.addEventListener('orientationchange', updatePanelOffset);
+
+    return () => {
+      window.removeEventListener('resize', updatePanelOffset);
+      window.removeEventListener('orientationchange', updatePanelOffset);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsContentVisible(false);
+      return;
+    }
+
+    setIsContentVisible(false);
+    const frame = window.requestAnimationFrame(() => {
+      window.setTimeout(() => setIsContentVisible(true), 80);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeSection, isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -30,7 +94,14 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     }
 
     function handlePointerDown(event: PointerEvent) {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+
+      if (
+        navRef.current &&
+        !navRef.current.contains(target) &&
+        panelRef.current &&
+        !panelRef.current.contains(target)
+      ) {
         setIsOpen(false);
       }
     }
@@ -44,33 +115,28 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     };
   }, [isOpen]);
 
-  return (
-    <div ref={navRef} className="xl:hidden">
-      {isOpen ? <button type="button" aria-label={dictionary.nav.menuClose} className="pmcs-motion fixed inset-0 z-30 cursor-default bg-[rgba(20,20,20,0.45)] backdrop-blur-md transition-opacity duration-200 ease-out motion-reduce:transition-none" onClick={() => setIsOpen(false)} /> : null}
+  const mobileMenuLayer = (
+    <>
       <button
         type="button"
-        aria-expanded={isOpen}
-        aria-controls="mobile-navigation"
-        onClick={() => setIsOpen((current) => !current)}
-        className={`pmcs-motion relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
-          isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+        aria-label={dictionary.nav.menuClose}
+        aria-hidden={!isOpen}
+        tabIndex={isOpen ? 0 : -1}
+        className={`pmcs-motion fixed inset-0 z-30 cursor-default bg-[rgba(12,12,14,0.58)] backdrop-blur-xl transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
-      >
-        <span className="relative h-4 w-5" aria-hidden="true">
-          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 rotate-45' : 'top-0 rotate-0'}`} />
-          <span className={`pmcs-motion absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition-opacity duration-150 ease-out motion-reduce:transition-none ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
-          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 -rotate-45' : 'top-4 rotate-0'}`} />
-        </span>
-        <span className="whitespace-nowrap">{dictionary.nav.menuOpen}</span>
-      </button>
+        onClick={() => setIsOpen(false)}
+      />
       <div
         id="mobile-navigation"
+        ref={panelRef}
         inert={!isOpen}
-        className={`pmcs-motion absolute left-4 right-4 top-full z-50 mt-3 overflow-hidden rounded-[2rem] border bg-white shadow-pmcs transition-all duration-300 ease-out motion-reduce:transition-none sm:left-auto sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
-          isOpen ? 'pointer-events-auto max-h-[calc(100dvh-7rem)] translate-y-0 border-pmcs-line opacity-100' : 'pointer-events-none max-h-0 -translate-y-3 border-transparent opacity-0'
+        style={{ top: `${panelOffset}px` }}
+        className={`pmcs-motion fixed left-4 right-4 z-50 overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.28)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[260ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
         }`}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-pmcs-line bg-pmcs-light/70 px-5 py-4">
+        <div className="flex items-center justify-between gap-3 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
             <p className="mt-1 truncate text-sm font-bold text-pmcs-charcoal">{dictionary.nav.brandName}</p>
@@ -85,7 +151,13 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
           </button>
         </div>
 
-        <nav className="grid max-h-[calc(100dvh-13rem)] gap-4 overflow-y-auto px-5 py-5" aria-label={dictionary.nav.aria}>
+        <nav
+          className={`pmcs-motion grid gap-4 overflow-y-auto px-5 py-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
+            isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
+          }`}
+          style={{ maxHeight: `calc(100dvh - ${panelOffset}px - 1rem)` } as CSSProperties}
+          aria-label={dictionary.nav.aria}
+        >
           <div className="grid gap-3">
             <Link
               href={getSectionHref(locale, 'contact')}
@@ -128,6 +200,28 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
           ))}
         </nav>
       </div>
+    </>
+  );
+
+  return (
+    <div ref={navRef} className="xl:hidden">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls="mobile-navigation"
+        onClick={() => setIsOpen((current) => !current)}
+        className={`pmcs-motion relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none sm:text-sm ${
+          isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+        }`}
+      >
+        <span className="relative h-4 w-5" aria-hidden="true">
+          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 rotate-45' : 'top-0 rotate-0'}`} />
+          <span className={`pmcs-motion absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition-opacity duration-150 ease-out motion-reduce:transition-none ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+          <span className={`pmcs-motion absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none ${isOpen ? 'top-2 -rotate-45' : 'top-4 rotate-0'}`} />
+        </span>
+        <span className="whitespace-nowrap">{dictionary.nav.menuOpen}</span>
+      </button>
+      {isMounted ? createPortal(mobileMenuLayer, document.body) : null}
     </div>
   );
 }
