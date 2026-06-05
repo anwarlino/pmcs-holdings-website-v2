@@ -169,8 +169,12 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         }`}
       >
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
-          <p className="mt-1 truncate text-sm font-bold text-pmcs-charcoal">{dictionary.nav.brandName}</p>
+          <img
+            src="/assets/logo/pmcs-logo.png"
+            alt={dictionary.nav.brandName}
+            className="h-12 w-auto max-w-[11rem] object-contain sm:h-14 sm:max-w-[12rem]"
+          />
+          <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
         </div>
 
         <nav

@@ -82,9 +82,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           </div>
         </div>
         <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-5 lg:gap-5">
-          <Link href={getHomePath(locale)} aria-label={dictionary.nav.homeAria} className="flex min-w-0 items-center gap-3 rounded-2xl focus-visible:pmcs-focus-ring" onClick={() => setIsMegaOpen(false)}>
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-pmcs-maroon text-sm font-black text-white sm:h-12 sm:w-12" aria-hidden="true">{dictionary.nav.logoMark}</span>
-            <span className="truncate text-base font-black tracking-[-0.03em] text-pmcs-charcoal sm:text-lg">{dictionary.nav.brandName}</span>
+          <Link href={getHomePath(locale)} aria-label={dictionary.nav.homeAria} className="flex min-w-0 items-center rounded-2xl focus-visible:pmcs-focus-ring" onClick={() => setIsMegaOpen(false)}>
+            <img
+              src="/assets/logo/pmcs-logo.png"
+              alt={dictionary.nav.brandName}
+              className="h-12 w-auto max-w-[10rem] shrink-0 object-contain sm:h-14 sm:max-w-[11rem]"
+            />
           </Link>
 
           <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">
