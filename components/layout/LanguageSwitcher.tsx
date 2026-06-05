@@ -49,14 +49,14 @@ export function LanguageSwitcher({ activeLocale, label, dictionary, className, a
   }, [isOpen]);
 
   return (
-    <div ref={switcherRef} className={cn('relative min-w-0', className)}>
+    <div ref={switcherRef} className={cn('relative min-w-0', className)} aria-label={label}>
       <button
         type="button"
         aria-label={`${dictionary.language.switchTo}: ${activeLabel}`}
         aria-expanded={isOpen}
         aria-controls={menuId}
         onClick={() => setIsOpen((current) => !current)}
-        className="inline-flex max-w-full items-center gap-2 rounded-full border border-pmcs-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-pmcs-charcoal shadow-sm transition hover:border-pmcs-gold hover:text-pmcs-maroon focus-visible:pmcs-focus-ring sm:px-4"
+        className="inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-pmcs-line bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-pmcs-charcoal shadow-sm transition hover:border-pmcs-gold hover:text-pmcs-maroon focus-visible:pmcs-focus-ring sm:px-4"
       >
         <span aria-hidden="true" className="text-pmcs-gold">◎</span>
         <span className="truncate">{activeLabel}</span>

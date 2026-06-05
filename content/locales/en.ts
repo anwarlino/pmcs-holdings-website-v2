@@ -18,7 +18,7 @@ export const en: LocaleContent = {
     logoMark: 'PM',
     homeAria: 'PMCS Holdings home',
     logoAlt: 'PMCS Holdings placeholder logo',
-    menuOpen: 'Open menu',
+    menuOpen: 'Menu',
     menuClose: 'Close menu',
     items: [
       { label: 'Overview', href: 'overview' },
@@ -31,7 +31,7 @@ export const en: LocaleContent = {
     ],
     contact: 'Contact',
     mega: {
-      trigger: 'Platform menu',
+      trigger: 'Explore',
       overlayLabel: 'Close platform menu overlay',
       groups: [
         {

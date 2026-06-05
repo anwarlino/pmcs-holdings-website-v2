@@ -18,7 +18,7 @@ export const th: LocaleContent = {
     logoMark: 'PM',
     homeAria: 'หน้าแรก PMCS Holdings',
     logoAlt: 'โลโก้ตัวแทน PMCS Holdings',
-    menuOpen: 'เปิดเมนู',
+    menuOpen: 'เมนู',
     menuClose: 'ปิดเมนู',
     items: [
       { label: 'ภาพรวม', href: 'overview' },
@@ -31,7 +31,7 @@ export const th: LocaleContent = {
     ],
     contact: 'ติดต่อ',
     mega: {
-      trigger: 'เมนูแพลตฟอร์ม',
+      trigger: 'สำรวจ',
       overlayLabel: 'ปิดเมนูแพลตฟอร์ม',
       groups: [
         {

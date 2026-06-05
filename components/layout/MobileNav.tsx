@@ -10,9 +10,11 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 type MobileNavProps = {
   locale: Locale;
   dictionary: LocaleContent;
+  activeSection: string;
+  onSectionSelect: (sectionId: string) => void;
 };
 
-export function MobileNav({ locale, dictionary }: MobileNavProps) {
+export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -44,15 +46,22 @@ export function MobileNav({ locale, dictionary }: MobileNavProps) {
 
   return (
     <div ref={navRef} className="xl:hidden">
-      {isOpen ? <button type="button" aria-label={dictionary.nav.menuClose} className="fixed inset-0 z-30 cursor-default bg-pmcs-charcoal/20 backdrop-blur-[2px] md:bg-transparent md:backdrop-blur-0" onClick={() => setIsOpen(false)} /> : null}
+      {isOpen ? <button type="button" aria-label={dictionary.nav.menuClose} className="fixed inset-0 z-30 cursor-default bg-pmcs-charcoal/35 backdrop-blur-sm md:bg-transparent md:backdrop-blur-0" onClick={() => setIsOpen(false)} /> : null}
       <button
         type="button"
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
-        className="relative z-40 rounded-full border border-pmcs-line bg-white px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-pmcs-maroon shadow-sm transition hover:border-pmcs-gold hover:bg-pmcs-light focus-visible:pmcs-focus-ring sm:text-sm"
+        className={`relative z-40 inline-flex items-center gap-2 rounded-full border px-4 py-3 text-xs font-black uppercase tracking-[0.14em] shadow-sm transition focus-visible:pmcs-focus-ring sm:text-sm ${
+          isOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+        }`}
       >
-        {dictionary.nav.menuOpen}
+        <span className="relative h-4 w-5" aria-hidden="true">
+          <span className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'top-2 rotate-45' : ''}`} />
+          <span className={`absolute left-0 top-2 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+          <span className={`absolute left-0 top-4 h-0.5 w-5 rounded-full bg-current transition ${isOpen ? 'top-2 -rotate-45' : ''}`} />
+        </span>
+        <span className="whitespace-nowrap">{dictionary.nav.menuOpen}</span>
       </button>
       <div
         id="mobile-navigation"
@@ -78,7 +87,15 @@ export function MobileNav({ locale, dictionary }: MobileNavProps) {
 
         <nav className="grid max-h-[calc(100dvh-13rem)] gap-4 overflow-y-auto px-5 py-5" aria-label={dictionary.nav.aria}>
           <div className="grid gap-3">
-            <Link href={getSectionHref(locale, 'contact')} onClick={() => setIsOpen(false)} className="rounded-2xl bg-pmcs-maroon px-4 py-3 text-center text-sm font-black text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring">
+            <Link
+              href={getSectionHref(locale, 'contact')}
+              aria-current={activeSection === 'contact' ? 'location' : undefined}
+              onClick={() => {
+                onSectionSelect('contact');
+                setIsOpen(false);
+              }}
+              className="rounded-2xl bg-pmcs-maroon px-4 py-3 text-center text-sm font-black text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring"
+            >
               {dictionary.nav.contact}
             </Link>
             <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} align="start" className="md:hidden" onNavigate={() => setIsOpen(false)} />
@@ -90,8 +107,19 @@ export function MobileNav({ locale, dictionary }: MobileNavProps) {
               <h2 className="mt-2 text-base font-black text-pmcs-charcoal">{group.heading}</h2>
               <div className="mt-3 grid gap-2">
                 {group.links.map((link) => (
-                  <Link key={link.href} href={getSectionHref(locale, link.href)} onClick={() => setIsOpen(false)} className="rounded-2xl bg-pmcs-light px-4 py-3 text-sm font-bold text-pmcs-charcoal transition hover:bg-white hover:text-pmcs-maroon focus-visible:pmcs-focus-ring">
-                    {link.label}
+                  <Link
+                    key={link.href}
+                    href={getSectionHref(locale, link.href)}
+                    aria-current={activeSection === link.href ? 'location' : undefined}
+                    onClick={() => {
+                      onSectionSelect(link.href);
+                      setIsOpen(false);
+                    }}
+                    className={`rounded-2xl px-4 py-3 text-sm font-bold transition focus-visible:pmcs-focus-ring ${
+                      activeSection === link.href ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon' : 'bg-pmcs-light text-pmcs-charcoal hover:bg-white hover:text-pmcs-maroon'
+                    }`}
+                  >
+                    <span className="break-words">{link.label}</span>
                     <span className="mt-1 block text-xs font-medium leading-5 text-pmcs-muted">{link.description}</span>
                   </Link>
                 ))}

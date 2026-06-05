@@ -16,7 +16,24 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('overview');
   const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function syncActiveSection() {
+      const hash = window.location.hash.replace('#', '');
+
+      if (hash) {
+        setActiveSection(hash);
+        setIsMegaOpen(false);
+      }
+    }
+
+    syncActiveSection();
+    window.addEventListener('hashchange', syncActiveSection);
+
+    return () => window.removeEventListener('hashchange', syncActiveSection);
+  }, []);
 
   useEffect(() => {
     if (!isMegaOpen) {
@@ -46,7 +63,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   return (
     <>
-      {isMegaOpen ? <button type="button" aria-label={dictionary.nav.mega.overlayLabel} className="fixed inset-0 z-30 hidden cursor-default bg-pmcs-charcoal/25 backdrop-blur-[3px] transition-opacity xl:block" onClick={() => setIsMegaOpen(false)} /> : null}
+      {isMegaOpen ? <button type="button" aria-label={dictionary.nav.mega.overlayLabel} className="fixed inset-0 z-30 hidden cursor-default bg-pmcs-charcoal/45 backdrop-blur-md transition-opacity xl:block" onClick={() => setIsMegaOpen(false)} /> : null}
       <header ref={headerRef} className="sticky top-0 z-40 border-b border-pmcs-line bg-white/95 shadow-sm backdrop-blur">
         <div className="bg-gradient-to-r from-pmcs-maroonDark to-pmcs-maroon text-white">
           <div className="mx-auto flex min-h-9 max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] sm:px-5 sm:text-xs">
@@ -63,8 +80,19 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">
             <nav className="hidden items-center gap-1 xl:flex" aria-label={dictionary.nav.aria}>
               {dictionary.nav.items.slice(0, 3).map((item) => (
-                <Link key={item.href} href={getSectionHref(locale, item.href)} onClick={() => setIsMegaOpen(false)} className="rounded-full px-3 py-2 text-sm font-semibold text-pmcs-charcoal transition hover:bg-pmcs-light hover:text-pmcs-maroon focus-visible:pmcs-focus-ring">
-                  {item.label}
+                <Link
+                  key={item.href}
+                  href={getSectionHref(locale, item.href)}
+                  aria-current={activeSection === item.href ? 'location' : undefined}
+                  onClick={() => {
+                    setActiveSection(item.href);
+                    setIsMegaOpen(false);
+                  }}
+                  className={`rounded-full px-3 py-2 text-sm font-semibold transition focus-visible:pmcs-focus-ring ${
+                    activeSection === item.href ? 'bg-pmcs-maroon/10 text-pmcs-maroon shadow-sm ring-1 ring-pmcs-maroon/10' : 'text-pmcs-charcoal hover:bg-pmcs-light hover:text-pmcs-maroon'
+                  }`}
+                >
+                  <span className="whitespace-nowrap">{item.label}</span>
                 </Link>
               ))}
               <button
@@ -72,19 +100,29 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 aria-expanded={isMegaOpen}
                 aria-controls="site-mega-menu"
                 onClick={() => setIsMegaOpen((current) => !current)}
-                className="rounded-full border border-pmcs-line bg-white px-4 py-2 text-sm font-black text-pmcs-maroon shadow-sm transition hover:border-pmcs-gold hover:bg-pmcs-light focus-visible:pmcs-focus-ring"
+                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition focus-visible:pmcs-focus-ring ${
+                  isMegaOpen ? 'border-pmcs-gold bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-maroon hover:border-pmcs-gold hover:bg-pmcs-light'
+                }`}
               >
-                {dictionary.nav.mega.trigger}
+                <span className="whitespace-nowrap">{dictionary.nav.mega.trigger}</span>
               </button>
-              <Link href={getSectionHref(locale, 'contact')} onClick={() => setIsMegaOpen(false)} className="rounded-full bg-pmcs-maroon px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring">
-                {dictionary.nav.contact}
+              <Link
+                href={getSectionHref(locale, 'contact')}
+                aria-current={activeSection === 'contact' ? 'location' : undefined}
+                onClick={() => {
+                  setActiveSection('contact');
+                  setIsMegaOpen(false);
+                }}
+                className="rounded-full bg-pmcs-maroon px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pmcs-maroonDark focus-visible:pmcs-focus-ring"
+              >
+                <span className="whitespace-nowrap">{dictionary.nav.contact}</span>
               </Link>
             </nav>
-            <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} className="hidden md:block" />
-            <MobileNav locale={locale} dictionary={dictionary} />
+            <LanguageSwitcher activeLocale={locale} label={dictionary.language.label} dictionary={dictionary} className="hidden max-w-[9.5rem] md:block" />
+            <MobileNav locale={locale} dictionary={dictionary} activeSection={activeSection} onSectionSelect={setActiveSection} />
           </div>
         </div>
-        <MegaMenu locale={locale} dictionary={dictionary} isOpen={isMegaOpen} onClose={() => setIsMegaOpen(false)} />
+        <MegaMenu locale={locale} dictionary={dictionary} isOpen={isMegaOpen} activeSection={activeSection} onSectionSelect={setActiveSection} onClose={() => setIsMegaOpen(false)} />
       </header>
     </>
   );

@@ -7,10 +7,12 @@ type MegaMenuProps = {
   locale: Locale;
   dictionary: LocaleContent;
   isOpen: boolean;
+  activeSection: string;
+  onSectionSelect: (sectionId: string) => void;
   onClose: () => void;
 };
 
-export function MegaMenu({ locale, dictionary, isOpen, onClose }: MegaMenuProps) {
+export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionSelect, onClose }: MegaMenuProps) {
   return (
     <div
       id="site-mega-menu"
@@ -19,7 +21,7 @@ export function MegaMenu({ locale, dictionary, isOpen, onClose }: MegaMenuProps)
       inert={!isOpen}
     >
       <div
-        className={`border-b border-pmcs-line bg-white/96 shadow-pmcs backdrop-blur-2xl transition-all duration-300 ease-out ${
+        className={`border-b border-pmcs-line bg-white/96 shadow-[0_34px_100px_rgba(43,43,43,0.18)] backdrop-blur-2xl transition-all duration-300 ease-out ${
           isOpen ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'
         }`}
       >
@@ -35,12 +37,18 @@ export function MegaMenu({ locale, dictionary, isOpen, onClose }: MegaMenuProps)
                     <Link
                       key={link.href}
                       href={getSectionHref(locale, link.href)}
-                      onClick={onClose}
-                      className="group rounded-2xl border border-transparent bg-white/80 px-4 py-3 transition hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm focus-visible:pmcs-focus-ring"
+                      aria-current={activeSection === link.href ? 'location' : undefined}
+                      onClick={() => {
+                        onSectionSelect(link.href);
+                        onClose();
+                      }}
+                      className={`group rounded-2xl border px-4 py-3 transition focus-visible:pmcs-focus-ring ${
+                        activeSection === link.href ? 'border-pmcs-gold/60 bg-pmcs-gold/15 shadow-sm' : 'border-transparent bg-white/80 hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm'
+                      }`}
                     >
-                      <span className="flex items-center justify-between gap-3 text-sm font-black text-pmcs-charcoal transition group-hover:text-pmcs-maroon">
-                        {link.label}
-                        <span className="text-pmcs-gold transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true">
+                      <span className={`flex items-center justify-between gap-3 text-sm font-black transition group-hover:text-pmcs-maroon ${activeSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
+                        <span className="break-words">{link.label}</span>
+                        <span className="shrink-0 text-pmcs-gold transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true">
                           →
                         </span>
                       </span>
@@ -61,8 +69,8 @@ export function MegaMenu({ locale, dictionary, isOpen, onClose }: MegaMenuProps)
                 <p className={index === 0 ? 'mt-3 text-sm leading-6 text-white/80' : 'mt-3 text-sm leading-6 text-pmcs-muted'}>{card.description}</p>
                 <div className="mt-5 grid grid-cols-3 gap-2" aria-label={card.placeholderAria}>
                   {card.placeholderLabels.map((label) => (
-                    <div key={label} className={index === 0 ? 'rounded-2xl border border-white/15 bg-white/10 p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/75' : 'rounded-2xl border border-pmcs-line bg-pmcs-light p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-pmcs-muted'}>
-                      {label}
+                    <div key={label} className={index === 0 ? 'min-w-0 rounded-2xl border border-white/15 bg-white/10 p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/75' : 'min-w-0 rounded-2xl border border-pmcs-line bg-pmcs-light p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-pmcs-muted'}>
+                      <span className="block truncate">{label}</span>
                     </div>
                   ))}
                 </div>
