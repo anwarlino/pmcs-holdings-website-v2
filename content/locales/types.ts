@@ -112,8 +112,14 @@ export type LocaleContent = {
     imageCaption: string;
   };
   footer: {
-    body: string;
-    rights: string;
+    brandDescription: string;
+    navigationLabel: string;
+    platformHeading: string;
+    governanceHeading: string;
+    governanceItems: string[];
+    staticExportHeading: string;
     staticExport: string;
+    legalItems: string[];
+    rights: string;
   };
 };
