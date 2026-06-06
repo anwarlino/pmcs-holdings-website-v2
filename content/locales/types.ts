@@ -72,7 +72,10 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
+    coordination: { eyebrow: string; title: string; body: string };
     cards: Array<{ number: string; title: string; body: string }>;
+    controlsLabel: string;
+    controls: string[];
   };
   ecosystem: {
     eyebrow: string;
