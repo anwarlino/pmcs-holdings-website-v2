@@ -6,8 +6,8 @@ import type { LocaleContent } from '@/content/locales/types';
 import type { Locale } from '@/lib/i18n';
 import { getSectionHref } from '@/lib/routes';
 
-const MENU_CLOSE_MS = 280;
-const CONTENT_FADE_OUT_MS = 160;
+const MENU_CLOSE_MS = 320;
+const CONTENT_FADE_OUT_MS = 170;
 const CONTENT_OPEN_DELAY_MS = 90;
 
 function prefersReducedMotion() {
@@ -96,10 +96,10 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
       inert={!isPanelVisible}
     >
       <div
-        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,filter,box-shadow] duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
+        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,filter] duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
           isOpen
-            ? 'pointer-events-auto opacity-100 blur-0 brightness-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]'
-            : `${isPanelVisible ? 'pointer-events-auto' : 'pointer-events-none'} opacity-0 blur-[3px] brightness-[0.98] shadow-[0_20px_60px_rgba(43,43,43,0.10)]`
+            ? 'pointer-events-auto opacity-100 blur-0 shadow-[0_34px_100px_rgba(43,43,43,0.18)]'
+            : `${isPanelVisible ? 'pointer-events-auto' : 'pointer-events-none'} opacity-0 blur-[3px] shadow-[0_20px_60px_rgba(43,43,43,0.10)]`
         }`}
       >
         <div
@@ -109,7 +109,7 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
         >
           <div className="grid gap-4 md:grid-cols-3">
             {dictionary.nav.mega.groups.map((group) => (
-              <section key={group.heading} className="pmcs-motion rounded-[1.75rem] border border-pmcs-line bg-gradient-to-b from-white to-pmcs-light/55 p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-pmcs motion-reduce:transition-none">
+              <section key={group.heading} className="pmcs-motion rounded-[1.75rem] border border-pmcs-line bg-gradient-to-b from-white to-pmcs-light/55 p-5 shadow-sm transition-shadow duration-200 ease-out hover:shadow-pmcs motion-reduce:transition-none">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-pmcs-maroon">{group.eyebrow}</p>
                 <h2 className="mt-2 text-lg font-black tracking-[-0.02em] text-pmcs-charcoal">{group.heading}</h2>
                 <p className="mt-2 text-sm leading-6 text-pmcs-muted">{group.description}</p>
@@ -129,7 +129,7 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
                     >
                       <span className={`flex items-center justify-between gap-3 text-sm font-black transition group-hover:text-pmcs-maroon ${renderedActiveSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
                         <span className="break-words">{link.label}</span>
-                        <span className="shrink-0 text-pmcs-gold transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true">
+                        <span className="shrink-0 text-pmcs-gold" aria-hidden="true">
                           →
                         </span>
                       </span>
