@@ -10,8 +10,8 @@ import { getSectionHref } from '@/lib/routes';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 const MENU_PANEL_GAP_PX = 8;
-const MENU_CLOSE_MS = 260;
-const CONTENT_FADE_OUT_MS = 140;
+const MENU_CLOSE_MS = 280;
+const CONTENT_FADE_OUT_MS = 160;
 const CONTENT_OPEN_DELAY_MS = 90;
 
 function prefersReducedMotion() {
@@ -205,8 +205,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         ref={panelRef}
         inert={!isLayerVisible}
         style={panelStyle}
-        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transition-opacity motion-reduce:duration-[1ms] sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
-          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100 shadow-[0_32px_90px_rgba(20,20,20,0.32)]' : `${isLayerVisible ? 'pointer-events-auto' : 'pointer-events-none'} translate-y-2 scale-[0.985] border-transparent opacity-0 shadow-[0_18px_50px_rgba(20,20,20,0.18)]`
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,filter,box-shadow] duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-opacity motion-reduce:duration-[1ms] sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+          isOpen ? 'pointer-events-auto border-pmcs-line opacity-100 blur-0 brightness-100 shadow-[0_32px_90px_rgba(20,20,20,0.32)]' : `${isLayerVisible ? 'pointer-events-auto' : 'pointer-events-none'} border-transparent opacity-0 blur-[3px] brightness-[0.98] shadow-[0_18px_50px_rgba(20,20,20,0.18)]`
         }`}
       >
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
@@ -250,8 +250,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
           {visibleGroup ? (
             <div
-              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] ease-out motion-reduce:translate-y-0 motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
-                isContentVisible ? 'translate-y-0 opacity-100 duration-[200ms]' : 'translate-y-1.5 opacity-0 duration-[140ms]'
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-opacity ease-out motion-reduce:duration-[1ms] ${
+                isContentVisible ? 'opacity-100 duration-[220ms]' : 'opacity-0 duration-[160ms]'
               }`}
             >
               <section className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">

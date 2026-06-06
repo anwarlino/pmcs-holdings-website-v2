@@ -6,9 +6,9 @@ import type { LocaleContent } from '@/content/locales/types';
 import type { Locale } from '@/lib/i18n';
 import { getSectionHref } from '@/lib/routes';
 
-const MENU_CLOSE_MS = 260;
-const CONTENT_FADE_OUT_MS = 140;
-const CONTENT_OPEN_DELAY_MS = 80;
+const MENU_CLOSE_MS = 280;
+const CONTENT_FADE_OUT_MS = 160;
+const CONTENT_OPEN_DELAY_MS = 90;
 
 function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -96,15 +96,15 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
       inert={!isPanelVisible}
     >
       <div
-        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
+        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,filter,box-shadow] duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
           isOpen
-            ? 'pointer-events-auto translate-y-0 scale-100 opacity-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]'
-            : `${isPanelVisible ? 'pointer-events-auto' : 'pointer-events-none'} translate-y-2 scale-[0.985] opacity-0 shadow-[0_20px_60px_rgba(43,43,43,0.10)]`
+            ? 'pointer-events-auto opacity-100 blur-0 brightness-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]'
+            : `${isPanelVisible ? 'pointer-events-auto' : 'pointer-events-none'} opacity-0 blur-[3px] brightness-[0.98] shadow-[0_20px_60px_rgba(43,43,43,0.10)]`
         }`}
       >
         <div
           className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-[opacity] ease-out motion-reduce:transition-opacity motion-reduce:duration-[1ms] xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
-            isContentVisible ? 'opacity-100 duration-[200ms]' : 'opacity-0 duration-[140ms]'
+            isContentVisible ? 'opacity-100 duration-[220ms]' : 'opacity-0 duration-[160ms]'
           }`}
         >
           <div className="grid gap-4 md:grid-cols-3">
