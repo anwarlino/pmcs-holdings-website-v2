@@ -154,8 +154,23 @@ export const en: LocaleContent = {
     imageCaption: 'Institutional engagement imagery placeholder for Phase 1.',
   },
   footer: {
-    body: 'Singapore-led food-security, sustainability, governance and structured finance readiness platform concept for Thailand-to-GCC corridor planning.',
+    brandDescription: 'Singapore-led food-security, sustainability, governance and structured finance readiness platform concept for Thailand-to-GCC corridor planning. The platform remains under development and subject to verification, approvals and final documentation.',
+    navigationLabel: 'Footer platform navigation',
+    platformHeading: 'Platform',
+    governanceHeading: 'Governance and claim control',
+    governanceItems: [
+      'Subject to verification.',
+      'Partner validation required.',
+      'Regulatory approval where applicable.',
+      'Final commercial documentation required.',
+    ],
+    staticExportHeading: 'Static export readiness',
+    staticExport: 'This website is maintained as a lightweight static-export-ready Next.js site for HostGator shared hosting.',
+    legalItems: [
+      'Informational website only.',
+      'No investment solicitation.',
+      'No secured financing, issued carbon credits, or binding offtake claims.',
+    ],
     rights: 'All rights reserved.',
-    staticExport: 'Static-export-ready for HostGator shared hosting.',
   },
 };
