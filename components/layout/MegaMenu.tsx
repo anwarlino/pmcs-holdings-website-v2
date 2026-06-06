@@ -7,7 +7,7 @@ import type { Locale } from '@/lib/i18n';
 import { getSectionHref } from '@/lib/routes';
 
 const MENU_CLOSE_MS = 320;
-const CONTENT_FADE_OUT_MS = 170;
+const CONTENT_FADE_OUT_MS = 180;
 const CONTENT_OPEN_DELAY_MS = 90;
 
 function prefersReducedMotion() {
@@ -103,8 +103,8 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
         }`}
       >
         <div
-          className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-[opacity] ease-out motion-reduce:transition-opacity motion-reduce:duration-[1ms] xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
-            isContentVisible ? 'opacity-100 duration-[220ms]' : 'opacity-0 duration-[160ms]'
+          className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-opacity ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:duration-[1ms] xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
+            isContentVisible ? 'opacity-100 duration-[240ms]' : 'opacity-0 duration-[180ms]'
           }`}
         >
           <div className="grid gap-4 md:grid-cols-3">
@@ -123,11 +123,11 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
                         onSectionSelect(link.href);
                         onClose();
                       }}
-                      className={`pmcs-motion group rounded-2xl border px-4 py-3 transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                      className={`pmcs-motion group rounded-2xl border px-4 py-3 transition-colors duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                         renderedActiveSection === link.href ? 'border-pmcs-gold/60 bg-pmcs-gold/15 shadow-sm' : 'border-transparent bg-white/80 hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm'
                       }`}
                     >
-                      <span className={`flex items-center justify-between gap-3 text-sm font-black transition group-hover:text-pmcs-maroon ${renderedActiveSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
+                      <span className={`flex items-center justify-between gap-3 text-sm font-black transition-colors group-hover:text-pmcs-maroon ${renderedActiveSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
                         <span className="break-words">{link.label}</span>
                         <span className="shrink-0 text-pmcs-gold" aria-hidden="true">
                           →

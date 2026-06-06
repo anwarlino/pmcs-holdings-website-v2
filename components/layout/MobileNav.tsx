@@ -11,7 +11,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 const MENU_PANEL_GAP_PX = 8;
 const MENU_CLOSE_MS = 320;
-const CONTENT_FADE_OUT_MS = 170;
+const CONTENT_FADE_OUT_MS = 180;
 const CONTENT_OPEN_DELAY_MS = 90;
 
 function prefersReducedMotion() {
@@ -239,7 +239,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
                 type="button"
                 aria-pressed={activeGroupIndex === index}
                 onClick={() => handleGroupSelect(index)}
-                className={`pmcs-motion w-full rounded-2xl border px-3 py-2.5 text-start text-xs font-black transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                className={`pmcs-motion w-full rounded-2xl border px-3 py-2.5 text-start text-xs font-black transition-colors duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                   activeGroupIndex === index ? 'border-pmcs-gold/60 bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-muted hover:border-pmcs-gold/50 hover:text-pmcs-maroon'
                 }`}
               >
@@ -250,8 +250,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
           {visibleGroup ? (
             <div
-              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-opacity ease-out motion-reduce:duration-[1ms] ${
-                isContentVisible ? 'opacity-100 duration-[220ms]' : 'opacity-0 duration-[160ms]'
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-opacity ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:duration-[1ms] ${
+                isContentVisible ? 'opacity-100 duration-[240ms]' : 'opacity-0 duration-[180ms]'
               }`}
             >
               <section className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">
@@ -268,7 +268,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
                         onSectionSelect(link.href);
                         setIsOpen(false);
                       }}
-                      className={`pmcs-motion rounded-2xl px-4 py-3 text-sm font-bold transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                      className={`pmcs-motion rounded-2xl px-4 py-3 text-sm font-bold transition-colors duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                         activeSection === link.href ? 'border border-pmcs-gold/50 bg-pmcs-gold/15 text-pmcs-maroon' : 'bg-pmcs-light text-pmcs-charcoal hover:bg-white hover:text-pmcs-maroon'
                       }`}
                     >
