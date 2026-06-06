@@ -65,7 +65,7 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+            <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
               {ecosystem.modules.map((module, index) => (
                 <article key={module.title} className="rounded-[1.35rem] border border-pmcs-line bg-white p-5 shadow-sm">
                   <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">{module.label}</p>
