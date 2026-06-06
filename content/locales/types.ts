@@ -81,8 +81,19 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    imageAlt: string;
-    imageCaption: string;
+    architectureLabel: string;
+    central: {
+      eyebrow: string;
+      title: string;
+      body: string;
+    };
+    modules: Array<{
+      label: string;
+      title: string;
+      body: string;
+    }>;
+    notesLabel: string;
+    notes: string[];
   };
   iccr: {
     eyebrow: string;
