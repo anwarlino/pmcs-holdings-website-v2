@@ -125,10 +125,23 @@ export const en: LocaleContent = {
   },
   ecosystem: {
     eyebrow: 'Platform ecosystem',
-    title: 'A structured corridor concept, not a generic products website.',
-    body: 'PMCS Holdings is positioned as an institutional platform concept for food-security architecture, sustainability-linked supply planning, governance readiness and structured finance preparation. No secured financing, guaranteed returns or binding offtake arrangements are claimed.',
-    imageAlt: 'Placeholder visual for Thailand-to-GCC logistics corridor planning',
-    imageCaption: 'Corridor imagery placeholder for Phase 1.',
+    title: 'A coordinated platform architecture being structured for corridor readiness.',
+    body: 'PMCS Holdings is presented as a developing business-and-finance platform concept intended to connect governance discipline, Thailand-based supply readiness, ICCR-aligned sustainability controls, finance-readiness planning and GCC food-security engagement. The section describes a planning layer only and does not claim completed operations, secured financing, issued credits or binding offtake.',
+    architectureLabel: 'Conceptual platform ecosystem architecture linking governance, Thailand supply readiness, sustainability controls, capital readiness and GCC engagement',
+    central: {
+      eyebrow: 'Coordinating layer',
+      title: 'PMCS Platform Layer',
+      body: 'A verification-led planning layer intended to organize claims, counterparties, documentation and readiness workstreams before final commitments are represented.',
+    },
+    modules: [
+      { label: 'A', title: 'Governance and claim control', body: 'Cautious disclosures, approval boundaries and documentation discipline guide how the platform concept is communicated.' },
+      { label: 'B', title: 'Thailand supply readiness', body: 'Production and supply planning is being structured around traceability, partner validation and readiness checks subject to verification.' },
+      { label: 'C', title: 'ICCR / sustainability controls', body: 'Operating principles are intended to align with ICCR-style sustainability discipline where applicable, without claiming issued credits or certified net zero.' },
+      { label: 'D', title: 'Capital readiness pathway', body: 'Finance-readiness focuses on diligence, structuring inputs and final documentation; it is not a completed investment product or secured financing claim.' },
+      { label: 'E', title: 'GCC engagement planning', body: 'Corridor engagement is framed as food-security alignment planning, with market access and offtake subject to counterparties and final documentation.' },
+    ],
+    notesLabel: 'Planning architecture only',
+    notes: ['Subject to verification', 'Partner validation required', 'Regulatory approval where applicable', 'Final documentation required'],
   },
   iccr: {
     eyebrow: 'ICCR framework',
