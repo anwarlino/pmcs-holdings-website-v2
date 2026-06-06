@@ -61,6 +61,12 @@ export type LocaleContent = {
     note: string;
     imageAlt: string;
     imageCaption: string;
+    visual: {
+      heading: string;
+      subheading: string;
+      modules: Array<{ label: string; detail: string }>;
+      disclosure: string;
+    };
   };
   alignment: {
     eyebrow: string;
