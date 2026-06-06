@@ -36,7 +36,7 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div>
             <div
               className="relative overflow-hidden rounded-[2rem] border border-pmcs-line bg-[radial-gradient(circle_at_12%_10%,rgba(214,173,96,0.24),transparent_13rem),radial-gradient(circle_at_88%_18%,rgba(46,163,122,0.14),transparent_14rem),linear-gradient(145deg,#ffffff_0%,#fbf8f3_48%,#f7fbf8_100%)] p-4 shadow-pmcs sm:p-6"
               aria-label={ecosystem.architectureLabel}
@@ -64,18 +64,18 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
                 ))}
               </div>
             </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
-              {ecosystem.modules.map((module, index) => (
-                <article key={module.title} className="rounded-[1.35rem] border border-pmcs-line bg-white p-5 shadow-sm">
-                  <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">{module.label}</p>
-                  <h3 className="mt-3 text-base font-black leading-snug text-pmcs-charcoal">{module.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-pmcs-muted">{module.body}</p>
-                  <div className={`mt-5 h-1 rounded-full ${index % 2 === 0 ? 'bg-pmcs-gold/70' : 'bg-pmcs-green/55'}`} aria-hidden="true" />
-                </article>
-              ))}
-            </div>
           </div>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          {ecosystem.modules.map((module, index) => (
+            <article key={module.title} className="flex h-full flex-col rounded-[1.35rem] border border-pmcs-line bg-white p-5 shadow-sm">
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">{module.label}</p>
+              <h3 className="mt-3 text-base font-black leading-snug text-pmcs-charcoal">{module.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-7 text-pmcs-muted">{module.body}</p>
+              <div className={`mt-5 h-1 rounded-full ${index % 2 === 0 ? 'bg-pmcs-gold/70' : 'bg-pmcs-green/55'}`} aria-hidden="true" />
+            </article>
+          ))}
         </div>
       </div>
     </section>
