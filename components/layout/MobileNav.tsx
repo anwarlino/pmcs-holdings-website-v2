@@ -55,7 +55,9 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
   useEffect(() => {
     function updatePanelOffset() {
       const triggerRect = navRef.current?.getBoundingClientRect();
-      setPanelOffset(Math.max(84, Math.round((triggerRect?.bottom ?? 100) + MENU_PANEL_GAP_PX)));
+      const headerRect = navRef.current?.closest('header')?.getBoundingClientRect();
+      const panelAnchorBottom = headerRect?.bottom ?? triggerRect?.bottom ?? 100;
+      setPanelOffset(Math.max(84, Math.round(panelAnchorBottom + MENU_PANEL_GAP_PX)));
     }
 
     updatePanelOffset();
