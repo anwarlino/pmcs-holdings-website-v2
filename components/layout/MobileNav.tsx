@@ -172,8 +172,18 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
           isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
         }`}
       >
-        <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
+        <div className="relative shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 pr-16 sm:px-6 sm:py-5 sm:pr-16">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
+          <button
+            type="button"
+            aria-label={dictionary.nav.menuClose}
+            onClick={() => setIsOpen(false)}
+            className="pmcs-motion absolute right-4 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-pmcs-line bg-white/90 text-lg font-black leading-none text-pmcs-maroon shadow-sm transition duration-200 ease-out hover:border-pmcs-gold/60 hover:bg-white hover:text-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+              <path d="M3 3L11 11M11 3L3 11" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+            </svg>
+          </button>
         </div>
 
         <nav
