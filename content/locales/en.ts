@@ -106,13 +106,22 @@ export const en: LocaleContent = {
   },
   alignment: {
     eyebrow: 'Strategic alignment',
-    title: 'Connecting governance planning, Thailand readiness and GCC food-security priorities.',
-    body: 'The platform is intended to develop corridor governance, sustainability controls, institutional documentation and partner-readiness processes through cautious implementation that remains subject to verification and approvals.',
+    title: 'A coordination platform concept linking disciplined governance with corridor readiness.',
+    body: 'PMCS Holdings is being structured as a Singapore-led planning framework intended to coordinate governance discipline, Thailand-based production readiness, sustainability and ICCR-aligned controls, GCC food-security engagement, and capital-readiness workstreams. Each pathway remains under development and subject to verification, partner validation, applicable approvals and final commercial documentation.',
+    coordination: {
+      eyebrow: 'Coordination layer',
+      title: 'PMCS Holdings platform alignment',
+      body: 'The central role under development is to organize information, documentation, controls and partner-readiness milestones so institutional stakeholders can evaluate the corridor concept without implying completed operations, secured financing or binding offtake.',
+    },
     cards: [
-      { number: '01', title: 'Singapore governance', body: 'A planned governance layer for oversight, documentation discipline and institutional controls.' },
-      { number: '02', title: 'Thailand readiness', body: 'Thailand-based production readiness remains subject to partner validation, verification and operating controls.' },
-      { number: '03', title: 'GCC engagement', body: 'Market-access discussions are expected to remain subject to final commercial documentation and applicable approvals.' },
+      { number: '01', title: 'Singapore governance platform', body: 'A Singapore-led governance layer is intended to support oversight discipline, documentation controls and claim-controlled institutional communication.' },
+      { number: '02', title: 'Thailand production readiness', body: 'Thailand-based production readiness is presented as a planning pathway that remains subject to site-level verification, operating controls and partner validation.' },
+      { number: '03', title: 'Sustainability and ICCR discipline', body: 'Sustainability controls and ICCR-aligned planning are under development and do not claim issued carbon credits, certification or completed regulatory approval.' },
+      { number: '04', title: 'GCC food-security corridor', body: 'GCC engagement is framed as a food-security alignment concept, with market access, offtake and approvals subject to counterparties and final documentation.' },
+      { number: '05', title: 'Capital-readiness pathway', body: 'Capital and partnership readiness focuses on documentation, diligence and validation; it does not represent secured financing, an investment offer or projected returns.' },
     ],
+    controlsLabel: 'Strategic alignment claim controls',
+    controls: ['Subject to verification', 'Partner validation required', 'Regulatory approval where applicable', 'Final commercial documentation required'],
   },
   ecosystem: {
     eyebrow: 'Platform ecosystem',
