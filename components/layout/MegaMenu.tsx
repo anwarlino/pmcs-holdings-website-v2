@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { LocaleContent } from '@/content/locales/types';
 import type { Locale } from '@/lib/i18n';
@@ -13,6 +16,33 @@ type MegaMenuProps = {
 };
 
 export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionSelect, onClose }: MegaMenuProps) {
+  const [isContentVisible, setIsContentVisible] = useState(false);
+  const contentFadeRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (contentFadeRef.current) {
+      window.clearTimeout(contentFadeRef.current);
+    }
+
+    if (!isOpen) {
+      setIsContentVisible(false);
+      return;
+    }
+
+    setIsContentVisible(false);
+    const frame = window.requestAnimationFrame(() => {
+      contentFadeRef.current = window.setTimeout(() => setIsContentVisible(true), 70);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+
+      if (contentFadeRef.current) {
+        window.clearTimeout(contentFadeRef.current);
+      }
+    };
+  }, [activeSection, isOpen]);
+
   return (
     <div
       id="site-mega-menu"
@@ -21,11 +51,15 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
       inert={!isOpen}
     >
       <div
-        className={`pmcs-motion border-b border-pmcs-line bg-white/96 shadow-[0_34px_100px_rgba(43,43,43,0.18)] backdrop-blur-2xl transition-all duration-300 ease-out motion-reduce:transition-none ${
-          isOpen ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'
+        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[240ms] ease-out motion-reduce:transition-none ${
+          isOpen ? 'pointer-events-auto translate-y-0 opacity-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]' : 'pointer-events-none -translate-y-2 opacity-0 shadow-[0_20px_60px_rgba(43,43,43,0.10)]'
         }`}
       >
-        <div className="mx-auto grid max-w-7xl gap-5 px-5 py-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)]">
+        <div
+          className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-[opacity] duration-[210ms] ease-out motion-reduce:transition-none xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
+            isContentVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           <div className="grid gap-4 md:grid-cols-3">
             {dictionary.nav.mega.groups.map((group) => (
               <section key={group.heading} className="pmcs-motion rounded-[1.75rem] border border-pmcs-line bg-gradient-to-b from-white to-pmcs-light/55 p-5 shadow-sm transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-pmcs motion-reduce:transition-none">

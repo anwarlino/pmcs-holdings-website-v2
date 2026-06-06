@@ -151,14 +151,14 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     groupTransitionRef.current = window.setTimeout(() => {
       setVisibleGroupIndex(index);
       window.requestAnimationFrame(() => setIsContentVisible(true));
-    }, 170);
+    }, 150);
   }
 
   const mobileMenuLayer = (
     <>
       <div
         aria-hidden="true"
-        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-[220ms] ease-out motion-reduce:transition-none ${
+        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-[220ms] ease-in-out motion-reduce:transition-none ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -168,8 +168,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         ref={panelRef}
         inert={!isOpen}
         style={panelStyle}
-        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[280ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
-          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[240ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100 shadow-[0_32px_90px_rgba(20,20,20,0.32)]' : 'pointer-events-none translate-y-1.5 scale-[0.99] border-transparent opacity-0 shadow-[0_18px_50px_rgba(20,20,20,0.18)]'
         }`}
       >
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
@@ -213,7 +213,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
           {visibleGroup ? (
             <div
-              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-[220ms] ease-out motion-reduce:transition-none ${
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-[200ms] ease-out motion-reduce:transition-none ${
                 isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
               }`}
             >
