@@ -10,6 +10,13 @@ import { getSectionHref } from '@/lib/routes';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 const MENU_PANEL_GAP_PX = 8;
+const MENU_CLOSE_MS = 260;
+const CONTENT_FADE_OUT_MS = 140;
+const CONTENT_OPEN_DELAY_MS = 90;
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 type MobileNavProps = {
   locale: Locale;
@@ -21,12 +28,14 @@ type MobileNavProps = {
 export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isLayerVisible, setIsLayerVisible] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const [visibleGroupIndex, setVisibleGroupIndex] = useState(0);
   const [panelOffset, setPanelOffset] = useState(112);
   const navRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<number | null>(null);
   const groupTransitionRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -34,10 +43,32 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
   }, []);
 
   useEffect(() => {
+    if (closeTimerRef.current) {
+      window.clearTimeout(closeTimerRef.current);
+    }
+
+    if (isOpen) {
+      setIsLayerVisible(true);
+      return;
+    }
+
+    closeTimerRef.current = window.setTimeout(
+      () => setIsLayerVisible(false),
+      prefersReducedMotion() ? 0 : MENU_CLOSE_MS,
+    );
+
+    return () => {
+      if (closeTimerRef.current) {
+        window.clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const root = document.documentElement;
     const body = document.body;
 
-    if (!isOpen) {
+    if (!isLayerVisible) {
       root.classList.remove('pmcs-nav-locked');
       body.classList.remove('pmcs-nav-locked');
       return;
@@ -50,7 +81,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
       root.classList.remove('pmcs-nav-locked');
       body.classList.remove('pmcs-nav-locked');
     };
-  }, [isOpen]);
+  }, [isLayerVisible]);
 
   useEffect(() => {
     function updatePanelOffset() {
@@ -76,20 +107,26 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
   }, [isOpen]);
 
   useEffect(() => {
+    if (groupTransitionRef.current) {
+      window.clearTimeout(groupTransitionRef.current);
+    }
+
     if (!isOpen) {
-      setIsContentVisible(false);
+      groupTransitionRef.current = window.setTimeout(
+        () => setIsContentVisible(false),
+        prefersReducedMotion() ? 0 : MENU_CLOSE_MS,
+      );
       return;
     }
 
     setVisibleGroupIndex(activeGroupIndex);
     setIsContentVisible(false);
-    const frame = window.requestAnimationFrame(() => {
-      groupTransitionRef.current = window.setTimeout(() => setIsContentVisible(true), 100);
-    });
+    groupTransitionRef.current = window.setTimeout(
+      () => window.requestAnimationFrame(() => setIsContentVisible(true)),
+      prefersReducedMotion() ? 0 : CONTENT_OPEN_DELAY_MS,
+    );
 
     return () => {
-      window.cancelAnimationFrame(frame);
-
       if (groupTransitionRef.current) {
         window.clearTimeout(groupTransitionRef.current);
       }
@@ -151,25 +188,25 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
     groupTransitionRef.current = window.setTimeout(() => {
       setVisibleGroupIndex(index);
       window.requestAnimationFrame(() => setIsContentVisible(true));
-    }, 150);
+    }, prefersReducedMotion() ? 0 : CONTENT_FADE_OUT_MS);
   }
 
   const mobileMenuLayer = (
     <>
       <div
         aria-hidden="true"
-        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-[220ms] ease-in-out motion-reduce:transition-none ${
-          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        className={`pmcs-motion fixed inset-0 z-30 bg-[rgba(12,12,14,0.62)] backdrop-blur-2xl transition-opacity duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:duration-[1ms] motion-reduce:transition-opacity ${
+          isOpen ? 'pointer-events-auto opacity-100' : `${isLayerVisible ? 'pointer-events-auto' : 'pointer-events-none'} opacity-0`
         }`}
         onClick={() => setIsOpen(false)}
       />
       <div
         id="mobile-navigation"
         ref={panelRef}
-        inert={!isOpen}
+        inert={!isLayerVisible}
         style={panelStyle}
-        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[240ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
-          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100 shadow-[0_32px_90px_rgba(20,20,20,0.32)]' : 'pointer-events-none translate-y-1.5 scale-[0.99] border-transparent opacity-0 shadow-[0_18px_50px_rgba(20,20,20,0.18)]'
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transition-opacity motion-reduce:duration-[1ms] sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+          isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100 shadow-[0_32px_90px_rgba(20,20,20,0.32)]' : `${isLayerVisible ? 'pointer-events-auto' : 'pointer-events-none'} translate-y-2 scale-[0.985] border-transparent opacity-0 shadow-[0_18px_50px_rgba(20,20,20,0.18)]`
         }`}
       >
         <div className="shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 sm:px-6 sm:py-5">
@@ -213,8 +250,8 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
 
           {visibleGroup ? (
             <div
-              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] duration-[200ms] ease-out motion-reduce:transition-none ${
-                isContentVisible ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
+              className={`pmcs-mobile-menu-sections pmcs-motion mt-4 grid gap-4 transition-[opacity,transform] ease-out motion-reduce:translate-y-0 motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
+                isContentVisible ? 'translate-y-0 opacity-100 duration-[200ms]' : 'translate-y-1.5 opacity-0 duration-[140ms]'
               }`}
             >
               <section className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">

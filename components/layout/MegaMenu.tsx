@@ -6,6 +6,14 @@ import type { LocaleContent } from '@/content/locales/types';
 import type { Locale } from '@/lib/i18n';
 import { getSectionHref } from '@/lib/routes';
 
+const MENU_CLOSE_MS = 260;
+const CONTENT_FADE_OUT_MS = 140;
+const CONTENT_OPEN_DELAY_MS = 80;
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 type MegaMenuProps = {
   locale: Locale;
   dictionary: LocaleContent;
@@ -16,8 +24,33 @@ type MegaMenuProps = {
 };
 
 export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionSelect, onClose }: MegaMenuProps) {
+  const [isPanelVisible, setIsPanelVisible] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
+  const [renderedActiveSection, setRenderedActiveSection] = useState(activeSection);
+  const closeTimerRef = useRef<number | null>(null);
   const contentFadeRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (closeTimerRef.current) {
+      window.clearTimeout(closeTimerRef.current);
+    }
+
+    if (isOpen) {
+      setIsPanelVisible(true);
+      return;
+    }
+
+    closeTimerRef.current = window.setTimeout(
+      () => setIsPanelVisible(false),
+      prefersReducedMotion() ? 0 : MENU_CLOSE_MS,
+    );
+
+    return () => {
+      if (closeTimerRef.current) {
+        window.clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (contentFadeRef.current) {
@@ -25,18 +58,30 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
     }
 
     if (!isOpen) {
-      setIsContentVisible(false);
-      return;
+      contentFadeRef.current = window.setTimeout(
+        () => setIsContentVisible(false),
+        prefersReducedMotion() ? 0 : MENU_CLOSE_MS,
+      );
+
+      return () => {
+        if (contentFadeRef.current) {
+          window.clearTimeout(contentFadeRef.current);
+        }
+      };
     }
 
+    const reducedMotion = prefersReducedMotion();
+    const fadeDelay = renderedActiveSection === activeSection ? CONTENT_OPEN_DELAY_MS : CONTENT_FADE_OUT_MS;
     setIsContentVisible(false);
-    const frame = window.requestAnimationFrame(() => {
-      contentFadeRef.current = window.setTimeout(() => setIsContentVisible(true), 70);
-    });
+    contentFadeRef.current = window.setTimeout(
+      () => {
+        setRenderedActiveSection(activeSection);
+        window.requestAnimationFrame(() => setIsContentVisible(true));
+      },
+      reducedMotion ? 0 : fadeDelay,
+    );
 
     return () => {
-      window.cancelAnimationFrame(frame);
-
       if (contentFadeRef.current) {
         window.clearTimeout(contentFadeRef.current);
       }
@@ -47,17 +92,19 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
     <div
       id="site-mega-menu"
       className="absolute left-0 top-full hidden w-full overflow-hidden xl:block"
-      aria-hidden={!isOpen}
-      inert={!isOpen}
+      aria-hidden={!isPanelVisible}
+      inert={!isPanelVisible}
     >
       <div
-        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[240ms] ease-out motion-reduce:transition-none ${
-          isOpen ? 'pointer-events-auto translate-y-0 opacity-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]' : 'pointer-events-none -translate-y-2 opacity-0 shadow-[0_20px_60px_rgba(43,43,43,0.10)]'
+        className={`pmcs-motion border-b border-pmcs-line bg-white/96 ring-1 ring-white/60 backdrop-blur-2xl transition-[opacity,transform,box-shadow] duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transition-opacity motion-reduce:duration-[1ms] ${
+          isOpen
+            ? 'pointer-events-auto translate-y-0 scale-100 opacity-100 shadow-[0_34px_100px_rgba(43,43,43,0.18)]'
+            : `${isPanelVisible ? 'pointer-events-auto' : 'pointer-events-none'} translate-y-2 scale-[0.985] opacity-0 shadow-[0_20px_60px_rgba(43,43,43,0.10)]`
         }`}
       >
         <div
-          className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-[opacity] duration-[210ms] ease-out motion-reduce:transition-none xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
-            isContentVisible ? 'opacity-100' : 'opacity-0'
+          className={`pmcs-motion mx-auto grid max-w-7xl gap-5 px-5 py-6 transition-[opacity] ease-out motion-reduce:transition-opacity motion-reduce:duration-[1ms] xl:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.55fr)] ${
+            isContentVisible ? 'opacity-100 duration-[200ms]' : 'opacity-0 duration-[140ms]'
           }`}
         >
           <div className="grid gap-4 md:grid-cols-3">
@@ -71,16 +118,16 @@ export function MegaMenu({ locale, dictionary, isOpen, activeSection, onSectionS
                     <Link
                       key={link.href}
                       href={getSectionHref(locale, link.href)}
-                      aria-current={activeSection === link.href ? 'location' : undefined}
+                      aria-current={renderedActiveSection === link.href ? 'location' : undefined}
                       onClick={() => {
                         onSectionSelect(link.href);
                         onClose();
                       }}
                       className={`pmcs-motion group rounded-2xl border px-4 py-3 transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
-                        activeSection === link.href ? 'border-pmcs-gold/60 bg-pmcs-gold/15 shadow-sm' : 'border-transparent bg-white/80 hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm'
+                        renderedActiveSection === link.href ? 'border-pmcs-gold/60 bg-pmcs-gold/15 shadow-sm' : 'border-transparent bg-white/80 hover:border-pmcs-gold/60 hover:bg-white hover:shadow-sm'
                       }`}
                     >
-                      <span className={`flex items-center justify-between gap-3 text-sm font-black transition group-hover:text-pmcs-maroon ${activeSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
+                      <span className={`flex items-center justify-between gap-3 text-sm font-black transition group-hover:text-pmcs-maroon ${renderedActiveSection === link.href ? 'text-pmcs-maroon' : 'text-pmcs-charcoal'}`}>
                         <span className="break-words">{link.label}</span>
                         <span className="shrink-0 text-pmcs-gold transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true">
                           →
