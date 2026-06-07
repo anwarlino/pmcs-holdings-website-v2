@@ -126,7 +126,22 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    cards: Array<{ title: string; body: string }>;
+    dashboard: {
+      kicker: string;
+      title: string;
+      subtitle: string;
+      statusClusterLabel: string;
+      statusCluster: string[];
+      tiles: Array<{ title: string; status: string; description: string }>;
+    };
+    pathway: {
+      eyebrow: string;
+      title: string;
+      note: string;
+      ariaLabel: string;
+      steps: string[];
+    };
+    claimControl: string;
   };
   governance: {
     eyebrow: string;

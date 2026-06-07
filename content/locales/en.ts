@@ -182,12 +182,30 @@ export const en: LocaleContent = {
   },
   capital: {
     eyebrow: 'Capital and partnerships',
-    title: 'Structured finance readiness without investment solicitation.',
-    body: 'Capital pathways are described as planning concepts only and remain subject to approval, verification, partner validation and final documentation.',
-    cards: [
-      { title: 'Institutional engagement', body: 'Future engagement may include food-security stakeholders, infrastructure participants, validators and governance counterparties where appropriate documentation supports the relationship.' },
-      { title: 'Documentation discipline', body: 'The website does not claim secured financing, guaranteed returns, issued carbon credits, regulatory approval or binding offtake agreements.' },
-    ],
+    title: 'Capital-readiness concept for disciplined partnership planning.',
+    body: 'PMCS describes a planning architecture only: pathways remain under development and subject to verification, partner validation, applicable approvals and final documentation.',
+    dashboard: {
+      kicker: 'Capital Readiness Control Panel',
+      title: 'Planning controls before any capital or partnership step is represented as complete.',
+      subtitle: 'Planning architecture only',
+      statusClusterLabel: 'Capital readiness status cluster',
+      statusCluster: ['Planning', 'Documentation required', 'Subject to validation', 'Approval where applicable'],
+      tiles: [
+        { title: 'Capital readiness', status: 'Planning', description: 'Readiness concept for capital access, subject to verification and final documentation.' },
+        { title: 'Partnership pathway', status: 'Under review', description: 'Engagement pathway for potential partners, with partner validation required.' },
+        { title: 'Documentation discipline', status: 'Documentation required', description: 'Records, terms and evidence are required before any formal representation.' },
+        { title: 'Governance controls', status: 'Approval where applicable', description: 'Governance review and applicable approvals remain part of the planning pathway.' },
+        { title: 'Validation gates', status: 'Subject to validation', description: 'Progression depends on verification, counterparties and final documentation.' },
+      ],
+    },
+    pathway: {
+      eyebrow: 'Readiness pathway',
+      title: 'Concept to final agreement, presented as an uncompleted planning pathway.',
+      note: 'Each stage is a validation gate and should not be read as secured financing, active fundraising, binding investment or completed offtake.',
+      ariaLabel: 'Capital readiness planning pathway',
+      steps: ['Concept', 'Documentation', 'Partner validation', 'Governance review', 'Final agreement'],
+    },
+    claimControl: 'Not an investment solicitation. Capital pathways remain subject to verification, partner validation, applicable approvals and final documentation.',
   },
   governance: {
     eyebrow: 'Governance discipline',
