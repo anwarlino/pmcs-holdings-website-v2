@@ -17,6 +17,13 @@ const tileIconClasses = [
   'from-pmcs-green/90 to-pmcs-charcoal/75',
 ];
 
+const readinessSegmentClasses = [
+  'bg-pmcs-maroon/70',
+  'bg-pmcs-gold/80',
+  'bg-pmcs-green/70',
+  'bg-pmcs-charcoal/30',
+];
+
 export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleContent }) {
   return (
     <section id="capital" className="relative overflow-hidden bg-pmcs-light py-20 sm:py-24">
@@ -27,48 +34,83 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeading eyebrow={dictionary.capital.eyebrow} title={dictionary.capital.title} body={dictionary.capital.body} />
 
-        <div className="mt-12 overflow-hidden rounded-[2rem] border border-pmcs-line bg-white/88 shadow-pmcs backdrop-blur-sm sm:rounded-[2.5rem]">
-          <div className="border-b border-pmcs-line bg-gradient-to-r from-pmcs-charcoal via-pmcs-maroon to-pmcs-maroonDark px-5 py-5 text-white sm:px-7 lg:px-8 rtl:bg-gradient-to-l">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
+        <div className="mt-12 overflow-hidden rounded-[2rem] border border-pmcs-line bg-white shadow-pmcs sm:rounded-[2.5rem]">
+          <div className="relative overflow-hidden border-b border-white/10 bg-pmcs-charcoal px-5 py-5 text-white sm:px-7 lg:px-8">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(214,173,96,0.24),transparent_34%),linear-gradient(135deg,rgba(138,21,56,0.74),rgba(43,43,43,0.96)_58%,rgba(100,16,39,0.92))] rtl:bg-[radial-gradient(circle_at_top_left,rgba(214,173,96,0.24),transparent_34%),linear-gradient(225deg,rgba(138,21,56,0.74),rgba(43,43,43,0.96)_58%,rgba(100,16,39,0.92))]" aria-hidden="true" />
+            <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <div className="min-w-0">
+                <div className="mb-4 flex gap-2" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full bg-pmcs-gold" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-white/45" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-pmcs-green" />
+                </div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-gold">{dictionary.capital.dashboard.kicker}</p>
                 <h3 className="mt-2 text-2xl font-black tracking-[-0.03em] sm:text-3xl">{dictionary.capital.dashboard.title}</h3>
+                <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-white/72">{dictionary.capital.dashboard.subtitle}</p>
               </div>
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/90 shadow-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-pmcs-green shadow-[0_0_0_5px_rgba(46,163,122,0.18)]" aria-hidden="true" />
-                {dictionary.capital.dashboard.subtitle}
+
+              <div className="grid gap-2 sm:grid-cols-2 lg:w-[28rem]" aria-label={dictionary.capital.dashboard.statusClusterLabel}>
+                {dictionary.capital.dashboard.statusCluster.map((status, index) => (
+                  <div key={status} className="flex min-w-0 items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase leading-5 tracking-[0.11em] text-white/88 shadow-sm backdrop-blur-sm">
+                    <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${readinessSegmentClasses[index % readinessSegmentClasses.length]}`} aria-hidden="true" />
+                    <span className="min-w-0 break-words">{status}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="relative bg-[radial-gradient(circle_at_top_right,rgba(214,173,96,0.14),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.96),rgba(247,248,250,0.96))] p-5 sm:p-7 lg:p-8 rtl:bg-[radial-gradient(circle_at_top_left,rgba(214,173,96,0.14),transparent_34%),linear-gradient(225deg,rgba(255,255,255,0.96),rgba(247,248,250,0.96))]">
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-              {dictionary.capital.dashboard.tiles.map((tile, index) => (
-                <article
-                  key={tile.title}
-                  className="group min-w-0 rounded-[1.5rem] border border-pmcs-line bg-white/92 p-5 shadow-[0_18px_45px_rgba(43,43,43,0.06)] transition duration-200 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-within:border-pmcs-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${tileIconClasses[index % tileIconClasses.length]} text-white shadow-sm`} aria-hidden="true">
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" role="img">
-                        <path d="M6 12.5 10 16l8-9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4.75 5.5h10.5a2 2 0 0 1 2 2v.5M4.75 5.5A2.25 2.25 0 0 0 3 7.7v8.6a2.25 2.25 0 0 0 2.25 2.2h13.5A2.25 2.25 0 0 0 21 16.3v-5.05" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                      </svg>
+          <div className="relative bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(247,248,250,0.94))] p-5 sm:p-7 lg:p-8">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(100,112,122,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(100,112,122,0.08)_1px,transparent_1px)] bg-[size:36px_36px] opacity-45" aria-hidden="true" />
+
+            <div className="relative grid gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
+              <aside className="rounded-[1.75rem] border border-pmcs-maroon/15 bg-gradient-to-br from-pmcs-charcoal to-pmcs-maroonDark p-5 text-white shadow-[0_22px_60px_rgba(43,43,43,0.16)]">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-gold">{dictionary.capital.dashboard.consoleLabel}</p>
+                <p className="mt-3 text-sm font-semibold leading-6 text-white/76">{dictionary.capital.dashboard.consoleNote}</p>
+                <div className="mt-6 space-y-3">
+                  {dictionary.capital.dashboard.statusCluster.map((status, index) => (
+                    <div key={`${status}-rail`} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-3 py-3">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/30 bg-white/10 text-[0.68rem] font-black text-pmcs-gold">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/84">{status}</span>
                     </div>
-                    <span className={`min-w-0 max-w-full whitespace-normal break-words rounded-full border px-3 py-1 text-start text-[0.68rem] font-black uppercase leading-5 tracking-[0.12em] ${tileAccents[index % tileAccents.length]}`}>
-                      {tile.status}
-                    </span>
-                  </div>
-                  <h4 className="mt-5 text-lg font-black tracking-[-0.02em] text-pmcs-charcoal">{tile.title}</h4>
-                  <p className="mt-3 text-sm leading-6 text-pmcs-muted">{tile.description}</p>
-                  <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-pmcs-line" aria-hidden="true">
-                    <div className={`h-full rounded-full bg-gradient-to-r ${tileIconClasses[index % tileIconClasses.length]} opacity-80`} style={{ width: `${58 + index * 7}%` }} />
-                  </div>
-                </article>
-              ))}
+                  ))}
+                </div>
+              </aside>
+
+              <div className="grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-5">
+                {dictionary.capital.dashboard.tiles.map((tile, index) => (
+                  <article
+                    key={tile.title}
+                    className="group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-pmcs-line bg-white/94 p-5 shadow-[0_18px_45px_rgba(43,43,43,0.06)] transition duration-200 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-within:border-pmcs-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-pmcs-maroon via-pmcs-gold to-pmcs-green opacity-75 rtl:bg-gradient-to-l" aria-hidden="true" />
+                    <div className="flex items-start justify-between gap-3">
+                      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${tileIconClasses[index % tileIconClasses.length]} text-white shadow-sm`} aria-hidden="true">
+                        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 18V7.5A2.5 2.5 0 0 1 7.5 5H18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                          <path d="M7 15.5h4.2M7 11.5h7M15.5 17.5l3-3 2 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          <circle cx="17.5" cy="9" r="2.25" stroke="currentColor" strokeWidth="1.6" />
+                        </svg>
+                      </div>
+                      <span className={`min-w-0 max-w-full whitespace-normal break-words rounded-full border px-3 py-1 text-start text-[0.68rem] font-black uppercase leading-5 tracking-[0.12em] ${tileAccents[index % tileAccents.length]}`}>
+                        {tile.status}
+                      </span>
+                    </div>
+                    <h4 className="mt-5 text-lg font-black tracking-[-0.02em] text-pmcs-charcoal">{tile.title}</h4>
+                    <p className="mt-3 text-sm leading-6 text-pmcs-muted">{tile.description}</p>
+                    <div className="mt-5 grid grid-cols-4 gap-1.5" aria-hidden="true">
+                      {readinessSegmentClasses.map((segmentClass) => (
+                        <span key={segmentClass} className={`h-1.5 rounded-full ${segmentClass}`} />
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-7 rounded-[1.75rem] border border-pmcs-line bg-white/82 p-5 shadow-sm sm:p-6 lg:p-7">
+            <div className="relative mt-7 rounded-[1.75rem] border border-pmcs-line bg-white/86 p-5 shadow-sm sm:p-6 lg:p-7">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-green">{dictionary.capital.pathway.eyebrow}</p>
@@ -80,7 +122,7 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
               <ol className="mt-6 grid gap-4 lg:grid-cols-5" aria-label={dictionary.capital.pathway.ariaLabel}>
                 {dictionary.capital.pathway.steps.map((step, index) => (
                   <li key={step} className="relative min-w-0">
-                    <div className="group flex h-full items-center gap-4 rounded-2xl border border-pmcs-line bg-pmcs-light/70 p-4 transition duration-200 hover:border-pmcs-gold/60 hover:bg-white motion-reduce:transition-none lg:flex-col lg:items-start lg:gap-3">
+                    <div className="flex h-full items-center gap-4 rounded-2xl border border-pmcs-line bg-pmcs-light/70 p-4 transition duration-200 hover:border-pmcs-gold/60 hover:bg-white motion-reduce:transition-none lg:flex-col lg:items-start lg:gap-3">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/45 bg-white text-sm font-black text-pmcs-maroon shadow-sm">
                         {String(index + 1).padStart(2, '0')}
                       </span>
@@ -94,7 +136,7 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
               </ol>
             </div>
 
-            <div className="mt-7 rounded-[1.5rem] border border-pmcs-gold/35 bg-pmcs-gold/10 px-5 py-4 shadow-sm">
+            <div className="relative mt-7 rounded-[1.5rem] border border-pmcs-gold/35 bg-pmcs-gold/10 px-5 py-4 shadow-sm">
               <p className="text-sm font-semibold leading-7 text-pmcs-charcoal">{dictionary.capital.claimControl}</p>
             </div>
           </div>

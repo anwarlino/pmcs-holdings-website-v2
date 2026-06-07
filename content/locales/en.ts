@@ -188,6 +188,10 @@ export const en: LocaleContent = {
       kicker: 'Capital Readiness Control Panel',
       title: 'Planning controls before any capital or partnership step is represented as complete.',
       subtitle: 'Planning architecture only',
+      statusClusterLabel: 'Capital readiness status cluster',
+      statusCluster: ['Planning', 'Documentation required', 'Subject to validation', 'Approval where applicable'],
+      consoleLabel: 'Readiness gate monitor',
+      consoleNote: 'A capital-readiness concept under development, organized around documentation required, partner validation and approval where applicable.',
       tiles: [
         { title: 'Capital readiness', status: 'Planning', description: 'Readiness concept for capital access, subject to verification and final documentation.' },
         { title: 'Partnership pathway', status: 'Under review', description: 'Engagement pathway for potential partners, with partner validation required.' },

@@ -130,6 +130,10 @@ export type LocaleContent = {
       kicker: string;
       title: string;
       subtitle: string;
+      statusClusterLabel: string;
+      statusCluster: string[];
+      consoleLabel: string;
+      consoleNote: string;
       tiles: Array<{ title: string; status: string; description: string }>;
     };
     pathway: {
