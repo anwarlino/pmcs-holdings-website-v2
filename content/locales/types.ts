@@ -146,8 +146,15 @@ export type LocaleContent = {
     title: string;
     body: string;
     cta: string;
-    imageAlt: string;
-    imageCaption: string;
+    ctaNote: string;
+    gatewayAria: string;
+    gatewayLabel: string;
+    gatewayTitle: string;
+    gatewayBody: string;
+    pathway: Array<{ title: string; body: string }>;
+    readiness: Array<{ title: string; body: string }>;
+    disclosureLabel: string;
+    disclosure: string;
   };
   footer: {
     brandDescription: string;
