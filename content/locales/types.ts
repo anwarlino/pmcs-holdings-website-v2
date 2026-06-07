@@ -131,9 +131,14 @@ export type LocaleContent = {
   governance: {
     eyebrow: string;
     title: string;
-    items: string[];
-    imageAlt: string;
-    imageCaption: string;
+    body: string;
+    frameworkAria: string;
+    central: { eyebrow: string; title: string; body: string };
+    nodes: Array<{ title: string; body: string }>;
+    checklistTitle: string;
+    controls: string[];
+    disclosureLabel: string;
+    disclosure: string;
   };
   contact: {
     eyebrow: string;
