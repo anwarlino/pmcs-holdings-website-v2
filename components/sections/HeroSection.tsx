@@ -1,13 +1,14 @@
-import type { LocaleContent } from '@/content/locales/types';
-import type { Locale } from '@/lib/i18n';
-import { getSectionHref } from '@/lib/routes';
-import { ButtonLink } from '@/components/ui/ButtonLink';
+import type { LocaleContent } from "@/content/locales/types";
+import type { Locale } from "@/lib/i18n";
+import { getSectionHref } from "@/lib/routes";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 
 const moduleAccents = [
-  'border-pmcs-maroon/20 bg-pmcs-maroon/[0.04] text-pmcs-maroon',
-  'border-pmcs-green/25 bg-pmcs-green/[0.06] text-pmcs-green',
-  'border-pmcs-gold/35 bg-pmcs-gold/[0.10] text-pmcs-maroon',
-  'border-pmcs-charcoal/10 bg-white/80 text-pmcs-charcoal',
+  "border-pmcs-maroon/20 bg-pmcs-maroon/[0.04] text-pmcs-maroon",
+  "border-pmcs-green/25 bg-pmcs-green/[0.06] text-pmcs-green",
+  "border-pmcs-gold/35 bg-pmcs-gold/[0.10] text-pmcs-maroon",
+  "border-pmcs-charcoal/10 bg-white/80 text-pmcs-charcoal",
 ];
 
 type HeroSectionProps = { dictionary: LocaleContent; locale: Locale };
@@ -31,8 +32,13 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
             {dictionary.hero.lead}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 [&>a]:w-full sm:[&>a]:w-auto">
-            <ButtonLink href={getSectionHref(locale, 'ecosystem')}>{dictionary.hero.primaryCta}</ButtonLink>
-            <ButtonLink href={getSectionHref(locale, 'contact')} variant="secondary">
+            <ButtonLink href={getSectionHref(locale, "ecosystem")}>
+              {dictionary.hero.primaryCta}
+            </ButtonLink>
+            <ButtonLink
+              href={getSectionHref(locale, "contact")}
+              variant="secondary"
+            >
               {dictionary.hero.secondaryCta}
             </ButtonLink>
           </div>
@@ -41,58 +47,78 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
           </p>
         </div>
 
-        <figure
-          className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-4 shadow-[0_32px_90px_rgba(43,43,43,0.13)] backdrop-blur sm:p-5 lg:max-w-none"
-          aria-label={dictionary.hero.imageAlt}
+        <ImageFrame
+          alt={dictionary.hero.imageAlt}
+          caption={dictionary.hero.imageCaption}
+          statusLabel={dictionary.hero.visual.statusLabel}
+          variant="platform"
+          className="mx-auto w-full max-w-xl lg:max-w-none"
+          contentClassName="p-5 sm:p-6"
         >
-          <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-pmcs-gold/70 to-transparent" />
-          <div className="relative overflow-hidden rounded-[1.55rem] border border-pmcs-line bg-[radial-gradient(circle_at_16%_12%,rgba(214,173,96,0.26),transparent_14rem),radial-gradient(circle_at_90%_0%,rgba(46,163,122,0.18),transparent_15rem),linear-gradient(145deg,#ffffff_0%,#fbf8f3_52%,#f6fbf8_100%)] p-5 sm:p-6">
-            <div className="absolute -left-12 top-10 h-32 w-32 rounded-full border border-pmcs-maroon/10" />
-            <div className="absolute -right-14 bottom-12 h-44 w-44 rounded-full border border-pmcs-green/15" />
-            <div className="relative flex min-h-[24rem] flex-col justify-between gap-5 sm:min-h-[27rem] lg:min-h-[31rem]">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-maroon">
-                    {dictionary.hero.visual.subheading}
-                  </p>
-                  <h2 className="mt-3 max-w-sm text-2xl font-black leading-tight tracking-[-0.035em] text-pmcs-charcoal sm:text-3xl">
-                    {dictionary.hero.visual.heading}
-                  </h2>
-                </div>
-                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-pmcs-gold/35 bg-pmcs-gold/15 text-sm font-black text-pmcs-maroon shadow-sm">
-                  {dictionary.nav.logoMark}
-                </div>
+          <div
+            className="absolute -left-12 top-10 h-32 w-32 rounded-full border border-pmcs-maroon/10"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute -right-14 bottom-12 h-44 w-44 rounded-full border border-pmcs-green/15"
+            aria-hidden="true"
+          />
+          <div className="relative flex min-h-[22rem] flex-col justify-between gap-5 sm:min-h-[26rem] lg:min-h-[30rem]">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-maroon">
+                  {dictionary.hero.visual.subheading}
+                </p>
+                <h2 className="mt-3 max-w-sm text-2xl font-black leading-tight tracking-[-0.035em] text-pmcs-charcoal sm:text-3xl">
+                  {dictionary.hero.visual.heading}
+                </h2>
               </div>
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-pmcs-gold/35 bg-pmcs-gold/15 text-sm font-black text-pmcs-maroon shadow-sm">
+                {dictionary.nav.logoMark}
+              </div>
+            </div>
 
-              <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-3 sm:gap-4">
-                <div className="absolute left-1/2 top-1/2 h-[calc(100%-2rem)] w-px -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-pmcs-gold/45 to-transparent" />
-                <div className="absolute left-1/2 top-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-pmcs-gold/45 to-transparent" />
-                {dictionary.hero.visual.modules.map((module, index) => (
+            <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-3 sm:gap-4">
+              <div
+                className="absolute left-1/2 top-1/2 h-[calc(100%-2rem)] w-px -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-pmcs-gold/45 to-transparent"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute left-1/2 top-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-pmcs-gold/45 to-transparent"
+                aria-hidden="true"
+              />
+              {dictionary.hero.visual.modules.map((module, index) => (
+                <div
+                  key={module.label}
+                  className={`relative min-h-28 rounded-3xl border p-4 shadow-[0_18px_50px_rgba(43,43,43,0.08)] backdrop-blur sm:min-h-32 ${moduleAccents[index % moduleAccents.length]}`}
+                >
                   <div
-                    key={module.label}
-                    className={`relative min-h-32 rounded-3xl border p-4 shadow-[0_18px_50px_rgba(43,43,43,0.08)] backdrop-blur ${moduleAccents[index % moduleAccents.length]}`}
-                  >
-                    <div className="mb-5 h-2 w-10 rounded-full bg-current opacity-70" />
-                    <p className="text-sm font-black leading-snug tracking-[-0.01em]">{module.label}</p>
-                    <p className="mt-2 text-xs font-semibold leading-5 text-pmcs-muted">{module.detail}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="rounded-2xl border border-pmcs-line bg-white/75 p-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-pmcs-green" />
-                  <figcaption className="text-xs font-bold uppercase leading-5 tracking-[0.16em] text-pmcs-muted">
-                    {dictionary.hero.imageCaption}
-                  </figcaption>
+                    className="mb-5 h-2 w-10 rounded-full bg-current opacity-70"
+                    aria-hidden="true"
+                  />
+                  <p className="text-sm font-black leading-snug tracking-[-0.01em]">
+                    {module.label}
+                  </p>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-pmcs-muted">
+                    {module.detail}
+                  </p>
                 </div>
-                <p className="mt-3 text-xs font-semibold leading-5 text-pmcs-charcoal/70">
+              ))}
+            </div>
+
+            <div className="rounded-2xl border border-pmcs-line bg-white/75 p-4 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span
+                  className="h-2.5 w-2.5 shrink-0 rounded-full bg-pmcs-green"
+                  aria-hidden="true"
+                />
+                <p className="text-xs font-bold uppercase leading-5 tracking-[0.16em] text-pmcs-muted">
                   {dictionary.hero.visual.disclosure}
                 </p>
               </div>
             </div>
           </div>
-        </figure>
+        </ImageFrame>
       </div>
     </section>
   );
