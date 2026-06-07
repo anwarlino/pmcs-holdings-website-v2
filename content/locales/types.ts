@@ -145,9 +145,24 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    cta: string;
-    imageAlt: string;
-    imageCaption: string;
+    readiness: Array<{ title: string; body: string }>;
+    form: {
+      aria: string;
+      eyebrow: string;
+      title: string;
+      intro: string;
+      fields: {
+        name: { label: string; placeholder: string };
+        organisation: { label: string; placeholder: string };
+        email: { label: string; placeholder: string };
+        inquiryType: { label: string; placeholder: string };
+        message: { label: string; placeholder: string };
+      };
+      inquiryOptions: string[];
+      submitLabel: string;
+      submitNote: string;
+    };
+    disclosure: string;
   };
   footer: {
     brandDescription: string;
