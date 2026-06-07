@@ -70,7 +70,7 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
               <div className="min-w-0 md:col-start-2 md:row-start-2">
                 <div className="rounded-[2rem] border border-pmcs-maroon/15 bg-white/95 p-6 text-center shadow-sm lg:px-7">
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-pmcs-green">{dictionary.iccr.frameworkLabel}</p>
-                  <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-pmcs-maroon md:text-3xl">{dictionary.iccr.frameworkTitle}</h3>
+                  <h3 className="mt-3 text-xl font-black tracking-[-0.03em] text-pmcs-maroon md:text-2xl">{dictionary.iccr.frameworkTitle}</h3>
                 </div>
               </div>
 
