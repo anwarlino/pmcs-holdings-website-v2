@@ -113,6 +113,14 @@ export type LocaleContent = {
     body: string;
     imageAlt: string;
     imageCaption: string;
+    plannedVisual: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      status: string;
+    };
+    readinessCards: Array<{ title: string; body: string }>;
+    note: string;
   };
   capital: {
     eyebrow: string;

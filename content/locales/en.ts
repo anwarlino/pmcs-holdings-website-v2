@@ -162,10 +162,23 @@ export const en: LocaleContent = {
   },
   supply: {
     eyebrow: 'Thailand supply base',
-    title: 'Production readiness coordinated through controlled, verification-led planning.',
-    body: 'Thailand supply-base planning is intended to support traceability, sustainability parameters and partner readiness. It should not be interpreted as completed infrastructure, full-scale operation or binding supply commitment.',
-    imageAlt: 'Placeholder visual for Thailand supply-base readiness planning',
-    imageCaption: 'Thailand supply-base imagery placeholder for Phase 1.',
+    title: 'A developing supply-readiness layer for verification-led corridor planning.',
+    body: 'Thailand-based supply readiness is being structured as an operating planning layer intended to organize production discipline, supply coordination, documentation logic and staged partner validation.',
+    imageAlt: 'Planned visual card reserving space for future Thailand supply-base documentation imagery',
+    imageCaption: 'Reserved for future Thailand production-base visual',
+    plannedVisual: {
+      eyebrow: 'Planned visual',
+      title: 'Reserved for future Thailand production-base visual',
+      body: 'Documentary imagery of farm readiness, supply coordination, traceability context and documentation discipline.',
+      status: 'Image to be added only after appropriate review and approval.',
+    },
+    readinessCards: [
+      { title: 'Production readiness', body: 'Planned operating structure and readiness discipline.' },
+      { title: 'Farm / supply coordination', body: 'Coordinated supply workflow subject to partner validation.' },
+      { title: 'Traceability & documentation', body: 'Documentation and record logic for future verification.' },
+      { title: 'Partner validation / quality pathway', body: 'Quality pathway prepared for staged partner review.' },
+    ],
+    note: 'Supply readiness remains subject to verification, documentation, partner validation and applicable approvals.',
   },
   capital: {
     eyebrow: 'Capital and partnerships',
