@@ -80,7 +80,7 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
                     {pillar.icon}
                   </div>
                   <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-pmcs-gold">{String(index + 1).padStart(2, '0')}</p>
-                  <h4 className="mt-2 min-w-0 whitespace-normal break-words text-sm font-black leading-snug tracking-[-0.01em] text-pmcs-charcoal md:text-base">{pillar.title}</h4>
+                  <h4 className="mt-2 min-w-0 whitespace-normal break-words text-[0.78rem] font-black leading-[1.15] tracking-[-0.01em] text-pmcs-charcoal md:text-[0.8rem] lg:text-[0.82rem]">{pillar.title}</h4>
                 </article>
               ))}
             </div>
