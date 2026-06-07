@@ -24,6 +24,14 @@ const readinessSegmentClasses = [
   'bg-pmcs-charcoal/30',
 ];
 
+const tileGridClasses = [
+  'lg:col-span-2',
+  'lg:col-span-2',
+  'lg:col-span-2',
+  'lg:col-span-2 lg:col-start-2',
+  'lg:col-span-2 lg:col-start-4',
+];
+
 export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleContent }) {
   return (
     <section id="capital" className="relative overflow-hidden bg-pmcs-light py-20 sm:py-24">
@@ -37,21 +45,23 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
         <div className="mt-12 overflow-hidden rounded-[2rem] border border-pmcs-line bg-white shadow-pmcs sm:rounded-[2.5rem]">
           <div className="relative overflow-hidden border-b border-white/10 bg-pmcs-charcoal px-5 py-5 text-white sm:px-7 lg:px-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(214,173,96,0.24),transparent_34%),linear-gradient(135deg,rgba(138,21,56,0.74),rgba(43,43,43,0.96)_58%,rgba(100,16,39,0.92))] rtl:bg-[radial-gradient(circle_at_top_left,rgba(214,173,96,0.24),transparent_34%),linear-gradient(225deg,rgba(138,21,56,0.74),rgba(43,43,43,0.96)_58%,rgba(100,16,39,0.92))]" aria-hidden="true" />
-            <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-              <div className="min-w-0">
-                <div className="mb-4 flex gap-2" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full bg-pmcs-gold" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-white/45" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-pmcs-green" />
+            <div className="relative flex flex-col gap-5">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div className="min-w-0">
+                  <div className="mb-4 flex gap-2" aria-hidden="true">
+                    <span className="h-2.5 w-2.5 rounded-full bg-pmcs-gold" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-white/45" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-pmcs-green" />
+                  </div>
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-gold">{dictionary.capital.dashboard.kicker}</p>
+                  <h3 className="mt-2 text-2xl font-black tracking-[-0.03em] sm:text-3xl">{dictionary.capital.dashboard.title}</h3>
                 </div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-gold">{dictionary.capital.dashboard.kicker}</p>
-                <h3 className="mt-2 text-2xl font-black tracking-[-0.03em] sm:text-3xl">{dictionary.capital.dashboard.title}</h3>
-                <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-white/72">{dictionary.capital.dashboard.subtitle}</p>
+                <p className="max-w-md rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-semibold leading-6 text-white/76 shadow-sm backdrop-blur-sm lg:text-end rtl:lg:text-start">{dictionary.capital.dashboard.subtitle}</p>
               </div>
 
-              <div className="grid gap-2 sm:grid-cols-2 lg:w-[28rem]" aria-label={dictionary.capital.dashboard.statusClusterLabel}>
+              <div className="flex flex-wrap gap-2" aria-label={dictionary.capital.dashboard.statusClusterLabel}>
                 {dictionary.capital.dashboard.statusCluster.map((status, index) => (
-                  <div key={status} className="flex min-w-0 items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase leading-5 tracking-[0.11em] text-white/88 shadow-sm backdrop-blur-sm">
+                  <div key={status} className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[0.72rem] font-bold uppercase leading-5 tracking-[0.04em] text-white/88 shadow-sm backdrop-blur-sm sm:px-4">
                     <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${readinessSegmentClasses[index % readinessSegmentClasses.length]}`} aria-hidden="true" />
                     <span className="min-w-0 break-words">{status}</span>
                   </div>
@@ -63,30 +73,15 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
           <div className="relative bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(247,248,250,0.94))] p-5 sm:p-7 lg:p-8">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(100,112,122,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(100,112,122,0.08)_1px,transparent_1px)] bg-[size:36px_36px] opacity-45" aria-hidden="true" />
 
-            <div className="relative grid gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
-              <aside className="rounded-[1.75rem] border border-pmcs-maroon/15 bg-gradient-to-br from-pmcs-charcoal to-pmcs-maroonDark p-5 text-white shadow-[0_22px_60px_rgba(43,43,43,0.16)]">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-pmcs-gold">{dictionary.capital.dashboard.consoleLabel}</p>
-                <p className="mt-3 text-sm font-semibold leading-6 text-white/76">{dictionary.capital.dashboard.consoleNote}</p>
-                <div className="mt-6 space-y-3">
-                  {dictionary.capital.dashboard.statusCluster.map((status, index) => (
-                    <div key={`${status}-rail`} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-3 py-3">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/30 bg-white/10 text-[0.68rem] font-black text-pmcs-gold">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className="text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/84">{status}</span>
-                    </div>
-                  ))}
-                </div>
-              </aside>
-
-              <div className="grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <div className="relative">
+              <div className="grid min-w-0 gap-4 md:grid-cols-2 lg:grid-cols-6">
                 {dictionary.capital.dashboard.tiles.map((tile, index) => (
                   <article
                     key={tile.title}
-                    className="group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-pmcs-line bg-white/94 p-5 shadow-[0_18px_45px_rgba(43,43,43,0.06)] transition duration-200 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-within:border-pmcs-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    className={`group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-pmcs-line bg-white/95 p-5 shadow-[0_18px_45px_rgba(43,43,43,0.06)] transition duration-200 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-within:border-pmcs-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${tileGridClasses[index % tileGridClasses.length]}`}
                   >
                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-pmcs-maroon via-pmcs-gold to-pmcs-green opacity-75 rtl:bg-gradient-to-l" aria-hidden="true" />
-                    <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${tileIconClasses[index % tileIconClasses.length]} text-white shadow-sm`} aria-hidden="true">
                         <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
                           <path d="M5 18V7.5A2.5 2.5 0 0 1 7.5 5H18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -94,7 +89,7 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
                           <circle cx="17.5" cy="9" r="2.25" stroke="currentColor" strokeWidth="1.6" />
                         </svg>
                       </div>
-                      <span className={`min-w-0 max-w-full whitespace-normal break-words rounded-full border px-3 py-1 text-start text-[0.68rem] font-black uppercase leading-5 tracking-[0.12em] ${tileAccents[index % tileAccents.length]}`}>
+                      <span className={`inline-flex max-w-full items-center rounded-full border px-3 py-1 text-start text-[0.7rem] font-bold uppercase leading-5 tracking-[0.04em] ${tileAccents[index % tileAccents.length]}`}>
                         {tile.status}
                       </span>
                     </div>
