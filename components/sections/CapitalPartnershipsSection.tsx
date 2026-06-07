@@ -114,21 +114,23 @@ export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleC
                 <p className="max-w-xl text-sm leading-6 text-pmcs-muted">{dictionary.capital.pathway.note}</p>
               </div>
 
-              <ol className="mt-6 grid gap-4 lg:grid-cols-5" aria-label={dictionary.capital.pathway.ariaLabel}>
+              <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_1.5rem_minmax(0,1fr)_1.5rem_minmax(0,1fr)_1.5rem_minmax(0,1fr)_1.5rem_minmax(0,1fr)] lg:items-center lg:gap-0" role="list" aria-label={dictionary.capital.pathway.ariaLabel}>
                 {dictionary.capital.pathway.steps.map((step, index) => (
-                  <li key={step} className="relative min-w-0">
-                    <div className="flex h-full items-center gap-4 rounded-2xl border border-pmcs-line bg-pmcs-light/70 p-4 transition duration-200 hover:border-pmcs-gold/60 hover:bg-white motion-reduce:transition-none lg:flex-col lg:items-start lg:gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/45 bg-white text-sm font-black text-pmcs-maroon shadow-sm">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className="text-sm font-black leading-6 text-pmcs-charcoal">{step}</span>
+                  <div key={step} className="contents">
+                    <div className="min-w-0" role="listitem">
+                      <div className="flex h-full items-center gap-4 rounded-2xl border border-pmcs-line bg-pmcs-light/70 p-4 transition duration-200 hover:border-pmcs-gold/60 hover:bg-white motion-reduce:transition-none lg:flex-col lg:items-start lg:gap-3">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/45 bg-white text-sm font-black text-pmcs-maroon shadow-sm">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="text-sm font-black leading-6 text-pmcs-charcoal">{step}</span>
+                      </div>
                     </div>
                     {index < dictionary.capital.pathway.steps.length - 1 ? (
-                      <span className="absolute left-9 top-full h-4 w-px bg-pmcs-gold/40 lg:left-auto lg:right-[-0.5rem] lg:top-1/2 lg:h-px lg:w-4 rtl:lg:left-[-0.5rem] rtl:lg:right-auto" aria-hidden="true" />
+                      <span className="hidden h-px w-4 justify-self-center rounded-full bg-pmcs-gold/40 lg:block" aria-hidden="true" />
                     ) : null}
-                  </li>
+                  </div>
                 ))}
-              </ol>
+              </div>
             </div>
 
             <div className="relative mt-7 rounded-[1.5rem] border border-pmcs-gold/35 bg-pmcs-gold/10 px-5 py-4 shadow-sm">
