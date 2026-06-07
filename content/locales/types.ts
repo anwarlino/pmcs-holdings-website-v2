@@ -145,15 +145,23 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    cta: string;
-    ctaNote: string;
-    gatewayAria: string;
-    gatewayLabel: string;
-    gatewayTitle: string;
-    gatewayBody: string;
-    pathway: Array<{ title: string; body: string }>;
     readiness: Array<{ title: string; body: string }>;
-    disclosureLabel: string;
+    form: {
+      aria: string;
+      eyebrow: string;
+      title: string;
+      intro: string;
+      fields: {
+        name: { label: string; placeholder: string };
+        organisation: { label: string; placeholder: string };
+        email: { label: string; placeholder: string };
+        inquiryType: { label: string; placeholder: string };
+        message: { label: string; placeholder: string };
+      };
+      inquiryOptions: string[];
+      submitLabel: string;
+      submitNote: string;
+    };
     disclosure: string;
   };
   footer: {
