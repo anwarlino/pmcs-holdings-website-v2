@@ -91,7 +91,7 @@ export const en: LocaleContent = {
     secondaryCta: 'Contact section',
     note: 'Informational website only. The content does not present PMCS Holdings as a generic agriculture seller, commodity exporter, investment product, completed operating platform, secured financing vehicle or binding offtake arrangement.',
     imageAlt: 'Abstract platform-readiness card for a Singapore-led institutional food-security corridor concept',
-    imageCaption: 'Platform readiness placeholder; approved imagery may be added in a later phase.',
+    imageCaption: 'Platform readiness placeholder; reviewed imagery may be added in a later phase.',
     visual: {
       heading: 'Platform readiness view',
       subheading: 'Singapore-led coordination layer',
@@ -102,6 +102,7 @@ export const en: LocaleContent = {
         { label: 'GCC engagement', detail: 'Subject to final documentation' },
       ],
       disclosure: 'Conceptual readiness map only',
+      statusLabel: 'Planning visual',
     },
   },
   alignment: {
@@ -170,7 +171,7 @@ export const en: LocaleContent = {
       eyebrow: 'Planned visual',
       title: 'Reserved for future Thailand production-base visual',
       body: 'Documentary imagery of farm readiness, supply coordination, traceability context and documentation discipline.',
-      status: 'Image to be added only after appropriate review and approval.',
+      status: 'Reserved for imagery subject to verification',
     },
     readinessCards: [
       { title: 'Production readiness', body: 'Planned operating structure and readiness discipline.' },
@@ -213,6 +214,7 @@ export const en: LocaleContent = {
     body: 'Governance is positioned as the control layer that keeps platform language disciplined, documented and subject to validation before approvals, partner references or formal commitments are represented as complete.',
     frameworkAria: 'Governance control architecture showing claim control, documentation discipline, partner validation, approval boundaries and public representation controls',
     visualCaption: 'Reserved for future governance visual: documentation discipline, validation workflow and approval-control context.',
+    visualStatus: 'Validation workflow',
     central: {
       eyebrow: 'Control architecture',
       title: 'Governance Control Layer',

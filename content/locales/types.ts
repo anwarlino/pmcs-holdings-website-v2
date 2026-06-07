@@ -66,6 +66,7 @@ export type LocaleContent = {
       subheading: string;
       modules: Array<{ label: string; detail: string }>;
       disclosure: string;
+      statusLabel: string;
     };
   };
   alignment: {
@@ -149,6 +150,7 @@ export type LocaleContent = {
     body: string;
     frameworkAria: string;
     visualCaption: string;
+    visualStatus: string;
     central: { eyebrow: string; title: string; body: string };
     nodes: Array<{ title: string; body: string }>;
     checklistTitle: string;
