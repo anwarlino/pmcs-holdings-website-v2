@@ -21,16 +21,16 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.04fr_0.96fr] lg:items-stretch">
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:items-stretch">
           <div
             className="relative rounded-[2.5rem] border border-pmcs-maroon/10 bg-[radial-gradient(circle_at_center,rgba(122,31,43,0.10),transparent_34%),linear-gradient(135deg,#ffffff,rgba(247,244,238,0.92))] p-5 shadow-[0_24px_70px_rgba(31,31,31,0.08)] md:p-8"
             aria-label={dictionary.iccr.frameworkAria}
           >
             <div className="absolute inset-6 rounded-full border border-pmcs-gold/25 opacity-70" aria-hidden="true" />
             <div className="absolute inset-12 rounded-full border border-pmcs-green/15 opacity-70" aria-hidden="true" />
-            <div className="relative grid gap-4 md:grid-cols-3 md:grid-rows-[auto_auto_auto] md:items-center">
-              <div className="md:col-start-2 md:row-start-2">
-                <div className="rounded-[2rem] border border-pmcs-maroon/15 bg-white/95 p-6 text-center shadow-sm">
+            <div className="relative grid gap-4 md:grid-cols-3 md:grid-rows-[auto_auto_auto] md:items-center lg:gap-5">
+              <div className="min-w-0 md:col-start-2 md:row-start-2">
+                <div className="rounded-[2rem] border border-pmcs-maroon/15 bg-white/95 p-6 text-center shadow-sm lg:px-7">
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-pmcs-green">{dictionary.iccr.frameworkLabel}</p>
                   <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-pmcs-maroon md:text-3xl">{dictionary.iccr.frameworkTitle}</h3>
                   <p className="mt-4 text-sm leading-7 text-pmcs-muted">{dictionary.iccr.frameworkBody}</p>
@@ -38,12 +38,12 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
               </div>
 
               {pillars.map((pillar, index) => (
-                <article key={pillar.title} className={`${diagramPositions[index]} rounded-[1.5rem] border border-pmcs-line bg-white/90 p-5 shadow-sm backdrop-blur-sm`}>
-                  <div className="flex items-center gap-3">
+                <article key={pillar.title} className={`${diagramPositions[index]} min-w-0 rounded-[1.5rem] border border-pmcs-line bg-white/90 p-5 shadow-sm backdrop-blur-sm lg:px-6`}>
+                  <div className="flex min-w-0 items-center gap-3">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/35 bg-pmcs-gold/10 text-xs font-black text-pmcs-maroon">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <h4 className="text-sm font-black tracking-[-0.01em] text-pmcs-charcoal md:text-base">{pillar.title}</h4>
+                    <h4 className="min-w-0 whitespace-normal break-words text-sm font-black leading-snug tracking-[-0.01em] text-pmcs-charcoal md:text-base">{pillar.title}</h4>
                   </div>
                 </article>
               ))}
