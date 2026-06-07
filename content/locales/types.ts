@@ -98,10 +98,14 @@ export type LocaleContent = {
   iccr: {
     eyebrow: string;
     title: string;
-    pillars: string[];
+    body: string;
+    frameworkAria: string;
+    frameworkLabel: string;
+    frameworkTitle: string;
+    frameworkBody: string;
+    pillars: Array<{ title: string; body: string }>;
+    noteLabel: string;
     note: string;
-    imageAlt: string;
-    imageCaption: string;
   };
   supply: {
     eyebrow: string;
