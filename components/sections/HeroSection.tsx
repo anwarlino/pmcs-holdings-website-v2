@@ -17,9 +17,11 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
   return (
     <section
       id="overview"
-      className="relative isolate overflow-hidden bg-[linear-gradient(135deg,#fff_0%,#fbf8f2_46%,#f4faf7_100%)] py-14 sm:py-16 md:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-[#f7f4ec] py-14 sm:py-16 md:py-20 lg:py-24"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_16%_18%,rgba(138,21,56,0.10),transparent_24rem),radial-gradient(circle_at_86%_12%,rgba(46,163,122,0.16),transparent_28rem),linear-gradient(90deg,rgba(43,43,43,0.045)_1px,transparent_1px),linear-gradient(180deg,rgba(43,43,43,0.035)_1px,transparent_1px)] bg-[size:auto,auto,4.5rem_4.5rem,4.5rem_4.5rem]" />
+      <div className="pointer-events-none absolute inset-0 -z-30 bg-[url('/assets/hero/pmcs-singapore-food-security-platform-hero-background.webp')] bg-cover bg-center opacity-75" />
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,255,255,0.88)_0%,rgba(255,255,255,0.72)_42%,rgba(255,255,255,0.34)_100%),radial-gradient(circle_at_16%_18%,rgba(138,21,56,0.10),transparent_24rem),radial-gradient(circle_at_86%_12%,rgba(46,163,122,0.12),transparent_28rem)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(43,43,43,0.035)_1px,transparent_1px),linear-gradient(180deg,rgba(43,43,43,0.03)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem]" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,1.02fr)_minmax(21rem,0.98fr)] lg:gap-14 xl:gap-16">
         <div className="max-w-3xl lg:max-w-none">
           <p className="mb-5 inline-flex rounded-full border border-pmcs-green/20 bg-white/70 px-4 py-2 text-[0.68rem] font-black uppercase tracking-[0.24em] text-pmcs-green shadow-sm backdrop-blur">
