@@ -194,6 +194,7 @@ export const en: LocaleContent = {
     title: 'A claim-control layer for institutional representation before final commitments.',
     body: 'Governance is positioned as the control layer that keeps platform language disciplined, documented and subject to validation before approvals, partner references or formal commitments are represented as complete.',
     frameworkAria: 'Governance control architecture showing claim control, documentation discipline, partner validation, approval boundaries and public representation controls',
+    visualCaption: 'Reserved for future governance visual: documentation discipline, validation workflow and approval-control context.',
     central: {
       eyebrow: 'Control architecture',
       title: 'Governance Control Layer',
