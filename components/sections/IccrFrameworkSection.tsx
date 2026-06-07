@@ -1,14 +1,52 @@
 import type { LocaleContent } from '@/content/locales/types';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
+const diagramPillars = [
+  {
+    title: 'Carbon Input',
+    position: 'md:col-start-2 md:row-start-1',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <path d="M5 7h14M5 12h14M5 17h14" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+        <path d="M9 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM12 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Carbon Transformation',
+    position: 'md:col-start-3 md:row-start-2',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <path d="M17.8 7.6A7.3 7.3 0 0 0 6.7 6.4L5.3 8.1M5.1 4.8v3.7h3.7M6.2 16.4a7.3 7.3 0 0 0 11.1 1.2l1.4-1.7M18.9 20.2v-3.7h-3.7" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        <path d="M12 8.6 14.9 12 12 15.4 9.1 12 12 8.6Z" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Carbon Output',
+    position: 'md:col-start-2 md:row-start-3',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <path d="M8.3 17.5H17a4 4 0 0 0 .6-8 5.8 5.8 0 0 0-11.2 1.4A3.8 3.8 0 0 0 8.3 17.5Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        <path d="m10 13.4 1.8 1.8 4-4.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Carbon Finance',
+    position: 'md:col-start-1 md:row-start-2',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <path d="M7.5 18.5h9M9 18.5V14m3 4.5V10m3 8.5V12.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+        <path d="M8.4 8.1a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2ZM16.6 9.7a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="m10.7 6.2 3.8 1.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.6" />
+      </svg>
+    ),
+  },
+];
+
 export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent }) {
   const pillars = dictionary.iccr.pillars;
-  const diagramPositions = [
-    'md:col-start-2 md:row-start-1',
-    'md:col-start-3 md:row-start-2',
-    'md:col-start-2 md:row-start-3',
-    'md:col-start-1 md:row-start-2',
-  ];
 
   return (
     <section id="iccr" className="overflow-hidden bg-white py-20 md:py-24">
@@ -33,18 +71,16 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
                 <div className="rounded-[2rem] border border-pmcs-maroon/15 bg-white/95 p-6 text-center shadow-sm lg:px-7">
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-pmcs-green">{dictionary.iccr.frameworkLabel}</p>
                   <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-pmcs-maroon md:text-3xl">{dictionary.iccr.frameworkTitle}</h3>
-                  <p className="mt-4 text-sm leading-7 text-pmcs-muted">{dictionary.iccr.frameworkBody}</p>
                 </div>
               </div>
 
-              {pillars.map((pillar, index) => (
-                <article key={pillar.title} className={`${diagramPositions[index]} min-w-0 rounded-[1.5rem] border border-pmcs-line bg-white/90 p-5 shadow-sm backdrop-blur-sm lg:px-6`}>
-                  <div className="flex min-w-0 items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pmcs-gold/35 bg-pmcs-gold/10 text-xs font-black text-pmcs-maroon">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <h4 className="min-w-0 whitespace-normal break-words text-sm font-black leading-snug tracking-[-0.01em] text-pmcs-charcoal md:text-base">{pillar.title}</h4>
+              {diagramPillars.map((pillar, index) => (
+                <article key={pillar.title} className={`${pillar.position} min-w-0 rounded-[1.5rem] border border-pmcs-line bg-white/90 p-5 text-center shadow-sm backdrop-blur-sm lg:px-6`}>
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-pmcs-green/15 bg-pmcs-green/10 text-pmcs-green shadow-sm">
+                    {pillar.icon}
                   </div>
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-pmcs-gold">{String(index + 1).padStart(2, '0')}</p>
+                  <h4 className="mt-2 min-w-0 whitespace-normal break-words text-sm font-black leading-snug tracking-[-0.01em] text-pmcs-charcoal md:text-base">{pillar.title}</h4>
                 </article>
               ))}
             </div>
