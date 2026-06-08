@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
 const HERO_BACKGROUND_IMAGE =
   "/assets/hero/pmcs-singapore-food-security-platform-hero-background.webp";
 
-const MAX_DESKTOP_TRANSLATE_Y = 20;
-const DESKTOP_SCALE = 1.08;
+const MAX_DESKTOP_TRANSLATE_Y = 40;
+const DESKTOP_SCALE = 1.15;
 const MOBILE_SCALE = 1.06;
 
 export function HeroParallaxBackground() {
@@ -87,7 +87,7 @@ export function HeroParallaxBackground() {
     >
       <div
         ref={backgroundRef}
-        className="absolute inset-[-2rem] bg-cover bg-center opacity-[0.16] sm:opacity-[0.18] md:opacity-[0.2] lg:bg-[center_top] lg:opacity-[0.22]"
+        className="absolute inset-[-3rem] bg-cover bg-[45%_50%] opacity-[0.26] sm:opacity-[0.32] md:opacity-[0.42] lg:opacity-[0.56]"
         style={{
           backgroundImage: `url(${HERO_BACKGROUND_IMAGE})`,
           transform: `translate3d(0, 0, 0) scale(${MOBILE_SCALE})`,
