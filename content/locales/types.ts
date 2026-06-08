@@ -73,8 +73,23 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    coordination: { eyebrow: string; title: string; body: string };
-    cards: Array<{ number: string; title: string; body: string }>;
+    modalCloseLabel: string;
+    modalKeyPointsLabel: string;
+    modalClaimLabel: string;
+    cards: Array<{
+      number: string;
+      eyebrow: string;
+      title: string;
+      body: string;
+      cta: string;
+      imageAlt: string;
+      cardImage: string;
+      modalImage: string;
+      subtitle: string;
+      expandedBody: string;
+      keyPoints: string[];
+      claimNote: string;
+    }>;
     controlsLabel: string;
     controls: string[];
   };
