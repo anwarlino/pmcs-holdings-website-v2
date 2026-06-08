@@ -9,11 +9,11 @@
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
-  scroll-padding-top: clamp(7rem, 12vw, 9rem);
+  scroll-padding-top: clamp(8rem, 14vw, 10rem);
 }
 
 [id] {
-  scroll-margin-top: clamp(7rem, 12vw, 9rem);
+  scroll-margin-top: clamp(8rem, 14vw, 10rem);
 }
 
 body {
@@ -47,7 +47,9 @@ summary::-webkit-details-marker {
 }
 
 html.pmcs-nav-locked,
-body.pmcs-nav-locked {
+body.pmcs-nav-locked,
+html.pmcs-modal-locked,
+body.pmcs-modal-locked {
   overflow: hidden;
   overscroll-behavior: none;
 }

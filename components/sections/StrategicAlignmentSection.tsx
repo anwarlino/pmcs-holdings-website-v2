@@ -26,14 +26,14 @@ export function StrategicAlignmentSection({ dictionary }: { dictionary: LocaleCo
 
   useEffect(() => {
     if (!activeCard) {
-      document.documentElement.classList.remove('pmcs-nav-locked');
-      document.body.classList.remove('pmcs-nav-locked');
+      document.documentElement.classList.remove('pmcs-modal-locked');
+      document.body.classList.remove('pmcs-modal-locked');
       lastFocusedElementRef.current?.focus();
       return;
     }
 
-    document.documentElement.classList.add('pmcs-nav-locked');
-    document.body.classList.add('pmcs-nav-locked');
+    document.documentElement.classList.add('pmcs-modal-locked');
+    document.body.classList.add('pmcs-modal-locked');
     closeButtonRef.current?.focus();
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -69,8 +69,8 @@ export function StrategicAlignmentSection({ dictionary }: { dictionary: LocaleCo
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.documentElement.classList.remove('pmcs-nav-locked');
-      document.body.classList.remove('pmcs-nav-locked');
+      document.documentElement.classList.remove('pmcs-modal-locked');
+      document.body.classList.remove('pmcs-modal-locked');
     };
   }, [activeCard]);
 
@@ -111,15 +111,15 @@ export function StrategicAlignmentSection({ dictionary }: { dictionary: LocaleCo
       </div>
 
       {activeCard ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden bg-pmcs-charcoal/58 px-3 py-5 backdrop-blur-sm sm:px-6" onMouseDown={closeModal}>
+        <div className="fixed inset-0 z-[90] flex items-center justify-center overflow-x-hidden bg-pmcs-charcoal/58 px-3 py-4 backdrop-blur-sm sm:px-6 sm:py-6" onPointerDown={closeModal}>
           <div
             ref={modalPanelRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="alignment-modal-title"
             aria-describedby="alignment-modal-description"
-            className="relative max-h-[90dvh] w-full max-w-5xl overflow-x-hidden overflow-y-auto rounded-[1.75rem] border border-white/70 bg-[#fffaf1] shadow-[0_36px_120px_rgba(31,31,31,0.38)] outline-none sm:max-h-[90vh] sm:rounded-[2.25rem]"
-            onMouseDown={(event) => event.stopPropagation()}
+            className="relative max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-x-hidden overflow-y-auto overscroll-contain rounded-[1.75rem] border border-white/70 bg-[#fffaf1] shadow-[0_36px_120px_rgba(31,31,31,0.38)] outline-none sm:max-h-[calc(100dvh-3rem)] sm:rounded-[2.25rem]"
+            onPointerDown={(event) => event.stopPropagation()}
           >
             <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-pmcs-gold to-transparent" aria-hidden="true" />
             <div className="pointer-events-none absolute -right-16 top-16 h-52 w-52 rounded-full bg-pmcs-gold/18 blur-3xl rtl:left-[-4rem] rtl:right-auto" aria-hidden="true" />
@@ -129,7 +129,7 @@ export function StrategicAlignmentSection({ dictionary }: { dictionary: LocaleCo
               ref={closeButtonRef}
               type="button"
               onClick={closeModal}
-              className="pmcs-motion absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-pmcs-line bg-white/90 text-xl font-black leading-none text-pmcs-maroon shadow-sm transition duration-200 hover:border-pmcs-gold hover:bg-white focus-visible:pmcs-focus-ring motion-reduce:transition-none rtl:left-4 rtl:right-auto"
+              className="pmcs-motion sticky top-4 z-20 float-right mr-4 mt-4 -mb-14 inline-flex h-10 w-10 items-center justify-center rounded-full border border-pmcs-line bg-white/95 text-xl font-black leading-none text-pmcs-maroon shadow-sm backdrop-blur transition duration-200 hover:border-pmcs-gold hover:bg-white focus-visible:pmcs-focus-ring motion-reduce:transition-none rtl:float-left rtl:ml-4 rtl:mr-0"
               aria-label={dictionary.alignment.modalCloseLabel}
             >
               ×
