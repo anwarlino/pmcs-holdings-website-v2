@@ -3,7 +3,7 @@ import type { LocaleContent } from './types';
 export const en: LocaleContent = {
   meta: {
     title: 'PMCS Holdings | Singapore-Led Food Security Platform',
-    description: 'PMCS Holdings is a Singapore-led food-security, sustainability, governance, and structured finance readiness platform under development for a Thailand-to-GCC corridor concept.',
+    description: 'PMCS Holdings is a Singapore-led food-security, sustainability, governance, and finance-readiness planning platform under development for a Thailand-to-GCC corridor concept.',
     keywords: ['PMCS Holdings', 'food security', 'sustainability', 'Singapore governance', 'Thailand supply readiness', 'GCC corridor'],
   },
   language: {
@@ -57,7 +57,7 @@ export const en: LocaleContent = {
         {
           eyebrow: 'Institutional controls',
           heading: 'Capital and governance',
-          description: 'Access claim-controlled information on finance readiness, counterparties and compliance positioning.',
+          description: 'Access claim-controlled information on capital-readiness planning, potential counterparties and compliance positioning.',
           links: [
             { label: 'Capital & Partnerships', href: 'capital', description: 'Planning concepts only, without investment solicitation.' },
             { label: 'Governance', href: 'governance', description: 'Compliance-first positioning for a platform under development.' },
@@ -76,7 +76,7 @@ export const en: LocaleContent = {
         {
           eyebrow: 'Claim control',
           title: 'Subject to verification',
-          description: 'Menu copy remains informational and does not claim secured financing, issued credits or binding offtake arrangements.',
+          description: 'Menu copy remains informational and does not claim secured financing, issued carbon credits or binding offtake arrangements.',
           placeholderAria: 'Verification placeholder modules',
           placeholderLabels: ['Review', 'Approval', 'Documentation'],
         },
@@ -89,7 +89,7 @@ export const en: LocaleContent = {
     lead: 'PMCS Holdings is being structured as a cautious platform concept intended to align Singapore-led governance, Thailand-based production readiness, sustainability controls and GCC food-security engagement through a verification-led corridor approach.',
     primaryCta: 'Explore platform concept',
     secondaryCta: 'Contact section',
-    note: 'Informational website only. The content does not present PMCS Holdings as a generic agriculture seller, commodity exporter, investment product, completed operating platform, secured financing vehicle or binding offtake arrangement.',
+    note: 'Informational website only. The content presents PMCS Holdings as a platform-readiness concept under development and does not represent an agriculture seller, commodity exporter, investment product, completed operating platform, secured financing vehicle or binding offtake arrangement.',
     imageAlt: 'Abstract platform-readiness card for a Singapore-led institutional food-security corridor concept',
     imageCaption: 'Platform readiness placeholder; reviewed imagery may be added in a later phase.',
     visual: {
@@ -127,7 +127,7 @@ export const en: LocaleContent = {
   ecosystem: {
     eyebrow: 'Platform ecosystem',
     title: 'A coordinated platform architecture being structured for corridor readiness.',
-    body: 'PMCS Holdings is presented as a developing business-and-finance platform concept intended to connect governance discipline, Thailand-based supply readiness, ICCR-aligned sustainability controls, finance-readiness planning and GCC food-security engagement. The section describes a planning layer only and does not claim completed operations, secured financing, issued credits or binding offtake.',
+    body: 'PMCS Holdings is presented as a developing planning-and-coordination platform concept intended to connect governance discipline, Thailand-based supply readiness, ICCR-aligned sustainability controls, finance-readiness planning and GCC food-security engagement. The section describes a planning layer only and does not claim completed operations, secured financing, issued carbon credits or binding offtake.',
     architectureLabel: 'Conceptual platform ecosystem architecture linking governance, Thailand supply readiness, sustainability controls, capital readiness and GCC engagement',
     central: {
       eyebrow: 'Coordinating layer',
@@ -137,7 +137,7 @@ export const en: LocaleContent = {
     modules: [
       { label: 'A', title: 'Governance and claim control', body: 'Cautious disclosures, approval boundaries and documentation discipline guide how the platform concept is communicated.' },
       { label: 'B', title: 'Thailand supply readiness', body: 'Production and supply planning is being structured around traceability, partner validation and readiness checks subject to verification.' },
-      { label: 'C', title: 'ICCR / sustainability controls', body: 'Operating principles are intended to align with ICCR-style sustainability discipline where applicable, without claiming issued credits or certified net zero.' },
+      { label: 'C', title: 'ICCR / sustainability controls', body: 'Operating principles are intended to align with ICCR-style sustainability discipline where applicable, without claiming issued carbon credits or certified net zero.' },
       { label: 'D', title: 'Capital readiness pathway', body: 'Finance-readiness focuses on diligence, structuring inputs and final documentation; it is not a completed investment product or secured financing claim.' },
       { label: 'E', title: 'GCC engagement planning', body: 'Corridor engagement is framed as food-security alignment planning, with market access and offtake subject to counterparties and final documentation.' },
     ],
@@ -146,7 +146,7 @@ export const en: LocaleContent = {
   },
   iccr: {
     eyebrow: 'ICCR framework',
-    title: 'Integrated Carbon Circular Ranching as a planning layer for operating discipline.',
+    title: 'Integrated Carbon Circular Ranching as a planning layer for intended operating discipline.',
     body: 'ICCR — Integrated Carbon Circular Ranching — is being developed as a framework intended to organize sustainability-linked controls across carbon management, resource circularity and finance-readiness workstreams, subject to measurement, verification and final documentation.',
     frameworkAria: 'CSS-only ICCR framework diagram connecting four planning pillars around the central ICCR framework',
     frameworkLabel: 'Planning framework',
@@ -156,7 +156,7 @@ export const en: LocaleContent = {
       { title: 'Carbon Input Control', body: 'Defines planned controls for feed, energy, water and operating inputs so sustainability assumptions can be documented and tested where applicable.' },
       { title: 'Carbon Transformation', body: 'Organizes resource circularity planning around manure, biomass, nutrients and process flows that remain subject to technical validation.' },
       { title: 'Carbon Output Neutralization', body: 'Frames emissions, waste and residual-output pathways for MRV development, mitigation planning and partner review before any claims are made.' },
-      { title: 'Carbon Finance Integration', body: 'Prepares diligence inputs for sustainability-linked finance concepts, with any credits, revenues or ESG claims subject to verification and approvals.' },
+      { title: 'Carbon Finance Integration', body: 'Prepares diligence inputs for sustainability-linked finance concepts, with any credits, finance outcomes or ESG claims subject to verification, partner validation and applicable approvals.' },
     ],
     noteLabel: 'MRV and claim-control discipline',
     note: 'Carbon, MRV, credit, finance and ESG statements require measurement, partner validation, independent verification where applicable, regulatory approval where required and final documentation. The framework does not claim certified net zero, issued carbon credits or verified emission reductions.',
@@ -192,7 +192,7 @@ export const en: LocaleContent = {
       statusClusterLabel: 'Capital readiness status cluster',
       statusCluster: ['Planning', 'Documentation required', 'Subject to validation', 'Approval where applicable'],
       tiles: [
-        { title: 'Capital readiness', status: 'Planning', description: 'Readiness concept for capital access, subject to verification and final documentation.' },
+        { title: 'Capital readiness', status: 'Planning', description: 'Readiness concept for capital-related review, subject to verification and final documentation.' },
         { title: 'Partnership pathway', status: 'Under review', description: 'Engagement pathway for potential partners, with partner validation required.' },
         { title: 'Documentation discipline', status: 'Documentation required', description: 'Records, terms and evidence are required before any formal representation.' },
         { title: 'Governance controls', status: 'Approval where applicable', description: 'Governance review and applicable approvals remain part of the planning pathway.' },
@@ -201,10 +201,10 @@ export const en: LocaleContent = {
     },
     pathway: {
       eyebrow: 'Readiness pathway',
-      title: 'Concept to final agreement, presented as an uncompleted planning pathway.',
-      note: 'Each stage is a validation gate and should not be read as secured financing, active fundraising, binding investment or completed offtake.',
+      title: 'Concept to final documentation review, presented as an uncompleted planning pathway.',
+      note: 'Each stage is a validation gate and should not be read as secured financing, a current capital raise, binding investment, completed offtake or approved regulatory status.',
       ariaLabel: 'Capital readiness planning pathway',
-      steps: ['Concept', 'Documentation', 'Partner validation', 'Governance review', 'Final agreement'],
+      steps: ['Concept', 'Documentation', 'Partner validation', 'Governance review', 'Final documentation review'],
     },
     claimControl: 'Not an investment solicitation. Capital pathways remain subject to verification, partner validation, applicable approvals and final documentation.',
   },
@@ -240,8 +240,8 @@ export const en: LocaleContent = {
   },
   contact: {
     eyebrow: 'Contact gateway',
-    title: 'Begin a structured alignment discussion.',
-    body: 'PMCS Holdings welcomes appropriate partner inquiry through a documentation-led information exchange, subject to verification and final documentation where applicable.',
+    title: 'Prepare a structured informational discussion.',
+    body: 'PMCS Holdings provides an informational pathway for appropriate institutional inquiry through a documentation-led exchange, subject to verification and final documentation where applicable.',
     readiness: [
       { title: 'Documentation-led discussion', body: 'Information exchange should remain anchored to records and review status.' },
       { title: 'Partner validation where applicable', body: 'Counterparty references require suitable confirmation before use.' },
@@ -259,14 +259,14 @@ export const en: LocaleContent = {
         inquiryType: { label: 'Inquiry type', placeholder: 'Select inquiry type' },
         message: { label: 'Message', placeholder: 'Briefly outline the discussion context. Do not include sensitive information.' },
       },
-      inquiryOptions: ['Partnership alignment', 'Documentation review', 'Supply / platform inquiry', 'General institutional inquiry'],
+      inquiryOptions: ['Potential alignment discussion', 'Documentation review', 'Supply / platform inquiry', 'General institutional inquiry'],
       submitLabel: 'Contact channel to be connected',
       submitNote: 'Submission channel will be connected after final contact details and routing are confirmed.',
     },
-    disclosure: 'Contact discussions are informational only and do not represent investment solicitation, binding commitment, approved financing, guaranteed supply or completed partnership.',
+    disclosure: 'Contact discussions are informational only and do not represent investment solicitation, binding commitment, approval-granted financing, guaranteed supply, regulatory approval or completed partnership.',
   },
   footer: {
-    brandDescription: 'Singapore-led food-security, sustainability, governance and structured finance readiness platform concept for Thailand-to-GCC corridor planning. The platform remains under development and subject to verification, approvals and final documentation.',
+    brandDescription: 'Singapore-led food-security, sustainability, governance and finance-readiness planning platform concept for Thailand-to-GCC corridor planning. The platform remains under development and subject to verification, partner validation, applicable approvals and final documentation.',
     navigationLabel: 'Footer platform navigation',
     platformHeading: 'Platform',
     governanceHeading: 'Governance and claim control',
@@ -281,7 +281,7 @@ export const en: LocaleContent = {
     legalItems: [
       'Informational website only.',
       'No investment solicitation.',
-      'No secured financing, issued carbon credits, or binding offtake claims.',
+      'No secured financing, issued carbon credits, regulatory approvals, completed operations or binding offtake claims.',
     ],
     rights: 'All rights reserved.',
   },
