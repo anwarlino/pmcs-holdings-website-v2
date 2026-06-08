@@ -186,7 +186,7 @@ function AlignmentImageCard({ card, onOpen }: { card: AlignmentCard; onOpen: () 
     <button
       type="button"
       onClick={onOpen}
-      className="pmcs-motion group relative flex h-[30rem] min-w-0 flex-col overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-[#fffaf1] text-left shadow-[0_18px_55px_rgba(43,43,43,0.09)] transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/65 hover:shadow-[0_28px_80px_rgba(122,31,43,0.15)] focus-visible:pmcs-focus-ring sm:h-[31rem] md:h-[32rem] xl:h-[30rem] motion-reduce:transition-none rtl:text-right"
+      className="pmcs-motion group relative flex h-[23.5rem] min-w-0 flex-col overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-[#fffaf1] text-left shadow-[0_18px_55px_rgba(43,43,43,0.09)] transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/65 hover:shadow-[0_28px_80px_rgba(122,31,43,0.15)] focus-visible:pmcs-focus-ring sm:h-[24.5rem] md:h-[25.5rem] xl:h-[24.5rem] motion-reduce:transition-none rtl:text-right"
       aria-label={`${card.cta}: ${card.title}`}
     >
       <span className="pointer-events-none absolute inset-0 rounded-[1.65rem] ring-1 ring-inset ring-pmcs-gold/10 transition duration-300 group-hover:ring-pmcs-gold/35" aria-hidden="true" />
@@ -194,21 +194,21 @@ function AlignmentImageCard({ card, onOpen }: { card: AlignmentCard; onOpen: () 
       <span className="pointer-events-none absolute -right-10 top-8 h-24 w-24 animate-pulse rounded-full bg-pmcs-gold/16 blur-2xl rtl:left-[-2.5rem] rtl:right-auto" aria-hidden="true" />
       <span className="pointer-events-none absolute -left-12 bottom-10 h-28 w-28 rounded-full bg-pmcs-green/10 blur-2xl rtl:left-auto rtl:right-[-3rem]" aria-hidden="true" />
 
-      <span className="relative block h-52 w-full shrink-0 overflow-hidden rounded-b-[1.2rem] bg-pmcs-charcoal sm:h-56 md:h-56 xl:h-44">
+      <span className="relative block h-36 w-full shrink-0 overflow-hidden rounded-b-[1.2rem] bg-pmcs-charcoal sm:h-40 lg:h-44 xl:h-40">
         <span className="relative block h-full w-full">
           <Image src={card.cardImage} alt={card.imageAlt} fill sizes="(min-width: 1280px) 20vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-500 ease-out group-hover:scale-[1.035] motion-reduce:transition-none" />
         </span>
         <span className="absolute inset-0 bg-gradient-to-t from-pmcs-charcoal/62 via-pmcs-charcoal/6 to-transparent" aria-hidden="true" />
-        <span className="absolute left-4 top-4 inline-flex h-11 min-w-11 items-center justify-center rounded-2xl border border-white/35 bg-white/84 px-3 text-sm font-black text-pmcs-maroon shadow-sm backdrop-blur-sm rtl:left-auto rtl:right-4">
+        <span className="absolute left-4 top-4 inline-flex h-10 min-w-10 items-center justify-center rounded-2xl border border-white/35 bg-white/84 px-3 text-sm font-black text-pmcs-maroon shadow-sm backdrop-blur-sm rtl:left-auto rtl:right-4">
           {card.number}
         </span>
       </span>
 
-      <span className="relative flex min-h-0 flex-1 flex-col p-5 sm:p-6">
-        <span className="text-[0.68rem] font-black uppercase leading-5 tracking-[0.16em] text-pmcs-maroon">{card.eyebrow}</span>
-        <span className="mt-3 min-h-[4.2rem] text-lg font-black leading-snug tracking-[-0.03em] text-pmcs-charcoal sm:text-xl xl:text-[1.05rem]">{card.title}</span>
-        <span className="mt-3 line-clamp-3 min-h-[4.6rem] text-sm font-semibold leading-7 text-pmcs-muted md:line-clamp-2 md:min-h-[3.5rem]">{card.body}</span>
-        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-black text-pmcs-maroon">
+      <span className="relative flex min-h-0 flex-1 flex-col p-4 sm:p-5">
+        <span className="text-[0.66rem] font-black uppercase leading-5 tracking-[0.16em] text-pmcs-maroon">{card.eyebrow}</span>
+        <span className="mt-2 min-h-[3.5rem] text-[1.05rem] font-black leading-snug tracking-[-0.03em] text-pmcs-charcoal sm:text-lg xl:text-[1rem]">{card.title}</span>
+        <span className="mt-2 line-clamp-2 min-h-[3rem] text-sm font-semibold leading-6 text-pmcs-muted">{card.body}</span>
+        <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-black text-pmcs-maroon">
           <span>{card.cta}</span>
           <span className="transition duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 motion-reduce:transition-none" aria-hidden="true">
             →
