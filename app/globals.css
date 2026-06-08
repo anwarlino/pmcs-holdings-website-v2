@@ -7,15 +7,35 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
-  scroll-padding-top: 8rem;
+  scroll-padding-top: clamp(7rem, 12vw, 9rem);
+}
+
+[id] {
+  scroll-margin-top: clamp(7rem, 12vw, 9rem);
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: #ffffff;
   color: #2B2B2B;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+main,
+header,
+footer {
+  min-width: 0;
+}
+
+:where(main, header, footer) :where(h1, h2, h3, h4, p, li, figcaption, span, a, button) {
+  overflow-wrap: break-word;
+}
+
+:where(html[lang="th"], html[lang="ar"]) :where(main, header, footer) :where(h1, h2, h3, h4, p, li, figcaption, span, a, button) {
+  word-break: break-word;
 }
 
 body[dir="rtl"] {

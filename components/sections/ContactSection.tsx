@@ -15,7 +15,7 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-pmcs-charcoal px-5 py-20 text-white md:py-24"
+      className="relative overflow-hidden bg-pmcs-charcoal px-4 py-16 text-white sm:px-5 sm:py-20 md:py-24"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(138,21,56,0.42),transparent_30%),radial-gradient(circle_at_86%_20%,rgba(214,173,96,0.12),transparent_24%),radial-gradient(circle_at_78%_82%,rgba(46,163,122,0.12),transparent_28%),linear-gradient(135deg,#252525_0%,#2b2b2b_48%,#351a22_100%)]" />
       <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:56px_56px]" />
@@ -123,7 +123,7 @@ export function ContactSection({
               </p>
               <button
                 type="button"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-pmcs-maroon/15 bg-pmcs-maroon px-6 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white shadow-pmcs transition hover:bg-pmcs-maroonDark focus:outline-none focus:ring-2 focus:ring-pmcs-gold focus:ring-offset-2"
+                className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full border border-pmcs-maroon/15 bg-pmcs-maroon px-6 py-3 text-center text-sm font-bold uppercase leading-5 tracking-[0.1em] sm:tracking-[0.14em] text-white shadow-pmcs transition hover:bg-pmcs-maroonDark focus:outline-none focus:ring-2 focus:ring-pmcs-gold focus:ring-offset-2"
                 aria-disabled="true"
               >
                 {contact.form.submitLabel}

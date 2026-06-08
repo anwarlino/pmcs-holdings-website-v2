@@ -29,7 +29,7 @@ export function SupplyBaseSection({
   return (
     <section
       id="supply"
-      className="relative overflow-hidden bg-white py-20 md:py-24"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 md:py-24"
     >
       <div className="pointer-events-none absolute inset-x-0 top-10 mx-auto h-72 max-w-5xl rounded-full bg-[radial-gradient(circle_at_center,rgba(214,173,96,0.16),rgba(46,163,122,0.08)_38%,transparent_70%)] blur-2xl" />
       <div className="relative mx-auto max-w-7xl px-5">

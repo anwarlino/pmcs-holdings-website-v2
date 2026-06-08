@@ -9,7 +9,7 @@ export function SiteFooter({ dictionary }: SiteFooterProps) {
 
   return (
     <footer className="border-t border-pmcs-maroon/20 bg-pmcs-charcoal text-white">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:py-12 lg:py-14">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:py-12 lg:py-14">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.9fr_1fr_0.95fr] lg:gap-10">
           <section aria-labelledby="footer-brand-heading" className="min-w-0">
             <div className="flex items-center gap-3">
@@ -17,7 +17,7 @@ export function SiteFooter({ dictionary }: SiteFooterProps) {
                 className="h-11 w-9 shrink-0 bg-pmcs-gold [mask-image:url('/assets/logo/pmcs-logo.png')] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/assets/logo/pmcs-logo.png')] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
                 aria-hidden="true"
               />
-              <h2 id="footer-brand-heading" className="text-xl font-black tracking-[-0.03em] text-white">
+              <h2 id="footer-brand-heading" className="min-w-0 text-xl font-black tracking-[-0.03em] text-white">
                 {dictionary.nav.brandName}
               </h2>
             </div>
@@ -31,7 +31,7 @@ export function SiteFooter({ dictionary }: SiteFooterProps) {
                 <li key={item.href}>
                   <a
                     href={`#${item.href}`}
-                    className="inline-flex min-h-9 items-center rounded-xl py-1 text-sm font-semibold leading-6 text-white/78 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:pmcs-focus-ring"
+                    className="inline-flex min-h-9 max-w-full items-center rounded-xl py-1 text-sm font-semibold leading-6 text-white/78 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:pmcs-focus-ring"
                   >
                     {item.label}
                   </a>

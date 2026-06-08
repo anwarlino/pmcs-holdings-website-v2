@@ -13,7 +13,7 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
   const { ecosystem } = dictionary;
 
   return (
-    <section id="ecosystem" className="relative overflow-hidden bg-pmcs-light py-20 sm:py-24">
+    <section id="ecosystem" className="relative overflow-hidden bg-pmcs-light py-16 sm:py-20 md:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pmcs-gold/55 to-transparent" aria-hidden="true" />
       <div className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-pmcs-gold/10 blur-3xl rtl:left-[-6rem] rtl:right-auto" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-24 bottom-10 h-72 w-72 rounded-full bg-pmcs-green/10 blur-3xl rtl:left-auto rtl:right-[-6rem]" aria-hidden="true" />
@@ -67,9 +67,9 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {ecosystem.modules.map((module, index) => (
-            <article key={module.title} className="flex h-full flex-col rounded-[1.35rem] border border-pmcs-line bg-white p-5 shadow-sm">
+            <article key={module.title} className="flex h-full min-w-0 flex-col rounded-[1.35rem] border border-pmcs-line bg-white p-5 shadow-sm">
               <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">{module.label}</p>
               <h3 className="mt-3 text-base font-black leading-snug text-pmcs-charcoal">{module.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-7 text-pmcs-muted">{module.body}</p>

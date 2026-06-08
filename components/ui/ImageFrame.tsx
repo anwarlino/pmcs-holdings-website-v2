@@ -114,11 +114,11 @@ export function ImageFrame({
       </div>
 
       <div className="relative mt-4 flex flex-col gap-2 rounded-[1.35rem] border border-white/80 bg-white/78 px-4 py-3 shadow-sm backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
-        <figcaption className="text-xs font-bold uppercase leading-5 tracking-[0.16em] text-pmcs-muted">
+        <figcaption className="min-w-0 text-xs font-bold uppercase leading-5 tracking-[0.12em] text-pmcs-muted sm:tracking-[0.16em]">
           {caption}
         </figcaption>
         {statusLabel ? (
-          <span className="inline-flex w-fit rounded-full border border-pmcs-gold/35 bg-pmcs-gold/10 px-3 py-1 text-[0.66rem] font-black uppercase tracking-[0.18em] text-pmcs-maroon">
+          <span className="inline-flex max-w-full rounded-full border border-pmcs-gold/35 bg-pmcs-gold/10 px-3 py-1 text-center text-[0.66rem] font-black uppercase leading-4 tracking-[0.12em] text-pmcs-maroon sm:tracking-[0.18em]">
             {statusLabel}
           </span>
         ) : null}

@@ -81,13 +81,13 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
             </p>
           </div>
         </div>
-        <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-5 lg:gap-5">
-          <Link href={getHomePath(locale)} aria-label={dictionary.nav.homeAria} className="flex min-w-0 items-center gap-3 rounded-2xl focus-visible:pmcs-focus-ring" onClick={() => setIsMegaOpen(false)}>
+        <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-2 px-4 py-4 sm:gap-3 sm:px-5 lg:gap-5">
+          <Link href={getHomePath(locale)} aria-label={dictionary.nav.homeAria} className="flex min-w-0 items-center gap-2 rounded-2xl focus-visible:pmcs-focus-ring sm:gap-3" onClick={() => setIsMegaOpen(false)}>
             <span
               className="h-10 w-[1.9rem] shrink-0 bg-pmcs-maroon [mask-image:url('/assets/logo/pmcs-logo.png')] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] sm:h-12 sm:w-9 [-webkit-mask-image:url('/assets/logo/pmcs-logo.png')] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
               aria-hidden="true"
             />
-            <span className="truncate text-base font-black tracking-[-0.03em] text-pmcs-maroon sm:text-lg">{dictionary.nav.brandName}</span>
+            <span className="truncate text-sm font-black tracking-[-0.03em] text-pmcs-maroon sm:text-lg">{dictionary.nav.brandName}</span>
           </Link>
 
           <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">

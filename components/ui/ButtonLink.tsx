@@ -13,7 +13,7 @@ export function ButtonLink({ href, children, variant = 'primary' }: ButtonLinkPr
     <Link
       href={href}
       className={cn(
-        'inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] transition focus:outline-none focus:ring-2 focus:ring-pmcs-gold focus:ring-offset-2',
+        'inline-flex min-h-12 max-w-full items-center justify-center rounded-full px-6 py-3 text-center text-sm font-bold uppercase leading-5 tracking-[0.12em] transition focus:outline-none focus:ring-2 focus:ring-pmcs-gold focus:ring-offset-2 sm:tracking-[0.16em]',
         variant === 'primary'
           ? 'bg-pmcs-maroon text-white shadow-pmcs hover:bg-pmcs-maroonDark'
           : 'border border-pmcs-maroon/20 bg-white text-pmcs-maroon hover:border-pmcs-maroon',
