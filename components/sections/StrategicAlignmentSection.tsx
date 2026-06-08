@@ -84,9 +84,16 @@ export function StrategicAlignmentSection({ dictionary }: { dictionary: LocaleCo
           <div className="pointer-events-none absolute -left-16 top-20 h-52 w-52 rounded-full bg-pmcs-maroon/8 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -right-16 bottom-20 h-56 w-56 rounded-full bg-pmcs-green/10 blur-3xl" aria-hidden="true" />
 
-          <div className="relative grid gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-5">
+          <div className="relative grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-5">
             {dictionary.alignment.cards.map((card, index) => (
-              <AlignmentImageCard key={card.number} card={card} onOpen={() => openModal(index)} />
+              <div
+                key={card.number}
+                className={`min-w-0 ${
+                  index === 4 ? 'md:col-span-2 md:mx-auto md:w-full md:max-w-[calc((100%_-_1.5rem)/2)] xl:col-span-1 xl:max-w-none' : ''
+                }`}
+              >
+                <AlignmentImageCard card={card} onOpen={() => openModal(index)} />
+              </div>
             ))}
           </div>
 
@@ -179,7 +186,7 @@ function AlignmentImageCard({ card, onOpen }: { card: AlignmentCard; onOpen: () 
     <button
       type="button"
       onClick={onOpen}
-      className="pmcs-motion group relative flex min-w-0 flex-col overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-[#fffaf1] text-left shadow-[0_18px_55px_rgba(43,43,43,0.09)] transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/65 hover:shadow-[0_28px_80px_rgba(122,31,43,0.15)] focus-visible:pmcs-focus-ring motion-reduce:transition-none rtl:text-right"
+      className="pmcs-motion group relative flex h-[31rem] min-w-0 flex-col overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-[#fffaf1] text-left shadow-[0_18px_55px_rgba(43,43,43,0.09)] transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/65 hover:shadow-[0_28px_80px_rgba(122,31,43,0.15)] focus-visible:pmcs-focus-ring sm:h-[32rem] md:h-[34rem] xl:h-[35rem] motion-reduce:transition-none rtl:text-right"
       aria-label={`${card.cta}: ${card.title}`}
     >
       <span className="pointer-events-none absolute inset-0 rounded-[1.65rem] ring-1 ring-inset ring-pmcs-gold/10 transition duration-300 group-hover:ring-pmcs-gold/35" aria-hidden="true" />
@@ -187,7 +194,7 @@ function AlignmentImageCard({ card, onOpen }: { card: AlignmentCard; onOpen: () 
       <span className="pointer-events-none absolute -right-10 top-8 h-24 w-24 animate-pulse rounded-full bg-pmcs-gold/16 blur-2xl rtl:left-[-2.5rem] rtl:right-auto" aria-hidden="true" />
       <span className="pointer-events-none absolute -left-12 bottom-10 h-28 w-28 rounded-full bg-pmcs-green/10 blur-2xl rtl:left-auto rtl:right-[-3rem]" aria-hidden="true" />
 
-      <span className="relative block w-full overflow-hidden rounded-b-[1.2rem] bg-pmcs-charcoal">
+      <span className="relative block w-full shrink-0 overflow-hidden rounded-b-[1.2rem] bg-pmcs-charcoal">
         <span className="relative block aspect-[4/3] w-full">
           <Image src={card.cardImage} alt={card.imageAlt} fill sizes="(min-width: 1280px) 20vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-500 ease-out group-hover:scale-[1.035] motion-reduce:transition-none" />
         </span>
@@ -197,11 +204,11 @@ function AlignmentImageCard({ card, onOpen }: { card: AlignmentCard; onOpen: () 
         </span>
       </span>
 
-      <span className="relative flex flex-1 flex-col p-5 sm:p-6">
-        <span className="text-[0.68rem] font-black uppercase leading-5 tracking-[0.18em] text-pmcs-maroon">{card.eyebrow}</span>
-        <span className="mt-3 block text-xl font-black leading-tight tracking-[-0.03em] text-pmcs-charcoal">{card.title}</span>
-        <span className="mt-3 block flex-1 text-sm font-semibold leading-7 text-pmcs-muted">{card.body}</span>
-        <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-pmcs-maroon">
+      <span className="relative flex min-h-0 flex-1 flex-col p-5 sm:p-6">
+        <span className="line-clamp-1 text-[0.68rem] font-black uppercase leading-5 tracking-[0.18em] text-pmcs-maroon">{card.eyebrow}</span>
+        <span className="mt-3 line-clamp-2 min-h-[3.5rem] text-xl font-black leading-tight tracking-[-0.03em] text-pmcs-charcoal">{card.title}</span>
+        <span className="mt-3 line-clamp-4 text-sm font-semibold leading-7 text-pmcs-muted">{card.body}</span>
+        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-black text-pmcs-maroon">
           <span>{card.cta}</span>
           <span className="transition duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 motion-reduce:transition-none" aria-hidden="true">
             →
