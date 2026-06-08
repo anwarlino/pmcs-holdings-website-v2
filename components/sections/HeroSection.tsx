@@ -25,7 +25,7 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
       >
         <div className="absolute inset-[-2rem] scale-[1.08] bg-[url('/assets/hero/pmcs-singapore-food-security-platform-hero-background.webp')] bg-cover bg-center opacity-[0.16] sm:opacity-[0.18] md:opacity-[0.2] lg:bg-fixed lg:bg-[center_top] lg:opacity-[0.22] motion-reduce:lg:bg-scroll" />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.82)_42%,rgba(255,255,255,0.68)_100%),linear-gradient(135deg,rgba(255,255,255,0.78)_0%,rgba(251,248,242,0.68)_48%,rgba(244,250,247,0.78)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(255,255,255,0.88)_0%,rgba(255,255,255,0.68)_42%,rgba(255,255,255,0.46)_100%),linear-gradient(135deg,rgba(255,255,255,0.62)_0%,rgba(251,248,242,0.48)_48%,rgba(244,250,247,0.56)_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_16%_18%,rgba(138,21,56,0.10),transparent_24rem),radial-gradient(circle_at_86%_12%,rgba(46,163,122,0.16),transparent_28rem),linear-gradient(90deg,rgba(43,43,43,0.045)_1px,transparent_1px),linear-gradient(180deg,rgba(43,43,43,0.035)_1px,transparent_1px)] bg-[size:auto,auto,4.5rem_4.5rem,4.5rem_4.5rem]" />
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,1.02fr)_minmax(21rem,0.98fr)] lg:gap-14 xl:gap-16">
         <div className="max-w-3xl lg:max-w-none">
