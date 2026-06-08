@@ -49,7 +49,7 @@ export function IccrFrameworkSection({ dictionary }: { dictionary: LocaleContent
   const pillars = dictionary.iccr.pillars;
 
   return (
-    <section id="iccr" className="overflow-hidden bg-white py-20 md:py-24">
+    <section id="iccr" className="overflow-hidden bg-white py-16 sm:py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-5">
         <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
           <SectionHeading eyebrow={dictionary.iccr.eyebrow} title={dictionary.iccr.title} body={dictionary.iccr.body} align="left" />

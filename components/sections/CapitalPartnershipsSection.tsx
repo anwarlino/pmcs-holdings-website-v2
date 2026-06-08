@@ -34,7 +34,7 @@ const tileGridClasses = [
 
 export function CapitalPartnershipsSection({ dictionary }: { dictionary: LocaleContent }) {
   return (
-    <section id="capital" className="relative overflow-hidden bg-pmcs-light py-20 sm:py-24">
+    <section id="capital" className="relative overflow-hidden bg-pmcs-light py-16 sm:py-20 md:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pmcs-gold/55 to-transparent" aria-hidden="true" />
       <div className="pointer-events-none absolute -right-28 top-16 h-72 w-72 rounded-full bg-pmcs-maroon/10 blur-3xl rtl:left-[-7rem] rtl:right-auto" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-28 bottom-10 h-80 w-80 rounded-full bg-pmcs-green/10 blur-3xl rtl:left-auto rtl:right-[-7rem]" aria-hidden="true" />

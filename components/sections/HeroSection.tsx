@@ -17,7 +17,7 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
   return (
     <section
       id="overview"
-      className="relative isolate overflow-hidden bg-pmcs-cream py-14 sm:py-16 md:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-pmcs-cream py-12 sm:py-16 md:py-20 lg:py-24"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-[url('/assets/hero/pmcs-singapore-food-security-platform-hero-background.webp')] bg-cover bg-center opacity-90"
@@ -30,7 +30,7 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
           <p className="mb-5 inline-flex rounded-full border border-pmcs-green/20 bg-white/70 px-4 py-2 text-[0.68rem] font-black uppercase tracking-[0.24em] text-pmcs-green shadow-sm backdrop-blur">
             {dictionary.hero.eyebrow}
           </p>
-          <h1 className="max-w-4xl text-balance text-[2.55rem] font-black leading-[0.96] tracking-[-0.055em] text-pmcs-charcoal sm:text-5xl md:text-[3.65rem] lg:text-[4.25rem] xl:text-[4.75rem]">
+          <h1 className="max-w-4xl text-balance text-[2.25rem] font-black leading-[0.98] tracking-[-0.055em] text-pmcs-charcoal sm:text-5xl md:text-[3.65rem] lg:text-[4.25rem] xl:text-[4.75rem]">
             {dictionary.hero.title}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-pmcs-muted sm:text-lg sm:leading-9">
@@ -83,19 +83,19 @@ export function HeroSection({ dictionary, locale }: HeroSectionProps) {
               </div>
             </div>
 
-            <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-3 sm:gap-4">
+            <div className="relative mx-auto grid w-full max-w-md grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               <div
-                className="absolute left-1/2 top-1/2 h-[calc(100%-2rem)] w-px -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-pmcs-gold/45 to-transparent"
+                className="absolute left-1/2 top-1/2 hidden h-[calc(100%-2rem)] w-px sm:block -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-pmcs-gold/45 to-transparent"
                 aria-hidden="true"
               />
               <div
-                className="absolute left-1/2 top-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-pmcs-gold/45 to-transparent"
+                className="absolute left-1/2 top-1/2 hidden h-px w-[calc(100%-2rem)] sm:block -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-pmcs-gold/45 to-transparent"
                 aria-hidden="true"
               />
               {dictionary.hero.visual.modules.map((module, index) => (
                 <div
                   key={module.label}
-                  className={`relative min-h-28 rounded-3xl border p-4 shadow-[0_18px_50px_rgba(43,43,43,0.08)] backdrop-blur sm:min-h-32 ${moduleAccents[index % moduleAccents.length]}`}
+                  className={`relative min-h-24 rounded-3xl border p-4 shadow-[0_18px_50px_rgba(43,43,43,0.08)] backdrop-blur sm:min-h-32 ${moduleAccents[index % moduleAccents.length]}`}
                 >
                   <div
                     className="mb-5 h-2 w-10 rounded-full bg-current opacity-70"

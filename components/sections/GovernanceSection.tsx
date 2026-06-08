@@ -118,7 +118,7 @@ export function GovernanceSection({
   return (
     <section
       id="governance"
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,rgba(247,244,238,0.72)_48%,#ffffff_100%)] py-20 md:py-24"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,rgba(247,244,238,0.72)_48%,#ffffff_100%)] py-16 sm:py-20 md:py-24"
     >
       <div
         className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(122,31,43,0.12),transparent_28%),radial-gradient(circle_at_84%_22%,rgba(179,139,74,0.14),transparent_30%),linear-gradient(rgba(122,31,43,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(122,31,43,0.035)_1px,transparent_1px)] bg-[length:auto,auto,44px_44px,44px_44px]"

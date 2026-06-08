@@ -168,17 +168,17 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         ref={panelRef}
         inert={!isOpen}
         style={panelStyle}
-        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-4 right-4 z-50 flex flex-col overflow-hidden rounded-[2rem] border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[280ms] ease-out motion-reduce:transition-none sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] rtl:sm:left-5 rtl:sm:right-auto ${
+        className={`pmcs-mobile-menu-panel pmcs-motion fixed left-3 right-3 z-50 flex flex-col overflow-hidden rounded-[1.5rem] sm:left-auto sm:right-5 sm:w-[26rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-[2rem] rtl:sm:left-5 rtl:sm:right-auto border bg-white/[0.97] shadow-[0_32px_90px_rgba(20,20,20,0.32)] ring-1 ring-white/70 backdrop-blur-2xl transition-[opacity,transform] duration-[280ms] ease-out motion-reduce:transition-none ${
           isOpen ? 'pointer-events-auto translate-y-0 scale-100 border-pmcs-line opacity-100' : 'pointer-events-none translate-y-2 scale-[0.985] border-transparent opacity-0'
         }`}
       >
-        <div className="relative shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 pr-16 sm:px-6 sm:py-5 sm:pr-16">
+        <div className="relative shrink-0 border-b border-pmcs-line bg-pmcs-light/80 px-5 py-4 pe-16 sm:px-6 sm:py-5 sm:pe-16">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{dictionary.nav.mega.trigger}</p>
           <button
             type="button"
             aria-label={dictionary.nav.menuClose}
             onClick={() => setIsOpen(false)}
-            className="pmcs-motion absolute right-4 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-pmcs-line bg-white/90 text-lg font-black leading-none text-pmcs-maroon shadow-sm transition duration-200 ease-out hover:border-pmcs-gold/60 hover:bg-white hover:text-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
+            className="pmcs-motion absolute end-4 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-pmcs-line bg-white/90 text-lg font-black leading-none text-pmcs-maroon shadow-sm transition duration-200 ease-out hover:border-pmcs-gold/60 hover:bg-white hover:text-pmcs-maroonDark focus-visible:pmcs-focus-ring motion-reduce:transition-none"
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
               <path d="M3 3L11 11M11 3L3 11" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
@@ -187,7 +187,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         </div>
 
         <nav
-          className="pmcs-mobile-menu-scroll min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6"
+          className="pmcs-mobile-menu-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6 sm:py-5"
           aria-label={dictionary.nav.aria}
         >
           <div className="grid gap-3">
@@ -212,7 +212,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
                 type="button"
                 aria-pressed={activeGroupIndex === index}
                 onClick={() => handleGroupSelect(index)}
-                className={`pmcs-motion w-full rounded-2xl border px-3 py-2.5 text-start text-xs font-black transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
+                className={`pmcs-motion w-full rounded-2xl border px-3 py-2.5 text-start text-xs font-black leading-5 transition duration-200 ease-out focus-visible:pmcs-focus-ring motion-reduce:transition-none ${
                   activeGroupIndex === index ? 'border-pmcs-gold/60 bg-pmcs-gold/15 text-pmcs-maroon' : 'border-pmcs-line bg-white text-pmcs-muted hover:border-pmcs-gold/50 hover:text-pmcs-maroon'
                 }`}
               >
@@ -229,7 +229,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
             >
               <section className="rounded-3xl border border-pmcs-line bg-white p-4 shadow-sm">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-pmcs-maroon">{visibleGroup.eyebrow}</p>
-                <h2 className="mt-2 text-base font-black text-pmcs-charcoal">{visibleGroup.heading}</h2>
+                <h2 className="mt-2 text-base font-black leading-snug text-pmcs-charcoal">{visibleGroup.heading}</h2>
                 <p className="mt-2 text-xs leading-5 text-pmcs-muted">{visibleGroup.description}</p>
                 <div className="mt-3 grid gap-2">
                   {visibleGroup.links.map((link) => (
@@ -266,7 +266,7 @@ export function MobileNav({ locale, dictionary, activeSection, onSectionSelect }
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
         onClick={() => setIsOpen((current) => !current)}
-        className={`pmcs-header-control relative ${isOpen ? 'z-[70]' : 'z-40'} min-w-[7.25rem] px-4 text-xs uppercase tracking-[0.14em] sm:text-sm ${
+        className={`pmcs-header-control relative ${isOpen ? 'z-[70]' : 'z-40'} min-w-0 px-3 text-xs uppercase tracking-[0.1em] sm:min-w-[7.25rem] sm:px-4 sm:text-sm sm:tracking-[0.14em] ${
           isOpen ? 'pmcs-header-control-active' : 'pmcs-header-control-subtle'
         }`}
       >
