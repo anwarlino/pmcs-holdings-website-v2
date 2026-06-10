@@ -121,8 +121,22 @@ body.pmcs-modal-locked {
     outline: 3px solid rgba(122, 31, 43, 0.35);
     outline-offset: 4px;
   }
+
+  .pmcs-ecosystem-pulse {
+    animation: pmcs-ecosystem-pulse 3.2s ease-in-out infinite;
+  }
 }
 
+@keyframes pmcs-ecosystem-pulse {
+  0%,
+  100% {
+    box-shadow: 0 18px 44px rgba(122, 31, 43, 0.2), 0 0 0 0 rgba(214, 173, 96, 0.24);
+  }
+
+  50% {
+    box-shadow: 0 22px 54px rgba(122, 31, 43, 0.24), 0 0 0 6px rgba(46, 163, 122, 0.08);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
