@@ -97,19 +97,16 @@ export type LocaleContent = {
     eyebrow: string;
     title: string;
     body: string;
-    architectureLabel: string;
-    central: {
+    selectorAria: string;
+    items: Array<{
+      label: string;
       eyebrow: string;
       title: string;
+      short: string;
       body: string;
-    };
-    modules: Array<{
-      label: string;
-      title: string;
-      body: string;
+      image: string;
+      imageAlt: string;
     }>;
-    notesLabel: string;
-    notes: string[];
   };
   iccr: {
     eyebrow: string;
