@@ -98,6 +98,8 @@ export type LocaleContent = {
     title: string;
     body: string;
     selectorAria: string;
+    openDetailsLabel: string;
+    closeLabel: string;
     items: Array<{
       label: string;
       eyebrow: string;

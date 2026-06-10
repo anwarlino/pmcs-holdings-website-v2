@@ -213,6 +213,8 @@ export const en: LocaleContent = {
     title: 'A coordinated platform architecture being structured for corridor readiness.',
     body: 'PMCS Holdings is presented as a developing planning-and-coordination platform concept intended to connect governance discipline, Thailand-based supply readiness, ICCR-aligned sustainability controls, finance-readiness planning and GCC food-security engagement. The section describes a planning layer only and does not claim completed operations, secured financing, issued carbon credits or binding offtake.',
     selectorAria: 'Platform ecosystem topic selector',
+    openDetailsLabel: 'Open details',
+    closeLabel: 'Close platform ecosystem detail',
     items: [
       {
         label: '01',
