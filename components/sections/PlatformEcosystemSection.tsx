@@ -89,16 +89,16 @@ export function PlatformEcosystemSection({ dictionary }: { dictionary: LocaleCon
               }}
               type="button"
               onClick={() => openMobileDetail(index)}
-              className="pmcs-motion group relative min-w-0 overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-pmcs-charcoal text-left shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-visible:pmcs-focus-ring motion-reduce:transition-none motion-reduce:hover:translate-y-0 rtl:text-right"
+              className="pmcs-motion group relative min-h-[24rem] min-w-0 overflow-hidden rounded-[1.65rem] border border-pmcs-line bg-pmcs-charcoal text-left shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:border-pmcs-gold/70 hover:shadow-pmcs focus-visible:pmcs-focus-ring motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[26rem] md:min-h-[24rem] rtl:text-right"
               aria-haspopup="dialog"
               aria-label={`${ecosystem.openDetailsLabel}: ${item.title}`}
             >
-              <img src={item.image} alt={item.imageAlt} className="aspect-[16/11] w-full object-cover" />
+              <img src={item.image} alt={item.imageAlt} className="absolute inset-0 h-full w-full object-cover" />
               <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,43,43,0.02)_0%,rgba(43,43,43,0.84)_100%)]" aria-hidden="true" />
               <span className="absolute inset-x-0 bottom-0 p-4 text-white">
-                <span className="flex items-center gap-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-gold">
-                  <span className="grid h-7 w-7 place-items-center rounded-full border border-pmcs-gold/45 bg-pmcs-charcoal/65 text-[0.62rem]">{item.label}</span>
-                  <span>{item.eyebrow}</span>
+                <span className="flex min-w-0 items-center gap-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-gold">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-pmcs-gold/45 bg-pmcs-charcoal/65 text-[0.62rem]">{item.label}</span>
+                  <span className="min-w-0">{item.eyebrow}</span>
                 </span>
                 <span className="mt-2 block text-base font-black leading-snug tracking-[-0.02em]">{item.title}</span>
                 <span className="mt-2 block text-xs font-semibold leading-5 text-white/76">{item.short}</span>
@@ -202,8 +202,8 @@ function EcosystemDetailDialog({
       }}
     >
       <button type="button" className="absolute inset-0 h-full w-full cursor-default bg-pmcs-charcoal/62 backdrop-blur-sm" aria-label={closeLabel} onClick={onClose} />
-      <div className="pmcs-motion absolute inset-x-0 bottom-0 mx-auto max-h-[92dvh] w-full overflow-hidden rounded-t-[2rem] border border-pmcs-gold/25 bg-pmcs-light shadow-[0_-24px_80px_rgba(43,43,43,0.26)] transition duration-300 ease-out motion-reduce:transition-none sm:inset-x-6 sm:bottom-6 sm:max-w-2xl sm:rounded-[2rem] md:bottom-1/2 md:translate-y-1/2">
-        <div className="max-h-[92dvh] overflow-y-auto overscroll-contain p-4 sm:p-5">
+      <div className="pmcs-motion absolute inset-x-0 bottom-0 mx-auto max-h-[92dvh] w-full overflow-hidden rounded-t-[2rem] border border-pmcs-gold/25 bg-pmcs-light shadow-[0_-24px_80px_rgba(43,43,43,0.26)] transition duration-300 ease-out motion-reduce:transition-none sm:inset-x-6 sm:bottom-6 sm:max-h-[calc(100dvh-3rem)] sm:w-auto sm:max-w-2xl sm:rounded-[2rem] md:bottom-1/2 md:max-h-[92dvh] md:translate-y-1/2">
+        <div className="max-h-[92dvh] overflow-y-auto overscroll-contain p-4 sm:max-h-[calc(100dvh-3rem)] sm:p-5 md:max-h-[92dvh]">
           <div className="relative overflow-hidden rounded-[1.45rem] border border-pmcs-line bg-pmcs-charcoal">
             <img src={item.image} alt={item.imageAlt} className="aspect-[16/10] w-full object-cover" />
             <button
@@ -218,11 +218,11 @@ function EcosystemDetailDialog({
           </div>
 
           <div className="p-2 pt-5 sm:p-3 sm:pt-6">
-            <p className="flex items-center gap-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">
-              <span className="grid h-7 w-7 place-items-center rounded-full border border-pmcs-gold/45 bg-pmcs-gold/12 text-pmcs-maroon" aria-hidden="true">
+            <p className="flex min-w-0 items-center gap-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-pmcs-green">
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-pmcs-gold/45 bg-pmcs-gold/12 text-pmcs-maroon" aria-hidden="true">
                 {item.label}
               </span>
-              <span>{item.eyebrow}</span>
+              <span className="min-w-0">{item.eyebrow}</span>
             </p>
             <h3 id="ecosystem-detail-title" className="mt-3 text-2xl font-black leading-tight tracking-[-0.035em] text-pmcs-charcoal sm:text-3xl">
               {item.title}
